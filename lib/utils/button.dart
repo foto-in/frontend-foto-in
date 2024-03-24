@@ -3,20 +3,31 @@ import 'package:foto_in/core/styles/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BtnPrimary extends StatelessWidget {
-  const BtnPrimary({super.key, required this.tvButton});
+  const BtnPrimary({
+    super.key,
+    required this.tvButton,
+    required this.onPressed,
+    required this.radius,
+  });
   final String tvButton;
+  final Function onPressed;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          onPressed();
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColor.primary,
           padding: const EdgeInsets.all(16),
+          elevation: 0,
+          splashFactory: NoSplash.splashFactory,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(radius),
           ),
         ),
         child: Text(
@@ -53,6 +64,7 @@ class BtnPrimaryWhite extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          splashFactory: NoSplash.splashFactory,
           padding: const EdgeInsets.all(16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -60,7 +72,7 @@ class BtnPrimaryWhite extends StatelessWidget {
           ),
         ),
         child: Text(
-          "Daftar",
+          tvButton,
           style: GoogleFonts.plusJakartaSans(
             fontSize: 16,
             fontWeight: FontWeight.w700,

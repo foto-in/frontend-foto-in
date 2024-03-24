@@ -123,7 +123,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           const SizedBox(
             height: 20,
           ),
-          const BtnPrimary(
+          BtnPrimary(
+            radius: 8,
+            onPressed: () {},
             tvButton: "Daftar",
           ),
           const SizedBox(

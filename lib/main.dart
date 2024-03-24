@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
+import 'package:foto_in/feature/auth/register/presentation/widgets/register_web.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        LoginView.routeName: (context) => const LoginView(),
-        RegisterView.routeName: (context) => const RegisterView(),
-      },
-      title: 'Flutter Demo',
-      home: const RegisterView(),
-    );
+        routes: {
+          LoginView.routeName: (context) => const LoginView(),
+          RegisterView.routeName: (context) => const RegisterView(),
+        },
+        title: 'Flutter Demo',
+        home: const Scaffold(
+          backgroundColor: Color(0xffF4F6F7),
+          body: RegisterWebWidgets(),
+        ));
   }
 }

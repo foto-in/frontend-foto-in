@@ -121,8 +121,10 @@ class _LoginWidgetState extends State<LoginWidget> {
             const SizedBox(
               height: 20,
             ),
-            const BtnPrimary(
+            BtnPrimary(
+              radius: 8,
               tvButton: "Masuk",
+              onPressed: () {},
             ),
             const SizedBox(
               height: 20,
