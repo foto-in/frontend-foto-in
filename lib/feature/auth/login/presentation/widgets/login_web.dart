@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -6,18 +5,17 @@ import 'package:foto_in/feature/auth/register/presentation/widgets/register_widg
 import 'package:foto_in/utils/button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RegisterWebWidgets extends StatefulWidget {
-  const RegisterWebWidgets({super.key});
+class LoginWebWidgets extends StatefulWidget {
+  const LoginWebWidgets({super.key});
 
   @override
-  State<RegisterWebWidgets> createState() => _RegisterWebWidgetsState();
+  State<LoginWebWidgets> createState() => _LoginWebWidgetsState();
 }
 
-class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
+class _LoginWebWidgetsState extends State<LoginWebWidgets> {
   var isObsecure = true;
   var tfEmailController = TextEditingController();
   var tfPasswordController = TextEditingController();
-  var tfConfirmPasswordController = TextEditingController();
   Function get onPressed => () {
         setState(() {
           isObsecure = !isObsecure;
@@ -59,7 +57,7 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
                     height: 20,
                   ),
                   Text(
-                    "Register",
+                    "Selamat Datang!",
                     style: FotoInHeadingTypography.small(
                         color: FotoInColor.blue.shade900),
                   ),
@@ -67,18 +65,11 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
                     height: 8,
                   ),
                   Text(
-                    "Silahkan membuat akun terlebih dahulu",
+                    "Silahkan masuk untuk memulai",
                     style: FotoInParagraph.small(color: AppColor.textSecondary),
                   ),
                   const SizedBox(
                     height: 20,
-                  ),
-                  TfAuth(
-                      controller: tfEmailController,
-                      hintText: "Nama Lengkap",
-                      keyboardType: TextInputType.name),
-                  const SizedBox(
-                    height: 16,
                   ),
                   TfAuth(
                       controller: tfEmailController,
@@ -87,25 +78,10 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TfAuth(
-                      controller: tfEmailController,
-                      hintText: "Email",
-                      keyboardType: TextInputType.emailAddress),
-                  const SizedBox(
-                    height: 16,
-                  ),
                   TfPasswordType(
                       tfPasswordController: tfPasswordController,
                       isObsecure: isObsecure,
                       hintText: "Password",
-                      onPressed: onPressed),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  TfPasswordType(
-                      tfPasswordController: tfConfirmPasswordController,
-                      isObsecure: isObsecure,
-                      hintText: "Konfirmasi Password",
                       onPressed: onPressed),
                   const SizedBox(
                     height: 16,
@@ -140,30 +116,40 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text.rich(
-                        TextSpan(
-                          text: "Sudah punya akun? ",
-                          style: FotoInParagraph.small(
-                              color: AppColor.textSecondary),
-                          children: [
-                            TextSpan(
-                              text: "Masuk",
-                              style: GoogleFonts.plusJakartaSans(
-                                decoration: TextDecoration.underline,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: AppColor.primary,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.of(context).pushNamed('/login');
-                                },
-                            )
-                          ],
+                      const Expanded(
+                        child: Divider(
+                          color: AppColor.textSecondary,
+                          thickness: 1,
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Text(
+                        "Belum punya akun?",
+                        style: FotoInParagraph.small(
+                            color: AppColor.textSecondary),
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      const Expanded(
+                        child: Divider(
+                          color: AppColor.textSecondary,
+                          thickness: 1,
+                        ),
+                      ),
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  BtnPrimaryWhite(
+                    tvButton: "Daftar",
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
+                  ),
                 ],
               ),
             ),
@@ -218,7 +204,7 @@ class _navBar extends StatelessWidget {
                 child: BtnPrimaryWhite(
                   tvButton: "Masuk",
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/login');
+                    Navigator.pushReplacementNamed(context, "/login");
                   },
                 ),
               ),
@@ -230,7 +216,7 @@ class _navBar extends StatelessWidget {
                   child: BtnPrimary(
                     radius: 8,
                     onPressed: () {
-                      Navigator.of(context).pushNamed('/register');
+                      Navigator.pushReplacementNamed(context, "/register");
                     },
                     tvButton: "Daftar",
                   ))

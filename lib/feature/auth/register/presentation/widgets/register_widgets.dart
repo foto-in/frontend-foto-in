@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/utils/button.dart';
@@ -93,6 +91,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           TfPasswordType(
               tfPasswordController: tfPasswordController,
               isObsecure: isObsecure,
+              hintText: "Password",
               onPressed: onPressed),
           const SizedBox(
             height: 16,
@@ -100,6 +99,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           TfPasswordType(
               tfPasswordController: tfPasswordController,
               isObsecure: isObsecure,
+              hintText: "Konfirmasi Password",
               onPressed: onPressed),
           const SizedBox(
             height: 16,
@@ -171,11 +171,13 @@ class TfPasswordType extends StatelessWidget {
     required this.tfPasswordController,
     required this.isObsecure,
     required this.onPressed,
+    required this.hintText,
   });
 
   final TextEditingController tfPasswordController;
   final bool isObsecure;
   final Function onPressed;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +194,7 @@ class TfPasswordType extends StatelessWidget {
               isObsecure ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
               color: AppColor.textSecondary,
             )),
-        hintText: "Password",
+        hintText: hintText,
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide.none),

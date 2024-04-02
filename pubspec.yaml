@@ -15,6 +15,7 @@ dependencies:
   google_fonts: ^6.2.1
   iconsax: ^0.0.8
   ficonsax: ^0.0.3
+  responsive_builder: ^0.7.0
 
 dev_dependencies:
   flutter_test:

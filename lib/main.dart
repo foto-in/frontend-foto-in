@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
-import 'package:foto_in/feature/auth/register/presentation/widgets/register_web.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +17,8 @@ class MyApp extends StatelessWidget {
         },
         title: 'Flutter Demo',
         home: const Scaffold(
-          backgroundColor: Color(0xffF4F6F7),
-          body: RegisterWebWidgets(),
+          backgroundColor: Color(0xffFFFFFF),
+          body: LoginView(),
         ));
   }
 }
