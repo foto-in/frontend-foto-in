@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/utils/button.dart';
@@ -142,7 +143,7 @@ class LandingPageWidgets extends StatelessWidget {
                           Text(
                             "Mengapa memilih kami untuk sesi foto Anda?",
                             style: FotoInHeadingTypography.xxLarge(
-                                color: AppColor.primary),
+                                color: AppColor.textPrimary),
                           ),
                           const SizedBox(
                             height: 48,
@@ -347,6 +348,167 @@ class LandingPageWidgets extends StatelessWidget {
                             )
                           ],
                         ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 80, vertical: 64),
+                      decoration: const BoxDecoration(
+                        color: AppColor.primary,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset("assets/images/logo-big.png"),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Perusahaan",
+                                    style: FotoInSubHeadingTypography.medium(
+                                        color: AppColor.secondary),
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  Text(
+                                    "Tentang Kami",
+                                    style: FotoInParagraph.small(
+                                      color: const Color(0xffffffff),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 24,
+                                  ),
+                                  Text(
+                                    "Karir",
+                                    style: FotoInParagraph.small(
+                                      color: const Color(0xffffffff),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 24,
+                                  ),
+                                  Text(
+                                    "Kontak",
+                                    style: FotoInParagraph.small(
+                                      color: const Color(0xffffffff),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Langganan",
+                                    style: FotoInSubHeadingTypography.medium(
+                                        color: AppColor.secondary),
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  SizedBox(
+                                    width: 283,
+                                    child: TextField(
+                                      cursorColor: AppColor.secondary,
+                                      style: FotoInParagraph.small(
+                                        color: const Color(0xffffffff),
+                                      ),
+                                      decoration: InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: const BorderSide(
+                                            color: AppColor.secondary,
+                                          ),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          borderSide: const BorderSide(
+                                            color: Color(0xffE4E4E7),
+                                          ),
+                                        ),
+                                        hintText: "Masukkan email Anda",
+                                        hintStyle: FotoInParagraph.small(
+                                          color: const Color(0xffA1A1AA),
+                                        ),
+                                        prefixIcon: const Icon(
+                                          Iconsax.sms,
+                                          color: Color(0xffA1A1AA),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 11.1,
+                                  ),
+                                  SizedBox(
+                                    width: 283,
+                                    height: 51,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 16, horizontal: 24),
+                                        backgroundColor: AppColor.secondary,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Berlangganan Sekarang",
+                                        style: FotoInHeadingTypography.xxSmall(
+                                          color: const Color(0xffffffff),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 48,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "© 2021 FotoIn. All rights reserved",
+                                style: FotoInParagraph.small(
+                                  color: const Color(0xffffffff),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Image.asset("assets/images/twitter-icon.png"),
+                                  const SizedBox(
+                                    width: 24,
+                                  ),
+                                  Image.asset(
+                                      "assets/images/facebook-icon.png"),
+                                  const SizedBox(
+                                    width: 24,
+                                  ),
+                                  Image.asset("assets/images/instagram-ic.png"),
+                                  const SizedBox(
+                                    width: 24,
+                                  ),
+                                  Image.asset("assets/images/github-ic.png"),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     )
                   ],
