@@ -1,10 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:foto_in/core/const/constant.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/data/model/RegisterRequest.dart';
+import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/widgets/register_widgets.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class RegisterWebWidgets extends StatefulWidget {
   const RegisterWebWidgets({super.key});
@@ -16,6 +20,8 @@ class RegisterWebWidgets extends StatefulWidget {
 class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
   var isObsecure = true;
   var tfEmailController = TextEditingController();
+  var tfUsernameController = TextEditingController();
+  var tfFullName = TextEditingController();
   var tfPasswordController = TextEditingController();
   var tfConfirmPasswordController = TextEditingController();
   Function get onPressed => () {
@@ -54,34 +60,15 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('assets/images/logo.png'),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "Register",
-                    style: FotoInHeadingTypography.small(
-                        color: FotoInColor.blue.shade900),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    "Silahkan membuat akun terlebih dahulu",
-                    style: FotoInParagraph.small(color: AppColor.textSecondary),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   TfAuth(
-                      controller: tfEmailController,
+                      controller: tfFullName,
                       hintText: "Nama Lengkap",
                       keyboardType: TextInputType.name),
                   const SizedBox(
                     height: 16,
                   ),
                   TfAuth(
-                      controller: tfEmailController,
+                      controller: tfUsernameController,
                       hintText: "Username",
                       keyboardType: TextInputType.name),
                   const SizedBox(
@@ -129,11 +116,26 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
                   const SizedBox(
                     height: 20,
                   ),
-                  BtnPrimary(
-                    radius: 8,
-                    onPressed: () {},
-                    tvButton: "Daftar",
-                  ),
+                  Consumer<RegisterProvider>(builder: (context, state, _) {
+                    return ElevatedButton(
+                      child: Text("Regiter Contol"),
+                      onPressed: () async {
+                        print("Urlnya bang:" + base_url + register_path);
+                        print(tfUsernameController.text);
+                        print(tfFullName.text);
+                        print(tfPasswordController.text);
+                        try {
+                          state.register(
+                              registerRequest: RegisterRequest(
+                                  username: tfUsernameController.text,
+                                  fullname: tfFullName.text,
+                                  password: tfPasswordController.text));
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
+                    );
+                  }),
                   const SizedBox(
                     height: 20,
                   ),

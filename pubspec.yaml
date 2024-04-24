@@ -16,6 +16,11 @@ dependencies:
   iconsax: ^0.0.8
   ficonsax: ^0.0.3
   responsive_builder: ^0.7.0
+  dio: ^5.4.3+1
+  data_connection_checker_tv: ^0.3.5-nullsafety
+  dartz: ^0.10.1
+  provider: ^6.1.2
+  internet_connection_checker_plus: ^2.3.0
 
 dev_dependencies:
   flutter_test:
