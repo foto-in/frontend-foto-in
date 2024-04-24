@@ -175,9 +175,7 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
 }
 
 class _navBar extends StatelessWidget {
-  const _navBar({
-    super.key,
-  });
+  const _navBar();
 
   @override
   Widget build(BuildContext context) {
@@ -243,12 +241,12 @@ class _navBar extends StatelessWidget {
 }
 
 class _NavItem extends StatelessWidget {
-  const _NavItem({super.key, required this.title});
+  const _NavItem({required this.title});
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 120,
       child: Text(
         title,

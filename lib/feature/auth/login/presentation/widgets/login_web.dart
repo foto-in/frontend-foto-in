@@ -41,7 +41,7 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
   Column _content(BuildContext context) {
     return Column(
       children: [
-        const _navBar(),
+        const NavBar(),
         SizedBox(
           width: double.infinity,
           height: MediaQuery.of(context).size.height - 44,
@@ -160,8 +160,8 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
   }
 }
 
-class _navBar extends StatelessWidget {
-  const _navBar({
+class NavBar extends StatelessWidget {
+  const NavBar({
     super.key,
   });
 
@@ -191,10 +191,10 @@ class _navBar extends StatelessWidget {
           const Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _NavItem(title: "Beranda"),
-              _NavItem(title: "Booking"),
-              _NavItem(title: "Galeri"),
-              _NavItem(title: "Pesanan"),
+              NavItem(title: "Beranda"),
+              NavItem(title: "Booking"),
+              NavItem(title: "Galeri"),
+              NavItem(title: "Pesanan"),
             ],
           ),
           Row(
@@ -228,13 +228,13 @@ class _navBar extends StatelessWidget {
   }
 }
 
-class _NavItem extends StatelessWidget {
-  const _NavItem({super.key, required this.title});
+class NavItem extends StatelessWidget {
+  const NavItem({super.key, required this.title});
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 120,
       child: Text(
         title,
