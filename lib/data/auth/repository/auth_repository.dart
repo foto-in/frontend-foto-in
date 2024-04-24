@@ -2,17 +2,17 @@ import 'package:dartz/dartz.dart';
 import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/exceptions.dart';
 import 'package:foto_in/core/errors/failure.dart';
-import 'package:foto_in/data/datasource/remote/remote_datasource.dart';
-import 'package:foto_in/data/model/RegisterRequest.dart';
-import 'package:foto_in/data/model/RegisterResponse.dart';
+import 'package:foto_in/data/auth/datasource/remote/auth_remote_datasource.dart';
+import 'package:foto_in/data/auth/model/RegisterRequest.dart';
+import 'package:foto_in/data/auth/model/RegisterResponse.dart';
 
-abstract class Repository {
+abstract class AuthRepository {
   Future<Either<Failure, RegisterResponse>> register(
       {required RegisterRequest registerRequest});
 }
 
-class RepositoryImpl implements Repository {
-  final RemoteDataSource remoteDataSource;
+class RepositoryImpl implements AuthRepository {
+  final AuthRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
 
   RepositoryImpl({required this.remoteDataSource, required this.networkInfo});

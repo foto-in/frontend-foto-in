@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/core/const/constant.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/data/model/RegisterRequest.dart';
+import 'package:foto_in/data/auth/model/RegisterRequest.dart';
 import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/widgets/register_widgets.dart';
 import 'package:foto_in/utils/button.dart';

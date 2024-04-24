@@ -1,12 +1,11 @@
-import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/failure.dart';
-import 'package:foto_in/data/datasource/remote/remote_datasource.dart';
-import 'package:foto_in/data/model/RegisterRequest.dart';
-import 'package:foto_in/data/model/RegisterResponse.dart';
-import 'package:foto_in/data/repository/repository.dart';
+import 'package:foto_in/data/auth/datasource/remote/auth_remote_datasource.dart';
+import 'package:foto_in/data/auth/model/RegisterRequest.dart';
+import 'package:foto_in/data/auth/model/RegisterResponse.dart';
+import 'package:foto_in/data/auth/repository/auth_repository.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 class RegisterProvider extends ChangeNotifier {
@@ -19,7 +18,7 @@ class RegisterProvider extends ChangeNotifier {
     try {
       print("test");
       RepositoryImpl repository = RepositoryImpl(
-        remoteDataSource: RemoteDataSourceImpl(dio: Dio()),
+        remoteDataSource: AuthRemoteDataSourceImpl(dio: Dio()),
         networkInfo: NetworkInfoImpl(InternetConnection()),
       );
 

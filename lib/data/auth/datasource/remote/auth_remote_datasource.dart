@@ -1,19 +1,19 @@
 import 'package:foto_in/core/const/constant.dart';
 import 'package:foto_in/core/errors/exceptions.dart';
-import 'package:foto_in/data/model/RegisterRequest.dart';
-import 'package:foto_in/data/model/RegisterResponse.dart';
+import 'package:foto_in/data/auth/model/RegisterRequest.dart';
+import 'package:foto_in/data/auth/model/RegisterResponse.dart';
 import 'package:dio/dio.dart';
 
-abstract class RemoteDataSource {
+abstract class AuthRemoteDataSource {
   Future<RegisterResponse> registerUser({
     required RegisterRequest registerRequest,
   });
 }
 
-class RemoteDataSourceImpl implements RemoteDataSource {
+class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final Dio dio;
 
-  RemoteDataSourceImpl({required this.dio}) {
+  AuthRemoteDataSourceImpl({required this.dio}) {
     dio.interceptors.add(LogInterceptor(responseBody: true));
   }
 

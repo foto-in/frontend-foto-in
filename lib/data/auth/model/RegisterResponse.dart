@@ -1,4 +1,4 @@
-import 'package:foto_in/data/model/RegisterDataModel.dart';
+import 'package:foto_in/data/auth/model/RegisterDataModel.dart';
 
 class RegisterResponse {
   final bool success;
