@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
 import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
+import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/home/presentation/widgets/landing_page.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           routes: {
             LoginView.routeName: (context) => const LoginView(),
             RegisterView.routeName: (context) => const RegisterView(),
+            Beranda.routeName: (context) => const Beranda(),
           },
           title: 'Flutter Demo',
           home: const Scaffold(
