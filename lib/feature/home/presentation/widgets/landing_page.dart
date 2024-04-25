@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/utils/button.dart';
+import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:iconsax/iconsax.dart';
 
 class LandingPageWidgets extends StatelessWidget {
@@ -15,7 +15,7 @@ class LandingPageWidgets extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const NavBar(),
+            const NavigationCustom(),
             SizedBox(
               height: MediaQuery.of(context).size.height - 44,
               child: Center(
@@ -78,7 +78,8 @@ class LandingPageWidgets extends StatelessWidget {
                           ),
                           Image.asset(
                             'assets/images/image-carousel-web.png',
-                            height: 560,
+                            height: MediaQuery.of(context).size.height * 0.5,
+                            width: MediaQuery.of(context).size.width * 0.5,
                           ),
                         ],
                       ),
@@ -281,7 +282,8 @@ class LandingPageWidgets extends StatelessWidget {
                             ),
                           ),
                           Image.asset(
-                              'assets/images/photographer-ilustratation.png'),
+                            'assets/images/photographer-ilustratation.png',
+                          ),
                         ],
                       ),
                     ),
@@ -517,91 +519,6 @@ class LandingPageWidgets extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class NavBar extends StatelessWidget {
-  const NavBar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 4,
-            offset: Offset(0, 0),
-            spreadRadius: 0,
-          )
-        ],
-      ),
-      height: 44,
-      padding: const EdgeInsets.symmetric(horizontal: 80),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(
-            height: 14,
-            child: Image.asset('assets/images/logo-2.png'),
-          ),
-          const Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              NavItem(title: "Beranda"),
-              NavItem(title: "Booking"),
-              NavItem(title: "Galeri"),
-              NavItem(title: "Pesanan"),
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 120,
-                child: BtnPrimaryWhite(
-                  tvButton: "Masuk",
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/login");
-                  },
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              SizedBox(
-                  width: 120,
-                  child: BtnPrimary(
-                    radius: 8,
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/register");
-                    },
-                    tvButton: "Daftar",
-                  ))
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class NavItem extends StatelessWidget {
-  const NavItem({super.key, required this.title});
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 120,
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: FotoInHeadingTypography.xxSmall(color: AppColor.textSecondary),
       ),
     );
   }
