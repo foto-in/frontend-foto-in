@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/labeled_text_field.dart';
 
-class InformasiProbadi extends StatefulWidget {
-  const InformasiProbadi({
+class InformasiPribadi extends StatefulWidget {
+  const InformasiPribadi({
     super.key,
   });
 
   @override
-  State<InformasiProbadi> createState() => _InformasiProbadiState();
+  State<InformasiPribadi> createState() => _InformasiPribadiState();
 }
 
-class _InformasiProbadiState extends State<InformasiProbadi> {
+class _InformasiPribadiState extends State<InformasiPribadi> {
   final TextEditingController namaLengkap = TextEditingController();
   final TextEditingController username = TextEditingController();
   final TextEditingController email = TextEditingController();
