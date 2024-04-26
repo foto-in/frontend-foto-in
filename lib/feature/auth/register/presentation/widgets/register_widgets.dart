@@ -213,6 +213,7 @@ class TfAuth extends StatelessWidget {
     required this.keyboardType,
     this.validator,
     this.hintStyle,
+    this.obscureText = false,
   });
 
   final TextEditingController controller;
@@ -220,6 +221,7 @@ class TfAuth extends StatelessWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final TextStyle? hintStyle;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -236,6 +238,7 @@ class TfAuth extends StatelessWidget {
         fillColor: AppColor.textFieldBackground,
       ),
       validator: validator,
+      obscureText: obscureText,
     );
   }
 }

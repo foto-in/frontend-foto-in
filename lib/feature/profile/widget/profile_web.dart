@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/auth/register/presentation/widgets/register_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
+import 'package:foto_in/feature/profile/widget/edit_profile_form.dart';
+import 'package:foto_in/feature/profile/widget/profile_menu_item.dart';
+import 'package:foto_in/feature/profile/widget/register_photographer_banner.dart';
+import 'package:foto_in/feature/profile/widget/reset_password_form.dart';
 
 class ProfileWeb extends StatefulWidget {
   const ProfileWeb({super.key});
@@ -12,93 +15,107 @@ class ProfileWeb extends StatefulWidget {
 }
 
 class _ProfileWebState extends State<ProfileWeb> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  ProfileMenuItemModel activeMenu = menus.first;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         NavigationCustom(),
-        Form(
-          key: _formKey,
-          child: Container(
-            width: double.infinity,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 80,
-              vertical: 64,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Profile',
-                  textAlign: TextAlign.start,
-                  style: FotoInHeadingTypography.medium(
-                    color: AppColor.textPrimary,
-                  ),
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 80,
+            vertical: 64,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Profile',
+                textAlign: TextAlign.start,
+                style: FotoInHeadingTypography.medium(
+                  color: AppColor.textPrimary,
                 ),
-                const SizedBox(height: 32),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          textField(
-                            controller: fullNameController,
-                            label: 'Full Name',
-                            keyboardType: TextInputType.text,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your full name';
-                              }
-
-                              return null;
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 32),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  menu(),
+                  SizedBox(width: 40),
+                  menuPage[menus.indexOf(activeMenu)],
+                  SizedBox(width: 40),
+                  RegisterPhotographerBanner()
+                ],
+              ),
+            ],
           ),
         ),
       ],
     );
   }
 
-  Column textField({
-    required TextEditingController controller,
-    required String label,
-    required TextInputType? keyboardType,
-    required String? Function(String?)? validator,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        // Full Name
-        Text(
-          label,
-          style: FotoInHeadingTypography.xxSmall(
-            color: AppColor.textPrimary,
-          ),
+  Container menu() {
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      constraints: BoxConstraints(
+        maxWidth: 300,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Color(0xffF5F5F5),
+          width: 1.5,
         ),
-        const SizedBox(height: 16),
-        TfAuth(
-          controller: fullNameController,
-          hintText: label,
-          hintStyle: FotoInLabelTypography.small(
-            color: AppColor.textPrimary,
-          ),
-          keyboardType: keyboardType ?? TextInputType.text,
-          validator: validator,
-        ),
-        const SizedBox(height: 32),
-      ],
+      ),
+      child: Column(
+        children: menus
+            .map(
+              (e) => GestureDetector(
+                onTap: () {
+                  setState(() {
+                    activeMenu = e;
+                  });
+                },
+                child: ProfileMenuItem(
+                  title: e.title,
+                  icon: e.icon,
+                  isActive: e == activeMenu,
+                ),
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }
+
+class ProfileMenuItemModel {
+  final String title;
+  final IconData icon;
+
+  ProfileMenuItemModel({
+    required this.title,
+    required this.icon,
+  });
+}
+
+final List<ProfileMenuItemModel> menus = [
+  // Edit Profile
+  ProfileMenuItemModel(
+    title: 'Edit Profile',
+    icon: Icons.person,
+  ),
+
+  // Reset Password
+  ProfileMenuItemModel(
+    title: 'Reset Password',
+    icon: Icons.lock,
+  ),
+];
+
+final List<Widget> menuPage = [
+  EditProfileForm(),
+  ResetPasswordForm(),
+];
