@@ -4,7 +4,9 @@ abstract class AppColor {
   static const primary = _FotoInColor.blue;
   static const secondary = _FotoInColor.tosca;
 
-  static const background = _Background;
+  static const backgroundPrimary = Colors.white;
+  static final backgroundSecondary = _FotoInColor.light.shade50;
+  static final backgroundTertiary = _FotoInColor.light.shade100;
 
   static const textPrimary = Color(0xff1f2328);
   static const textSecondary = Color(0xff5C707E);
@@ -13,12 +15,6 @@ abstract class AppColor {
 
   static const Color textFieldBackground = Color(0xffF4F6F7);
   static const Color textFieldBorder = Color(0xffF4F4F6);
-}
-
-abstract class _Background {
-  static final primary = Colors.white;
-  static final secondary = _FotoInColor.light.shade50;
-  static final tertiary = _FotoInColor.light.shade100;
 }
 
 abstract class _FotoInColor {
