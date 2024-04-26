@@ -19,7 +19,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final Dio dio;
 
   AuthRemoteDataSourceImpl({required this.dio}) {
-    dio.interceptors.add(LogInterceptor(responseBody: true));
+    //dio.interceptors.add(LogInterceptor(responseBody: true));
   }
 
   @override
