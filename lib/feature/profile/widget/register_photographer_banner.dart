@@ -75,7 +75,9 @@ class RegisterPhotographerBanner extends StatelessWidget {
                 SizedBox(height: 24),
                 FotoInButton(
                   text: "Bergabung menjadi Fotografer",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/register_photographer');
+                  },
                   backgroundColor: AppColor.secondary,
                   padding: EdgeInsets.symmetric(
                     horizontal: 15,
