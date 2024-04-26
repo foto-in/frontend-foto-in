@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColor {
+abstract class AppColor {
   static const primary = Color(0xff041829);
   static const secondary = Color(0xff1ff0ca);
   static const textPrimary = Color(0xff1f2328);
@@ -12,7 +12,7 @@ class AppColor {
   static const Color textFieldBorder = Color(0xffF4F4F6);
 }
 
-class FotoInColor {
+abstract class FotoInColor {
   // Blue
   static const int _bluePrimaryValue = 0xff041829;
 
