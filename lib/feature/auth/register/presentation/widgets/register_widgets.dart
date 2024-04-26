@@ -211,25 +211,34 @@ class TfAuth extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.keyboardType,
+    this.validator,
+    this.hintStyle,
+    this.obscureText = false,
   });
 
   final TextEditingController controller;
   final String hintText;
   final TextInputType keyboardType;
+  final String? Function(String?)? validator;
+  final TextStyle? hintStyle;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: hintStyle,
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide.none),
         filled: true,
         fillColor: AppColor.textFieldBackground,
       ),
+      validator: validator,
+      obscureText: obscureText,
     );
   }
 }
