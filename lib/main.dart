@@ -4,6 +4,7 @@ import 'package:foto_in/feature/auth/register/presentation/provider/register_pro
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
 import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
+import 'package:foto_in/feature/order_user/presentation/widgets/order_user_detail.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           home: const Scaffold(
             backgroundColor: Color(0xffFFFFFF),
-            body: BookingDetailWidget(),
+            body: OrderDetailUser(),
           )),
     );
   }

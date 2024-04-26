@@ -8,10 +8,12 @@ class BtnPrimary extends StatelessWidget {
     required this.tvButton,
     required this.onPressed,
     required this.radius,
+    this.color = AppColor.primary,
   });
   final String tvButton;
   final Function onPressed;
   final double radius;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class BtnPrimary extends StatelessWidget {
           onPressed();
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.primary,
+          backgroundColor: color,
           padding: const EdgeInsets.all(16),
           elevation: 0,
           splashFactory: NoSplash.splashFactory,
