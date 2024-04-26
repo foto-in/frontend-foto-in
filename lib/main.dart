@@ -4,7 +4,6 @@ import 'package:foto_in/feature/auth/register/presentation/provider/register_pro
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
 import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
-import 'package:foto_in/feature/home/presentation/widgets/landing_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {

@@ -4,9 +4,9 @@ import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/data/auth/model/RegisterRequest.dart';
 import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
-import 'package:foto_in/feature/auth/register/presentation/widgets/register_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:foto_in/utils/text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

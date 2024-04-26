@@ -32,36 +32,42 @@ class _NavigationCustom extends State<NavigationCustom> {
         children: [
           SizedBox(
             height: 14,
-            child: Image.asset('assets/images/logo-2.png'),
+            child: InkWell(
+                onTap: () => Navigator.of(context).pushNamed('/beranda'),
+                child: Image.asset('assets/images/logo-2.png')),
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _NavItem(
-                  title: "Beranda",
-                  onPressed: () {
-                    // Navigasi ke halaman Beranda
-                    Navigator.of(context).pushNamed('/beranda');
-                  }),
-              _NavItem(
-                  title: "Booking",
-                  onPressed: () {
-                    // Navigasi ke halaman Booking
-                    Navigator.of(context).pushNamed('/booking');
-                  }),
-              _NavItem(
-                  title: "Galeri",
-                  onPressed: () {
-                    // Navigasi ke halaman Galeri
-                    Navigator.of(context).pushNamed('/galeri');
-                  }),
-              _NavItem(
-                  title: "Pesanan",
-                  onPressed: () {
-                    // Navigasi ke halaman Pesanan
-                    Navigator.of(context).pushNamed('/pesanan');
-                  }),
-            ],
+          ResizeWidgets(
+            width: 950,
+            sChild: Container(),
+            lChild: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _NavItem(
+                    title: "Beranda",
+                    onPressed: () {
+                      // Navigasi ke halaman Beranda
+                      Navigator.of(context).pushNamed('/beranda');
+                    }),
+                _NavItem(
+                    title: "Booking",
+                    onPressed: () {
+                      // Navigasi ke halaman Booking
+                      Navigator.of(context).pushNamed('/booking');
+                    }),
+                _NavItem(
+                    title: "Galeri",
+                    onPressed: () {
+                      // Navigasi ke halaman Galeri
+                      Navigator.of(context).pushNamed('/galeri');
+                    }),
+                _NavItem(
+                    title: "Pesanan",
+                    onPressed: () {
+                      // Navigasi ke halaman Pesanan
+                      Navigator.of(context).pushNamed('/pesanan');
+                    }),
+              ],
+            ),
           ),
           Row(
             children: [
@@ -113,5 +119,26 @@ class _NavItem extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ResizeWidgets extends StatelessWidget {
+  const ResizeWidgets(
+      {super.key,
+      required this.width,
+      required this.sChild,
+      required this.lChild});
+
+  final double width;
+  final Widget sChild;
+  final Widget lChild;
+
+  @override
+  Widget build(BuildContext context) {
+    if (width > MediaQuery.of(context).size.width) {
+      return sChild;
+    } else {
+      return lChild;
+    }
   }
 }
