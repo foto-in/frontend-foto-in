@@ -1,12 +1,33 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/informasi_probadi.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/jenis_pemotretan.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/status.dart';
+import 'package:iconsax/iconsax.dart';
 
-class RegisterPhotographerWidget extends StatelessWidget {
+class RegisterPhotographerWidget extends StatefulWidget {
   const RegisterPhotographerWidget({super.key});
+
+  @override
+  State<RegisterPhotographerWidget> createState() =>
+      _RegisterPhotographerWidgetState();
+}
+
+class _RegisterPhotographerWidgetState
+    extends State<RegisterPhotographerWidget> {
+  int currentPage = 0;
+  final PageController controller = PageController(initialPage: 0);
+
+  List<Widget> pages = [
+    Status(),
+    JenisPemotretan(),
+    InformasiProbadi(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,77 +35,135 @@ class RegisterPhotographerWidget extends StatelessWidget {
       body: Column(
         children: [
           NavigationCustom(),
-          Container(
-            constraints: BoxConstraints(
-              maxWidth: 1500,
-            ),
-            width: double.infinity,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 80,
-              vertical: 64,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.arrow_back,
-                      size: 24,
+          Expanded(
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: 1500,
+              ),
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 80,
+                vertical: 64,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  profileNavigation(),
+                  const SizedBox(height: 40),
+                  Expanded(
+                    child: PageView.builder(
+                      itemCount: pages.length,
+                      controller: controller,
+                      onPageChanged: (value) {
+                        setState(() {
+                          currentPage = value;
+                        });
+                      },
+                      itemBuilder: (context, index) => pages[index],
                     ),
-                    SizedBox(width: 10),
-                    Text(
-                      'Profil/Daftar menjadi fotografer',
-                      textAlign: TextAlign.start,
-                      style: FotoInSubHeadingTypography.medium(
-                        color: AppColor.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 40),
-                Status(),
-              ],
+                  ),
+                  const SizedBox(height: 40),
+                  formNavigation()
+                ],
+              ),
             ),
           ),
         ],
       ),
     );
   }
-}
 
-class Status extends StatelessWidget {
-  const Status({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Row profileNavigation() {
+    return Row(
       children: [
-        const ProfileFormTitle(
-          title: "Status",
-          subtitle: "Pilih salah satu dari opsi berikut.",
+        Icon(
+          Icons.arrow_back,
+          size: 24,
         ),
-        SizedBox(height: 20),
-        Container(
-          height: 210,
+        SizedBox(width: 10),
+        Text(
+          'Profil/Daftar menjadi fotografer',
+          textAlign: TextAlign.start,
+          style: FotoInSubHeadingTypography.medium(
+            color: AppColor.textSecondary,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row formNavigation() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        textButton(
+          onTap: () {
+            if (currentPage > 0) {
+              currentPage--;
+              controller.previousPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            }
+          },
           child: Row(
             children: [
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: AppColor.textSecondary,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+              Icon(
+                Iconsax.arrow_left_2,
+                size: 20,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                "Kembali",
+                style: FotoInSubHeadingTypography.medium(
+                  color: AppColor.textPrimary,
                 ),
+              ),
+            ],
+          ),
+        ),
+        textButton(
+          onTap: () {
+            if (currentPage < pages.length - 1) {
+              currentPage++;
+              controller.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            }
+          },
+          child: Row(
+            children: [
+              Text(
+                "Selanjutnya",
+                style: FotoInSubHeadingTypography.medium(
+                  color: AppColor.textPrimary,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Icon(
+                Iconsax.arrow_right_3,
+                size: 20,
               )
             ],
           ),
-        )
+        ),
       ],
+    );
+  }
+
+  InkWell textButton({
+    required Row child,
+    required Function() onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10),
+      splashColor: AppColor.textTeriary.withOpacity(0.5),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: child,
+      ),
     );
   }
 }
