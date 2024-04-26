@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/data/auth/model/RegisterRequest.dart';
@@ -236,89 +235,6 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
           ),
         )
       ],
-    );
-  }
-}
-
-class _navBar extends StatelessWidget {
-  const _navBar();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 4,
-            offset: Offset(0, 0),
-            spreadRadius: 0,
-          )
-        ],
-      ),
-      height: 44,
-      padding: const EdgeInsets.symmetric(horizontal: 80),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(
-            height: 14,
-            child: Image.asset('assets/images/logo-2.png'),
-          ),
-          const Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _NavItem(title: "Beranda"),
-              _NavItem(title: "Booking"),
-              _NavItem(title: "Galeri"),
-              _NavItem(title: "Pesanan"),
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 120,
-                child: BtnPrimaryWhite(
-                  tvButton: "Masuk",
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/login');
-                  },
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              SizedBox(
-                  width: 120,
-                  child: BtnPrimary(
-                    radius: 8,
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/register');
-                    },
-                    tvButton: "Daftar",
-                  ))
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _NavItem extends StatelessWidget {
-  const _NavItem({required this.title});
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 120,
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: FotoInHeadingTypography.xxSmall(color: AppColor.textSecondary),
-      ),
     );
   }
 }
