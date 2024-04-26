@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:foto_in/utils/text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterWidget extends StatefulWidget {
@@ -55,7 +56,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           Text(
             "Selamat Datang!",
             style:
-                FotoInHeadingTypography.small(color: FotoInColor.blue.shade900),
+                FotoInHeadingTypography.small(color: AppColor.primary.shade900),
           ),
           const SizedBox(
             height: 8,
@@ -160,75 +161,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class TfPasswordType extends StatelessWidget {
-  const TfPasswordType({
-    super.key,
-    required this.tfPasswordController,
-    required this.isObsecure,
-    required this.onPressed,
-    required this.hintText,
-  });
-
-  final TextEditingController tfPasswordController;
-  final bool isObsecure;
-  final Function onPressed;
-  final String hintText;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: tfPasswordController,
-      keyboardType: TextInputType.visiblePassword,
-      obscureText: isObsecure,
-      decoration: InputDecoration(
-        suffixIcon: IconButton(
-            onPressed: () {
-              onPressed();
-            },
-            icon: Icon(
-              isObsecure ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
-              color: AppColor.textSecondary,
-            )),
-        hintText: hintText,
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide.none),
-        filled: true,
-        fillColor: AppColor.textFieldBackground,
-      ),
-    );
-  }
-}
-
-class TfAuth extends StatelessWidget {
-  const TfAuth({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    required this.keyboardType,
-  });
-
-  final TextEditingController controller;
-  final String hintText;
-  final TextInputType keyboardType;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      keyboardType: keyboardType,
-      decoration: InputDecoration(
-        hintText: hintText,
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide.none),
-        filled: true,
-        fillColor: AppColor.textFieldBackground,
       ),
     );
   }
