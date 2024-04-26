@@ -6,7 +6,6 @@ import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/informasi_probadi.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/jenis_pemotretan.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/status.dart';
 import 'package:iconsax/iconsax.dart';
 
