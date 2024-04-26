@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/form_title.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 
 class RegisterPhotographerWidget extends StatelessWidget {
   const RegisterPhotographerWidget({super.key});
@@ -61,8 +61,9 @@ class Status extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FormTitle(
+        const ProfileFormTitle(
           title: "Status",
           subtitle: "Pilih salah satu dari opsi berikut.",
         ),
