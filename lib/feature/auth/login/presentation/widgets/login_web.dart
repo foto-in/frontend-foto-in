@@ -6,6 +6,7 @@ import 'package:foto_in/feature/auth/login/presentation/provider/login_provider.
 import 'package:foto_in/feature/auth/register/presentation/widgets/register_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:foto_in/utils/text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:foto_in/utils/text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterWidget extends StatefulWidget {
