@@ -6,6 +6,7 @@ import 'package:foto_in/feature/auth/register/presentation/view/register_view.da
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
+import 'package:foto_in/feature/order_user/presentation/widgets/order_user_detail.dart';
 import 'package:provider/provider.dart';
 
 void main() {
