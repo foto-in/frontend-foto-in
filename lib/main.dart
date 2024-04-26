@@ -5,6 +5,7 @@ import 'package:foto_in/feature/auth/register/presentation/provider/register_pro
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/home/presentation/widgets/landing_page.dart';
+import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
           RegisterView.routeName: (context) => const RegisterView(),
           Beranda.routeName: (context) => const Beranda(),
           ProfileView.routeName: (context) => const ProfileView(),
+          RegisterPhotographer.routeName: (context) =>
+              const RegisterPhotographer(),
         },
         title: 'Flutter Demo',
         home: const Scaffold(
