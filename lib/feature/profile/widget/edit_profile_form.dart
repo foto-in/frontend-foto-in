@@ -126,6 +126,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
 
             // Button
             FotoInButton(
+              width: double.infinity,
               text: 'Save',
               onPressed: () {
                 if (_formKey.currentState!.validate()) {

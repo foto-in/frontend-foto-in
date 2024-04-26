@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/utils/button.dart';
 
 class RegisterPhotographerBanner extends StatelessWidget {
   const RegisterPhotographerBanner({
@@ -72,6 +73,19 @@ class RegisterPhotographerBanner extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 24),
+                FotoInButton(
+                  text: "Bergabung menjadi Fotografer",
+                  onPressed: () {},
+                  backgroundColor: AppColor.secondary,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 9,
+                  ),
+                  width: null,
+                  textStyle: FotoInSubHeadingTypography.small(
+                    color: AppColor.primary,
+                  ),
+                ),
               ],
             ),
           )

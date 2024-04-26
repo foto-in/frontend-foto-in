@@ -94,6 +94,8 @@ class FotoInButton extends StatelessWidget {
     required this.onPressed,
     this.borderRadius = 8,
     this.padding = const EdgeInsets.all(16),
+    this.textStyle,
+    this.width,
   });
 
   final Color backgroundColor;
@@ -102,11 +104,13 @@ class FotoInButton extends StatelessWidget {
   final Function() onPressed;
   final double borderRadius;
   final EdgeInsets padding;
+  final TextStyle? textStyle;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: width,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -120,9 +124,7 @@ class FotoInButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: FotoInHeadingTypography.xxSmall(
-            color: textColor,
-          ),
+          style: textStyle ?? FotoInHeadingTypography.xxSmall(color: textColor),
         ),
       ),
     );

@@ -23,6 +23,9 @@ class _ProfileWebState extends State<ProfileWeb> {
       children: [
         NavigationCustom(),
         Container(
+          constraints: BoxConstraints(
+            maxWidth: 1500,
+          ),
           width: double.infinity,
           margin: const EdgeInsets.symmetric(
             horizontal: 80,
@@ -44,7 +47,7 @@ class _ProfileWebState extends State<ProfileWeb> {
                 children: [
                   menu(),
                   SizedBox(width: 40),
-                  menuPage[menus.indexOf(activeMenu)],
+                  Expanded(child: menuPage[menus.indexOf(activeMenu)]),
                   SizedBox(width: 40),
                   RegisterPhotographerBanner()
                 ],

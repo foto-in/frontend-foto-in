@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foto_in/core/styles/colors.dart';
-import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/labeled_text_field.dart';
 
@@ -91,6 +89,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
 
             // Button
             FotoInButton(
+              width: double.infinity,
               text: 'Save',
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
