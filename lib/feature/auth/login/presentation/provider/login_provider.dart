@@ -1,34 +1,36 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/failure.dart';
+import 'package:foto_in/core/token/SecureStorage.dart';
 import 'package:foto_in/data/auth/datasource/remote/auth_remote_datasource.dart';
-import 'package:foto_in/data/auth/model/RegisterRequest.dart';
-import 'package:foto_in/data/auth/model/RegisterResponse.dart';
+import 'package:foto_in/data/auth/model/LoginRequest.dart';
+import 'package:foto_in/data/auth/model/LoginResponse.dart';
 import 'package:foto_in/data/auth/repository/auth_repository.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
-class RegisterProvider extends ChangeNotifier {
-  RegisterResponse? registerResponse;
+class LoginProvider extends ChangeNotifier {
+  LoginResponse? loginResponse;
   Failure? failure;
 
-  RegisterProvider({this.registerResponse, this.failure});
+  LoginProvider({this.loginResponse, this.failure});
 
-  void register({required RegisterRequest registerRequest}) async {
+  void login({required LoginRequest loginRequest}) async {
     try {
       RepositoryImpl repository = RepositoryImpl(
         remoteDataSource: AuthRemoteDataSourceImpl(dio: Dio()),
         networkInfo: NetworkInfoImpl(InternetConnection()),
       );
 
-      final result =
-          await repository.register(registerRequest: registerRequest);
+      final result = await repository.login(loginRequest: loginRequest);
 
       result.fold((l) {
         failure = l;
         notifyListeners();
       }, (r) {
-        registerResponse = r;
+        loginResponse = r;
+        SecureStorage().writeSecureData('token', r.data.token);
+        SecureStorage().readSecureData('token');
         notifyListeners();
       });
     } catch (e) {
