@@ -1,7 +1,7 @@
-import 'package:foto_in/data/auth/model/User.dart';
+import 'package:foto_in/data/auth/model/UserModel.dart';
 
 class LoginDataModel {
-  final User user;
+  final UserModel user;
   final String token;
 
   LoginDataModel({
@@ -10,7 +10,7 @@ class LoginDataModel {
   });
 
   factory LoginDataModel.fromJson(Map<String, dynamic> json) => LoginDataModel(
-        user: User.fromJson(json["user"]),
+        user: UserModel.fromJson(json["user"]),
         token: json["token"],
       );
 

@@ -19,6 +19,10 @@ dependencies:
   google_fonts: ^6.2.1
   iconsax: ^0.0.8
   internet_connection_checker_plus: ^2.3.0
+  flutter_secure_storage: ^9.0.0
+  syncfusion_flutter_datepicker: ^25.1.41
+  intl: ^0.19.0
+  flutter_rating_bar: ^4.0.1
   provider: ^6.1.2
   responsive_builder: ^0.7.0
 

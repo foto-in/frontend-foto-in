@@ -30,7 +30,6 @@ class LoginProvider extends ChangeNotifier {
       }, (r) {
         loginResponse = r;
         SecureStorage().writeSecureData('token', r.data.token);
-        SecureStorage().readSecureData('token');
         notifyListeners();
       });
     } catch (e) {
