@@ -55,7 +55,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           Text(
             "Selamat Datang!",
             style:
-                FotoInHeadingTypography.small(color: FotoInColor.blue.shade900),
+                FotoInHeadingTypography.small(color: AppColor.primary.shade900),
           ),
           const SizedBox(
             height: 8,
