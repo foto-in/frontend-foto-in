@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AppColor {
-  static const primary = Color(0xff041829);
-  static const secondary = Color(0xff1ff0ca);
-  static const textPrimary = Color(0xff3D3D3D);
+abstract class AppColor {
+  static const primary = _FotoInColor.blue;
+  static const secondary = _FotoInColor.tosca;
+
+  static const backgroundPrimary = Colors.white;
+  static final backgroundSecondary = _FotoInColor.light.shade50;
+  static final backgroundTertiary = _FotoInColor.light.shade100;
+
+  static const textPrimary = Color(0xff1f2328);
   static const textSecondary = Color(0xff5C707E);
   static const textTeriary = Color(0xffCAD2D7);
   static final blackWithOpacity = const Color(0xff000000).withOpacity(0.1);
@@ -12,7 +17,7 @@ class AppColor {
   static const Color textFieldBorder = Color(0xffF4F4F6);
 }
 
-class FotoInColor {
+abstract class _FotoInColor {
   // Blue
   static const int _bluePrimaryValue = 0xff041829;
 
@@ -31,14 +36,14 @@ class FotoInColor {
   });
 
   // Tosca
-  static const int _toscaPrimaryValue = 0xFF1ff0ca;
+  static const int _toscaPrimaryValue = 0xffeefffa;
 
   static const MaterialColor tosca = MaterialColor(_toscaPrimaryValue, {
-    50: Color(0xffeefffa),
+    50: Color(_toscaPrimaryValue),
     100: Color(0xffc4fff2),
     200: Color(0xff8affe6),
     300: Color(0xff47ffda),
-    400: Color(_toscaPrimaryValue),
+    400: Color(0xFF1ff0ca),
     500: Color(0xff00d3af),
     600: Color(0xff00aa90),
     700: Color(0xff008774),
@@ -62,5 +67,21 @@ class FotoInColor {
     800: Color(0xff954F0B),
     900: Color(0xff7B410C),
     950: Color(0xff472101),
+  });
+
+  static const int _lightPrimaryValue = 0xff788B98;
+
+  static const MaterialColor light = MaterialColor(_lightPrimaryValue, {
+    50: Color(0xffF4F6F7),
+    100: Color(0xffE3E8EA),
+    200: Color(0xffCAD2D7),
+    300: Color(0xffA4B2BC),
+    400: Color(_lightPrimaryValue),
+    500: Color(0xff5C707E),
+    600: Color(0xff4F5D6B),
+    700: Color(0xff455059),
+    800: Color(0xff3D454D),
+    900: Color(0xff363B43),
+    950: Color(0xff1F2328),
   });
 }

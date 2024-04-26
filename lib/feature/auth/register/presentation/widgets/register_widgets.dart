@@ -56,7 +56,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           Text(
             "Selamat Datang!",
             style:
-                FotoInHeadingTypography.small(color: FotoInColor.blue.shade900),
+                FotoInHeadingTypography.small(color: AppColor.primary.shade900),
           ),
           const SizedBox(
             height: 8,
@@ -162,6 +162,84 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           )
         ],
       ),
+    );
+  }
+}
+
+class TfPasswordType extends StatelessWidget {
+  const TfPasswordType({
+    super.key,
+    required this.tfPasswordController,
+    required this.isObsecure,
+    required this.onPressed,
+    required this.hintText,
+  });
+
+  final TextEditingController tfPasswordController;
+  final bool isObsecure;
+  final Function onPressed;
+  final String hintText;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: tfPasswordController,
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: isObsecure,
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+            onPressed: () {
+              onPressed();
+            },
+            icon: Icon(
+              isObsecure ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+              color: AppColor.textSecondary,
+            )),
+        hintText: hintText,
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide.none),
+        filled: true,
+        fillColor: AppColor.textFieldBackground,
+      ),
+    );
+  }
+}
+
+class TfAuth extends StatelessWidget {
+  const TfAuth({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.keyboardType,
+    this.validator,
+    this.hintStyle,
+    this.obscureText = false,
+  });
+
+  final TextEditingController controller;
+  final String hintText;
+  final TextInputType keyboardType;
+  final String? Function(String?)? validator;
+  final TextStyle? hintStyle;
+  final bool obscureText;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: hintStyle,
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide.none),
+        filled: true,
+        fillColor: AppColor.textFieldBackground,
+      ),
+      validator: validator,
+      obscureText: obscureText,
     );
   }
 }

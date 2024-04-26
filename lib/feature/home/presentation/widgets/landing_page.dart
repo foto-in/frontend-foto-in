@@ -514,6 +514,45 @@ class LandingPageWidgets extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 80, vertical: 48),
+                            child: SizedBox(
+                              width: 720,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Raih penghasilan dari passion fotografi Anda",
+                                    style: FotoInHeadingTypography.large(
+                                        color: Colors.white),
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  Text(
+                                    "Bergabunglah dengan ribuan fotografer FotoIn dan mulailah mendapatkan klien, untuk segala jenis fotografi.",
+                                    style: FotoInParagraph.large(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  SizedBox(
+                                    width: 328,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 20, horizontal: 15),
+                                        backgroundColor:
+                                            AppColor.secondary.shade400,
+                                        elevation: 0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
                           Image.asset("assets/images/android-ios-app.png"),
                           SizedBox(
                             width: 498,

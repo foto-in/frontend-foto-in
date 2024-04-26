@@ -50,7 +50,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             Text(
               "Selamat Datang!",
               style: FotoInHeadingTypography.small(
-                  color: FotoInColor.blue.shade900),
+                  color: AppColor.primary.shade900),
             ),
             const SizedBox(
               height: 8,

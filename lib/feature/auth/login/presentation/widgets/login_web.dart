@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/data/auth/model/LoginRequest.dart';
+import 'package:foto_in/feature/auth/login/presentation/provider/login_provider.dart';
+import 'package:foto_in/feature/auth/register/presentation/widgets/register_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LoginWebWidgets extends StatefulWidget {
   const LoginWebWidgets({super.key});
@@ -15,7 +19,7 @@ class LoginWebWidgets extends StatefulWidget {
 
 class _LoginWebWidgetsState extends State<LoginWebWidgets> {
   var isObsecure = true;
-  var tfEmailController = TextEditingController();
+  var tfUsernameController = TextEditingController();
   var tfPasswordController = TextEditingController();
   Function get onPressed => () {
         setState(() {
@@ -26,7 +30,7 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
   @override
   void dispose() {
     super.dispose();
-    tfEmailController.dispose();
+    tfUsernameController.dispose();
     tfPasswordController.dispose();
   }
 
@@ -60,7 +64,7 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
                   Text(
                     "Selamat Datang!",
                     style: FotoInHeadingTypography.small(
-                        color: FotoInColor.blue.shade900),
+                        color: AppColor.primary.shade900),
                   ),
                   const SizedBox(
                     height: 8,
@@ -73,7 +77,7 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
                     height: 20,
                   ),
                   TfAuth(
-                      controller: tfEmailController,
+                      controller: tfUsernameController,
                       hintText: "Username",
                       keyboardType: TextInputType.name),
                   const SizedBox(
@@ -106,11 +110,29 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
                   const SizedBox(
                     height: 20,
                   ),
-                  BtnPrimary(
-                    radius: 8,
-                    onPressed: () {},
-                    tvButton: "Daftar",
-                  ),
+                  Consumer<LoginProvider>(builder: (context, state, _) {
+                    return BtnPrimary(
+                      radius: 8,
+                      onPressed: () {
+                        try {
+                          state.login(
+                            loginRequest: LoginRequest(
+                                username: tfUsernameController.text,
+                                password: tfPasswordController.text),
+                          );
+                        } catch (e) {
+                          setState(() {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("Gagal Login"),
+                              ),
+                            );
+                          });
+                        }
+                      },
+                      tvButton: "Masuk",
+                    );
+                  }),
                   const SizedBox(
                     height: 20,
                   ),
