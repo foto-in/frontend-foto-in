@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/auth/register/presentation/widgets/register_widgets.dart';
+import 'package:foto_in/utils/text_field.dart';
 
 class LabeledTextField extends StatelessWidget {
   const LabeledTextField({
