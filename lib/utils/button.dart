@@ -36,7 +36,7 @@ class BtnPrimary extends StatelessWidget {
           style: GoogleFonts.plusJakartaSans(
             fontSize: 16,
             fontWeight: FontWeight.w700,
-            color: FotoInColor.blue.shade50,
+            color: AppColor.primary.shade50,
           ),
         ),
       ),
