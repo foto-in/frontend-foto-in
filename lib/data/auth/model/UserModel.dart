@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   final String id;
   final String username;
   final String fullname;
@@ -7,7 +7,7 @@ class User {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  User({
+  UserModel({
     required this.id,
     required this.username,
     required this.fullname,
@@ -17,7 +17,7 @@ class User {
     required this.updatedAt,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json["id"],
         username: json["username"],
         fullname: json["fullname"],
