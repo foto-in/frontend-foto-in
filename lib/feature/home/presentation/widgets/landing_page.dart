@@ -361,7 +361,7 @@ class LandingPageWidgets extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 20, horizontal: 15),
                                       backgroundColor:
-                                          FotoInColor.tosca.shade400,
+                                          AppColor.secondary.shade400,
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
@@ -420,7 +420,7 @@ class LandingPageWidgets extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 20, horizontal: 15),
                                       backgroundColor:
-                                          FotoInColor.tosca.shade400,
+                                          AppColor.secondary.shade400,
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),

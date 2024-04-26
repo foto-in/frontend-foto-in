@@ -1,35 +1,34 @@
 name: foto_in
-description: "A new Flutter project."
+description: 'A new Flutter project.'
 
-publish_to: "none"
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.2.4 <4.0.0"
+  sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
+  cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  data_connection_checker_tv: ^0.3.5-nullsafety
+  dio: ^5.4.3+1
+  ficonsax: ^0.0.3
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
+  flutter_secure_storage: ^9.0.0
   google_fonts: ^6.2.1
   iconsax: ^0.0.8
-  ficonsax: ^0.0.3
-  responsive_builder: ^0.7.0
-  dio: ^5.4.3+1
-  data_connection_checker_tv: ^0.3.5-nullsafety
-  dartz: ^0.10.1
-  provider: ^6.1.2
   internet_connection_checker_plus: ^2.3.0
   syncfusion_flutter_datepicker: ^25.1.41
   intl: ^0.19.0
   flutter_rating_bar: ^4.0.1
+  provider: ^6.1.2
+  responsive_builder: ^0.7.0
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
@@ -37,3 +36,4 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/profile/

@@ -16,7 +16,6 @@ class RegisterProvider extends ChangeNotifier {
 
   void register({required RegisterRequest registerRequest}) async {
     try {
-      print("test");
       RepositoryImpl repository = RepositoryImpl(
         remoteDataSource: AuthRemoteDataSourceImpl(dio: Dio()),
         networkInfo: NetworkInfoImpl(InternetConnection()),
