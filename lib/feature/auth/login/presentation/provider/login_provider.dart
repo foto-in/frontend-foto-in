@@ -13,9 +13,11 @@ class LoginProvider extends ChangeNotifier {
   LoginResponse? loginResponse;
   Failure? failure;
 
+  bool isLoginVar = false;
+
   LoginProvider({this.loginResponse, this.failure});
 
-  void login({required LoginRequest loginRequest}) async {
+  Future<void> login({required LoginRequest loginRequest}) async {
     try {
       RepositoryImpl repository = RepositoryImpl(
         remoteDataSource: AuthRemoteDataSourceImpl(dio: Dio()),
@@ -25,10 +27,13 @@ class LoginProvider extends ChangeNotifier {
       final result = await repository.login(loginRequest: loginRequest);
 
       result.fold((l) {
+        loginResponse = null;
         failure = l;
         notifyListeners();
       }, (r) {
+        failure = null;
         loginResponse = r;
+        print('Token: ${r.data.token}');
         SecureStorage().writeSecureData('token', r.data.token);
         notifyListeners();
       });
@@ -37,7 +42,23 @@ class LoginProvider extends ChangeNotifier {
 
       // You can throw a custom exception or set an appropriate error state
       failure = NotFoundFailure(errorMessage: "The user cannot be made");
+      // throw failure!;
       notifyListeners();
     }
   }
+
+  // Future<bool> isLogin() async {
+  //   isLoginVar = false;
+  //   notifyListeners();
+  //   String token = await SecureStorage().readSecureData('token');
+  //   if (token != 'No data found!') {
+  //     isLoginVar = true;
+  //     notifyListeners();
+  //     return true;
+  //   } else {
+  //     isLoginVar = false;
+  //     notifyListeners();
+  //     return false;
+  //   }
+  // }
 }
