@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
+import 'package:foto_in/feature/home/presentation/widgets/benefit_card.dart';
+import 'package:foto_in/feature/home/presentation/widgets/category_card.dart';
+import 'package:foto_in/feature/home/presentation/widgets/step_card.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -209,23 +213,18 @@ class LandingPageWidgets extends StatelessWidget {
                       const SizedBox(
                         height: 32,
                       ),
-                      GridView.builder(
-                        shrinkWrap: true,
-                        itemCount: 8,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 16,
-                          mainAxisSpacing: 40,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: AppColor.primary,
-                              borderRadius: BorderRadius.circular(32),
-                            ),
-                          );
-                        },
+                      Wrap(
+                        spacing: 50,
+                        runSpacing: 50,
+                        clipBehavior: Clip.antiAlias,
+                        children: categoryItems
+                            .map(
+                              (e) => CardCategory(
+                                category: e.title,
+                                image: e.image,
+                              ),
+                            )
+                            .toList(),
                       ),
                     ],
                   ),
@@ -247,25 +246,20 @@ class LandingPageWidgets extends StatelessWidget {
                       const SizedBox(
                         height: 48,
                       ),
-                      GridView.builder(
-                        shrinkWrap: true,
-                        itemCount: 8,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 40,
-                          mainAxisSpacing: 40,
-                          childAspectRatio: (620 / 189),
-                        ),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: AppColor.primary,
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                          );
-                        },
-                      ),
+                      Wrap(
+                        runSpacing: 40,
+                        spacing: 40,
+                        clipBehavior: Clip.antiAlias,
+                        children: benefitItems
+                            .map(
+                              (e) => BenefitCard(
+                                title: e.title,
+                                image: e.image,
+                                description: e.desc,
+                              ),
+                            )
+                            .toList(),
+                      )
                     ],
                   ),
                 ),
@@ -289,24 +283,20 @@ class LandingPageWidgets extends StatelessWidget {
                       const SizedBox(
                         height: 48,
                       ),
-                      GridView.builder(
-                        shrinkWrap: true,
-                        itemCount: 6,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 6,
-                          crossAxisSpacing: 40,
-                          childAspectRatio: (224 / 284),
-                        ),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: AppColor.primary,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          );
-                        },
-                      ),
+                      Wrap(
+                        runSpacing: 40,
+                        spacing: 40,
+                        clipBehavior: Clip.antiAlias,
+                        children: stepItems
+                            .map(
+                              (e) => StepCard(
+                                step: e.step,
+                                title: e.title,
+                                description: e.desc,
+                              ),
+                            )
+                            .toList(),
+                      )
                     ],
                   ),
                 ),
@@ -888,3 +878,94 @@ class LandingPageWidgets extends StatelessWidget {
     );
   }
 }
+
+class CategoryItem {
+  final String title;
+  final String image;
+  CategoryItem({required this.title, required this.image});
+}
+
+final List<CategoryItem> categoryItems = [
+  CategoryItem(title: "Wedding", image: "assets/images/home/wedding.png"),
+  CategoryItem(title: "Keluarga", image: "assets/images/home/keluarga.png"),
+  CategoryItem(title: "Wisuda", image: "assets/images/home/wisuda.png"),
+  CategoryItem(title: "Konser", image: "assets/images/home/konser.png"),
+  CategoryItem(title: "Acara Sosial", image: "assets/images/home/sosial.png"),
+  CategoryItem(title: "Produk", image: "assets/images/home/produk.png"),
+  CategoryItem(title: "Traveler", image: "assets/images/home/travel.png"),
+];
+
+class BenefitItem {
+  final String title;
+  final String image;
+  final String desc;
+
+  BenefitItem({required this.title, required this.image, required this.desc});
+}
+
+final List<BenefitItem> benefitItems = [
+  BenefitItem(
+      title: "Terverifikasi & terpercaya",
+      image: "assets/images/home/terverif.png",
+      desc:
+          "Seluruh fotografer yang ada pada platform sudah terverifikasi dan terpercaya."),
+  BenefitItem(
+      title: "Banyak pilihan",
+      image: "assets/images/home/pilihan.png",
+      desc:
+          "Anda dapat  menemukan selera yang anda inginkan dengan berbagai pilihan fotografer."),
+  BenefitItem(
+      title: "Platform untuk fotografer",
+      image: "assets/images/home/platform.png",
+      desc:
+          "Solusi terintegrasi yang membantu para fotografer dalam berbagai aspek bisnis mereka."),
+  BenefitItem(
+      title: "Harga yang transparan",
+      image: "assets/images/home/harga.png",
+      desc: "Terdapat rincian harga yang jelas untuk layanan yang ditawarkan."),
+  BenefitItem(
+      title: "Transaksi aman",
+      image: "assets/images/home/secure.png",
+      desc: "Seluruh transaksi dalam platform terjamin aman  dan transparan."),
+  BenefitItem(
+      title: "Bayar setelah anda puas",
+      image: "assets/images/home/bayar.png",
+      desc:
+          "Pelunasan dilakukan ketika seluruh aktivitas selesai dan setelah anda merasa puas."),
+];
+
+class StepItem {
+  final String step;
+  final String title;
+  final String desc;
+
+  StepItem({required this.step, required this.title, required this.desc});
+}
+
+final List<StepItem> stepItems = [
+  StepItem(
+      step: "01",
+      title: "Booking",
+      desc:
+          "Tentukan lokasi, waktu, dan jenis acara Anda. Kami akan mencarikan fotografer terbaik sesuai kebutuhan Anda."),
+  StepItem(
+      step: "02",
+      title: "Konfirmasi",
+      desc:
+          "Fotografer akan mengonfirmasi pesanan Anda sebelum melakukan sesi foto di hari yang telah Anda tentukan."),
+  StepItem(
+      step: "03",
+      title: "Sesi Foto",
+      desc:
+          "Fotografer akan tiba tepat waktu dengan peralatan lengkap untuk mengabadikan momen Anda dengan pelayanan terbaik."),
+  StepItem(
+      step: "04",
+      title: "Unduh",
+      desc:
+          "Fotografer akan mengedit lalu mengunggah hasilnya pada platform yang dapat Anda pilih lalu unduh langsung."),
+  StepItem(
+      step: "05",
+      title: "Bayar",
+      desc:
+          "Setelah Anda mendapatkan dan puas dengan hasil fotonya, Anda bisa langsung melakukan pembayaran penuh."),
+];
