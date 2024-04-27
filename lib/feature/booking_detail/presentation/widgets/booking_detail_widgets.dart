@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,11 +7,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/data/booking/model/BookingRequest.dart';
+import 'package:foto_in/feature/booking_detail/presentation/presentation/booking_detail_provider.dart';
 import 'package:foto_in/feature/booking_detail/presentation/widgets/portofolio_card.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
+import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/text_field.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -25,6 +31,13 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
   String _selectedDate = '';
 
   final TextEditingController _selectedController = TextEditingController();
+  final TextEditingController _tfEditingJenisAcara = TextEditingController();
+  final TextEditingController _tfEditingLokasiAcara = TextEditingController();
+  final TextEditingController _tfEditingTanggalAcara = TextEditingController();
+  final TextEditingController _tfEditingDurasi = TextEditingController();
+  final TextEditingController _tfEditingWaktuMulai = TextEditingController();
+  final TextEditingController _tfEditingKonsep = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void initState() {
@@ -387,7 +400,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                   height: 8,
                                 ),
                                 TfFotoin(
-                                    controller: TextEditingController(),
+                                    controller: _tfEditingJenisAcara,
                                     hintText: "Prewedding",
                                     maxLines: 1,
                                     validator: "Jenis Acara",
@@ -404,7 +417,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                   height: 8,
                                 ),
                                 TfFotoin(
-                                    controller: TextEditingController(),
+                                    controller: _tfEditingLokasiAcara,
                                     hintText:
                                         "Gedung Serbaguna Telkom University",
                                     maxLines: 5,
@@ -492,7 +505,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                   height: 8,
                                 ),
                                 TfFotoin(
-                                    controller: TextEditingController(),
+                                    controller: _tfEditingDurasi,
                                     hintText: "3 Jam",
                                     keyboardType: TextInputType.name,
                                     maxLines: 1,
@@ -509,7 +522,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                   height: 8,
                                 ),
                                 TfFotoin(
-                                    controller: TextEditingController(),
+                                    controller: _tfEditingWaktuMulai,
                                     hintText: "10:00 WIB",
                                     maxLines: 1,
                                     validator: "Waktu Mulai",
@@ -526,7 +539,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                   height: 8,
                                 ),
                                 TfFotoin(
-                                    controller: TextEditingController(),
+                                    controller: _tfEditingKonsep,
                                     hintText: "Konsep Prewedding",
                                     validator: "Catatan/Konsep",
                                     maxLines: 5,
@@ -534,14 +547,57 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                 const SizedBox(
                                   height: 16,
                                 ),
-                                BtnPrimary(
-                                    tvButton: "Ajukan Pesanan",
-                                    onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        // Do something
-                                      }
-                                    },
-                                    radius: 8)
+                                Consumer<BookingDetailProvider>(
+                                  builder: (context, state, _) {
+                                    return BtnPrimary(
+                                        tvButton: "Ajukan Pesanan",
+                                        onPressed: () {
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            try {
+                                              state.postBooking(
+                                                bookingRequest: BookingRequest(
+                                                    photographerId: "1",
+                                                    acara: _tfEditingJenisAcara
+                                                        .text,
+                                                    lokasi:
+                                                        _tfEditingLokasiAcara
+                                                            .text,
+                                                    sesiFoto:
+                                                        _tfEditingTanggalAcara
+                                                            .text,
+                                                    tanggalBooking:
+                                                        _selectedDate,
+                                                    durasi: int.tryParse(
+                                                            _tfEditingDurasi
+                                                                .text) ??
+                                                        0,
+                                                    konsep:
+                                                        _tfEditingKonsep.text,
+                                                    waktuMulai:
+                                                        _tfEditingWaktuMulai
+                                                            .text,
+                                                    totalHarga: Random()
+                                                            .nextInt(500000) +
+                                                        400000),
+                                              );
+                                              const DialogItem(
+                                                path: "/pesanan",
+                                              );
+                                            } catch (e) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                      "Gagal Ajukan Pesanan"),
+                                                ),
+                                              );
+                                            }
+                                          }
+                                        },
+                                        radius: 8);
+                                  },
+                                )
                               ],
                             ),
                           ),

@@ -1,5 +1,4 @@
 class BookingRequest {
-  final String userId;
   final String photographerId;
   final String acara;
   final String lokasi;
@@ -11,7 +10,6 @@ class BookingRequest {
   final int totalHarga;
 
   BookingRequest({
-    required this.userId,
     required this.photographerId,
     required this.acara,
     required this.lokasi,
@@ -24,7 +22,6 @@ class BookingRequest {
   });
 
   factory BookingRequest.fromJson(Map<String, dynamic> json) => BookingRequest(
-        userId: json["user_id"],
         photographerId: json["photographer_id"],
         acara: json["acara"],
         lokasi: json["lokasi"],
@@ -37,7 +34,6 @@ class BookingRequest {
       );
 
   Map<String, dynamic> toJson() => {
-        "user_id": userId,
         "photographer_id": photographerId,
         "acara": acara,
         "lokasi": lokasi,
