@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/feature/service_order/presentation/widgets/service_order_menu_item.dart';
+import 'package:foto_in/feature/service_order/presentation/widgets/service_order_menu_table_header.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/enums/order_status_enum.dart';
 
@@ -21,48 +24,55 @@ class _ServiceOrderWebState extends State<ServiceOrderWeb> {
     return Column(
       children: [
         const NavigationCustom(),
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 1500,
-          ),
-          width: double.infinity,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 80,
-            vertical: 64,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Pesanan Anda',
-                textAlign: TextAlign.start,
-                style: FotoInHeadingTypography.medium(
-                  color: AppColor.textPrimary,
+        Expanded(
+          child: Container(
+            constraints: const BoxConstraints(
+              maxWidth: 1500,
+            ),
+            width: double.infinity,
+            margin: const EdgeInsets.only(
+              left: 80,
+              right: 80,
+              top: 64,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // scrollDirection: Axis.vertical,
+              children: [
+                Text(
+                  'Pesanan Anda',
+                  textAlign: TextAlign.start,
+                  style: FotoInHeadingTypography.medium(
+                    color: AppColor.textPrimary,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "Semua pesanan pelanggan akan berada disini.",
-                style: FotoInParagraph.large(
-                  color: AppColor.textPrimary,
+                const SizedBox(height: 8),
+                Text(
+                  "Semua pesanan pelanggan akan berada disini.",
+                  style: FotoInParagraph.large(
+                    color: AppColor.textPrimary,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              menu(),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: serviceOrderMenuItems.length,
-                itemBuilder: (context, index) {
-                  final item = serviceOrderMenuItems[index];
-                  return ServiceOrderMenuItem(
-                    name: item.name,
-                    bookingDate: item.bookingDate,
-                    photoSessionDate: item.photoSessionDate,
-                    status: item.status,
-                  );
-                },
-              ),
-            ],
+                const SizedBox(height: 24),
+                menu(),
+                ServiceOrderMenuTableHeader(),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: serviceOrderMenuItems.length,
+                    itemBuilder: (context, index) {
+                      final item = serviceOrderMenuItems[index];
+                      return ServiceOrderMenuItem(
+                        name: item.name,
+                        bookingDate: item.bookingDate,
+                        photoSessionDate: item.photoSessionDate,
+                        status: item.status,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         )
       ],
