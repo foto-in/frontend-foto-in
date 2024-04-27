@@ -136,7 +136,6 @@ class FotoInButton extends StatelessWidget {
   }
 }
 
-
 class FotoInTextButton extends StatelessWidget {
   const FotoInTextButton({
     super.key,
@@ -160,12 +159,14 @@ class FotoInTextButton extends StatelessWidget {
     );
   }
 }
+
 class ActionButton extends FotoInButton {
   const ActionButton({
     super.key,
     required this.variant,
     required String text,
     required Function() onPressed,
+    TextStyle? textStyle,
   }) : super(
           text: text,
           onPressed: onPressed,

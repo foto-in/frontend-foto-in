@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/service_order/order_details/presentation/view/service_order_details_page.dart';
 import 'package:foto_in/feature/service_order/presentation/widgets/tolak_order_form_page.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/enums/action_button_variant_enum.dart';
@@ -136,7 +137,10 @@ class ServiceOrderMenuItem extends StatelessWidget {
                 ActionButton(
                   variant: ActionButtonVariant.detail,
                   text: 'Detail',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(ServiceOrderDetailsPage.routeName);
+                  },
                 ),
               ],
             ),

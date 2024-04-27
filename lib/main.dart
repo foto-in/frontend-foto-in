@@ -14,6 +14,9 @@ import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dar
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/order_user_detail.dart';
+import 'package:foto_in/feature/service_order/order_details/presentation/view/service_order_details_page.dart';
+import 'package:foto_in/feature/service_order/order_details/presentation/widgets/service_order_details.dart';
+import 'package:foto_in/feature/service_order/presentation/view/service_order_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -42,11 +45,14 @@ class MyApp extends StatelessWidget {
           GaleriDetails.routeName: (context) => const GaleriDetails(),
           UserOrderView.routeName: (context) => const UserOrderView(),
           PaymentView.routeName: (context) => const PaymentView(),
+          ServiceOrderView.routeName: (context) => const ServiceOrderView(),
+          ServiceOrderDetailsPage.routeName: (context) =>
+              const ServiceOrderDetailsPage(),
         },
         title: 'Flutter Demo',
         home: const Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: UserOrder(),
+          body: ServiceOrderView(),
         ),
       ),
     );
