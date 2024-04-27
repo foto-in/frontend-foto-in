@@ -62,7 +62,13 @@ class TfPasswordType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Tolong Masukan Password';
+        }
+        return null;
+      },
       controller: tfPasswordController,
       keyboardType: TextInputType.visiblePassword,
       obscureText: isObsecure,

@@ -185,6 +185,7 @@ class _RegisterWebWidgetsState extends State<RegisterWebWidgets> {
                                   fullname: tfFullName.text,
                                   password: tfPasswordController.text),
                             );
+                            Navigator.pushNamed(context, '/beranda');
                             setState(() {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

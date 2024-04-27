@@ -38,4 +38,5 @@ flutter:
   assets:
     - assets/images/
     - assets/images/profile/
+    - assets/images/home/
     - assets/lottie/
