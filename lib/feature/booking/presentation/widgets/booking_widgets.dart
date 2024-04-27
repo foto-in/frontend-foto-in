@@ -153,6 +153,108 @@ class _BookingWidgetsState extends State<BookingWidgets> {
                           ),
                           child: menu(),
                         ),
+                        const SizedBox(
+                          height: 48,
+                        ),
+                        GridView(
+                          shrinkWrap: true,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            crossAxisSpacing: 24,
+                            mainAxisSpacing: 16,
+                            mainAxisExtent: 466,
+                          ),
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: AppColor.backgroundSecondary,
+                              ),
+                              clipBehavior: Clip.antiAlias,
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/image-carousel-web.png",
+                                    height: 300,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(24),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Cahaya Abadi Fotografi",
+                                          style:
+                                              FotoInHeadingTypography.xxSmall(
+                                            color: AppColor.textPrimary,
+                                          ),
+                                        ),
+                                        SizedBox(height: 4),
+                                        Text(
+                                          "Semarang, Jawa Tengah",
+                                          style: FotoInParagraph.small(
+                                            color: AppColor.textSecondary,
+                                          ),
+                                        ),
+                                        SizedBox(height: 24),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Pernikahan",
+                                                  style:
+                                                      FotoInSubHeadingTypography
+                                                          .small(
+                                                              color: AppColor
+                                                                  .textPrimary),
+                                                ),
+                                                SizedBox(height: 4),
+                                                Text(
+                                                  "Wisuda",
+                                                  style:
+                                                      FotoInSubHeadingTypography
+                                                          .small(
+                                                    color: AppColor.textPrimary,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Iconsax.star1,
+                                                  color:
+                                                      AppColor.yellow.shade600,
+                                                  size: 16,
+                                                ),
+                                                SizedBox(width: 4),
+                                                Text(
+                                                  "4.8 (50 Project)",
+                                                  style: FotoInHeadingTypography
+                                                      .xxSmall(
+                                                    color: AppColor.textPrimary,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -165,12 +267,13 @@ class _BookingWidgetsState extends State<BookingWidgets> {
     );
   }
 
-  Container menu() {
+  Widget menu() {
     return Container(
       constraints: const BoxConstraints(
         maxHeight: 50.0,
       ),
       child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
