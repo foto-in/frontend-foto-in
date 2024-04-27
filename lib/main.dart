@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
               const RegisterPhotographer(),
           OderDetailUserView.routeName: (context) => const OderDetailUserView(),
           GaleriView.routeName: (context) => const GaleriView(),
-          GaleriDetails.routeName: (context) => const G aleriDetails(),
+          GaleriDetails.routeName: (context) => const GaleriDetails(),
           UserOrderView.routeName: (context) => const UserOrderView(),
           PaymentView.routeName: (context) => const PaymentView(),
         },
