@@ -7,10 +7,10 @@ class PortofolioPageForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const ProfileFormTitle(
+        ProfileFormTitle(
           title: "Jenis Pemotretan",
           subtitle:
               "Anda dapat memilih minimal satu dari beberapa jenis pemotretan yang anda sukai.",

@@ -38,7 +38,7 @@ class ServiceOrderMenuItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 70,
             ),
             child: Text(
@@ -48,14 +48,14 @@ class ServiceOrderMenuItem extends StatelessWidget {
             ),
           ),
           Container(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 600,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  constraints: BoxConstraints(minWidth: 90),
+                  constraints: const BoxConstraints(minWidth: 90),
                   child: Text(
                     bookingDate,
                     style: FotoInSubHeadingTypography.medium(
@@ -68,7 +68,7 @@ class ServiceOrderMenuItem extends StatelessWidget {
                       color: AppColor.textPrimary),
                 ),
                 Container(
-                  constraints: BoxConstraints(minWidth: 170),
+                  constraints: const BoxConstraints(minWidth: 170),
                   child: Text(
                     statusText,
                     style: FotoInSubHeadingTypography.medium(

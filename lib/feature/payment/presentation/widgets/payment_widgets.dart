@@ -1,13 +1,10 @@
 import 'package:ficonsax/ficonsax.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/utils/button.dart';
-import 'package:lottie/lottie.dart';
 
 class PaymentWidget extends StatefulWidget {
   const PaymentWidget({super.key});
@@ -20,9 +17,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
   PaymentItemModel activeMenu = menus.first;
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
     return Scaffold(
-      backgroundColor: Color(0xffffffff),
+      backgroundColor: const Color(0xffffffff),
       body: SafeArea(
         child: Column(
           children: [
@@ -218,7 +214,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               child: Text(
                                 "Bayar",
                                 style: FotoInSubHeadingTypography.medium(
-                                  color: Color(0xffffffff),
+                                  color: const Color(0xffffffff),
                                 ),
                               ),
                             ),
@@ -363,7 +359,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                     const BoxConstraints(
                                                         maxWidth: 345,
                                                         maxHeight: 380),
-                                                child: DialogItem(),
+                                                child: const DialogItem(),
                                               ));
                                         });
                                   },
@@ -378,7 +374,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               child: Text(
                                 "Bayar",
                                 style: FotoInSubHeadingTypography.medium(
-                                  color: Color(0xffffffff),
+                                  color: const Color(0xffffffff),
                                 ),
                               ),
                             ),
@@ -426,7 +422,7 @@ class DialogItem extends StatelessWidget {
             tvButton: "Cek Pesanan",
             onPressed: () {
               Navigator.pushNamedAndRemoveUntil(
-                  context, "/order_detail_user", (route) => false);
+                  context, "/pesanan", (route) => false);
             },
             radius: 8),
       ],
@@ -458,7 +454,7 @@ class PaymentMenuItem extends StatelessWidget {
         border: Border.all(
           color: isActive ? AppColor.primary : const Color(0xffF5F5F5),
         ),
-        color: Color(0xffffffff),
+        color: const Color(0xffffffff),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

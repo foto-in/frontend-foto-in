@@ -24,14 +24,14 @@ class _EditProfileFormState extends State<EditProfileForm> {
     return Form(
       key: _formKey,
       child: Container(
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 425,
         ),
-        padding: EdgeInsets.all(40),
+        padding: const EdgeInsets.all(40),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: Color(0xffF5F5F5),
+            color: const Color(0xffF5F5F5),
             width: 1.5,
           ),
         ),
@@ -53,7 +53,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
                 color: AppColor.textSecondary,
                 borderRadius: BorderRadius.circular(50),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.person,
                 color: AppColor.textPrimary,
                 size: 50,

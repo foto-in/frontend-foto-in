@@ -23,11 +23,11 @@ class _JenisPemotretanState extends State<JenisPemotretan> {
           subtitle:
               "Anda dapat memilih minimal satu dari beberapa jenis pemotretan yang anda sukai.",
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         GridView.builder(
           shrinkWrap: true,
           itemCount: _kategori.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,

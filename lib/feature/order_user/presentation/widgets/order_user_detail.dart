@@ -1,7 +1,5 @@
 import 'package:ficonsax/ficonsax.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
@@ -22,22 +20,29 @@ class OrderDetailUser extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        IconsaxOutline.arrow_left,
-                        size: 24,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Pesanan/Detail',
-                        style: FotoInSubHeadingTypography.medium(
-                          color: AppColor.textSecondary,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(
+                          IconsaxOutline.arrow_left,
+                          size: 24,
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Pesanan/Detail',
+                          style: FotoInSubHeadingTypography.medium(
+                            color: AppColor.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 48,
@@ -85,7 +90,7 @@ class OrderDetailUser extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DetailItem(
+                      const DetailItem(
                           title: "Status Pesanan",
                           content: "Menunggu Konfirmasi"),
                       Expanded(
@@ -118,7 +123,7 @@ class OrderDetailUser extends StatelessWidget {
                                         color: AppColor.textSecondary),
                                   ),
                                 ),
-                                SizedBox(width: 12),
+                                const SizedBox(width: 12),
                                 Expanded(
                                   child: Text(
                                     "*Harap Lakukan pembayaran dalam waktu 24 jam setelah fotografer mengkonfirmasi pesanan Anda, jika tidak, pesanan akan dibatalkan secara otomatis.",

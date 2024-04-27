@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
@@ -26,11 +24,11 @@ class _RegisterPhotographerWidgetState
   final PageController controller = PageController(initialPage: 0);
 
   List<Widget> pages = [
-    Status(),
-    JenisPemotretan(),
-    InformasiPribadi(),
-    InformasiTambahan(),
-    PortofolioPageForm(),
+    const Status(),
+    const JenisPemotretan(),
+    const InformasiPribadi(),
+    const InformasiTambahan(),
+    const PortofolioPageForm(),
   ];
 
   @override
@@ -39,10 +37,10 @@ class _RegisterPhotographerWidgetState
       backgroundColor: AppColor.backgroundPrimary,
       body: Column(
         children: [
-          NavigationCustom(),
+          const NavigationCustom(),
           Expanded(
             child: Container(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 1500,
               ),
               width: double.infinity,
@@ -81,11 +79,11 @@ class _RegisterPhotographerWidgetState
   Row profileNavigation() {
     return Row(
       children: [
-        Icon(
+        const Icon(
           Icons.arrow_back,
           size: 24,
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
           'Profil/Daftar menjadi fotografer',
           textAlign: TextAlign.start,
@@ -113,7 +111,7 @@ class _RegisterPhotographerWidgetState
             },
             child: Row(
               children: [
-                Icon(
+                const Icon(
                   Iconsax.arrow_left_2,
                   size: 20,
                 ),
@@ -145,7 +143,7 @@ class _RegisterPhotographerWidgetState
                 ),
               ),
               const SizedBox(width: 8),
-              Icon(
+              const Icon(
                 Iconsax.arrow_right_3,
                 size: 20,
               )
