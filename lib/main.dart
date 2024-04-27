@@ -9,10 +9,8 @@ import 'package:foto_in/feature/order_user/presentation/view/order_user_detail_v
 import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/user_order_web.dart';
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
-import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
-import 'package:foto_in/feature/order_user/presentation/widgets/order_user_detail.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -44,7 +42,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         home: const Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: UserOrder(),
+          body: Beranda(),
         ),
       ),
     );
