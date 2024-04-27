@@ -200,7 +200,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                       const BoxConstraints(
                                                           maxWidth: 345,
                                                           maxHeight: 380),
-                                                  child: const DialogItem()));
+                                                  child: const DialogItem(
+                                                    path: "/pesanan",
+                                                  )));
                                         });
                                   },
                                 );
@@ -359,7 +361,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                     const BoxConstraints(
                                                         maxWidth: 345,
                                                         maxHeight: 380),
-                                                child: const DialogItem(),
+                                                child: const DialogItem(
+                                                  path: "/pesanan",
+                                                ),
                                               ));
                                         });
                                   },
@@ -394,7 +398,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
 class DialogItem extends StatelessWidget {
   const DialogItem({
     super.key,
+    required this.path,
   });
+
+  final String path;
 
   @override
   Widget build(BuildContext context) {
@@ -422,7 +429,7 @@ class DialogItem extends StatelessWidget {
             tvButton: "Cek Pesanan",
             onPressed: () {
               Navigator.pushNamedAndRemoveUntil(
-                  context, "/pesanan", (route) => false);
+                  context, path, (route) => false);
             },
             radius: 8),
       ],
