@@ -18,6 +18,7 @@ abstract class AppColor {
 
   static final red600 = _FotoInColor.red.shade600;
   static final green600 = _FotoInColor.green.shade600;
+  static final yellow = _FotoInColor.yellow;
 }
 
 abstract class _FotoInColor {
