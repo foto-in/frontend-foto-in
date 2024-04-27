@@ -450,7 +450,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
-                                                content: Container(
+                                                content: SizedBox(
                                                   height: 300,
                                                   width: 300,
                                                   child: SfDateRangePicker(
@@ -736,7 +736,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
-                                                content: Container(
+                                                content: SizedBox(
                                                   height: 300,
                                                   width: 300,
                                                   child: SfDateRangePicker(

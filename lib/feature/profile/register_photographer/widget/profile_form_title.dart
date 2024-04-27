@@ -23,7 +23,7 @@ class ProfileFormTitle extends StatelessWidget {
             color: AppColor.textPrimary,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           subtitle,
           style: FotoInParagraph.small(

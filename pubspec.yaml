@@ -1,11 +1,11 @@
 name: foto_in
-description: 'A new Flutter project.'
+description: "A new Flutter project."
 
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.4 <4.0.0'
+  sdk: ">=3.2.4 <4.0.0"
 
 dependencies:
   cupertino_icons: ^1.0.2
@@ -24,6 +24,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   provider: ^6.1.2
   responsive_builder: ^0.7.0
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -37,3 +38,4 @@ flutter:
   assets:
     - assets/images/
     - assets/images/profile/
+    - assets/lottie/

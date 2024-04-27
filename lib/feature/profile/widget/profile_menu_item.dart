@@ -18,7 +18,7 @@ class ProfileMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 20,
       ),
@@ -29,7 +29,7 @@ class ProfileMenuItem extends StatelessWidget {
             icon,
             color: isActive ? Colors.white : AppColor.textPrimary,
           ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
           Text(
             title,
             style: FotoInHeadingTypography.xxSmall(

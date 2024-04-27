@@ -22,14 +22,14 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
     return Form(
       key: _formKey,
       child: Container(
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 425,
         ),
-        padding: EdgeInsets.all(40),
+        padding: const EdgeInsets.all(40),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: Color(0xffF5F5F5),
+            color: const Color(0xffF5F5F5),
             width: 1.5,
           ),
         ),
