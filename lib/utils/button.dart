@@ -136,6 +136,30 @@ class FotoInButton extends StatelessWidget {
   }
 }
 
+
+class FotoInTextButton extends StatelessWidget {
+  const FotoInTextButton({
+    super.key,
+    required this.child,
+    required this.onTap,
+  });
+
+  final Row child;
+  final Function() onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10),
+      splashColor: AppColor.textTeriary.withOpacity(0.5),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: child,
+      ),
+    );
+  }
+}
 class ActionButton extends FotoInButton {
   const ActionButton({
     super.key,

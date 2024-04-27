@@ -39,14 +39,14 @@ abstract class _FotoInColor {
   });
 
   // Tosca
-  static const int _toscaPrimaryValue = 0xffeefffa;
+  static const int _toscaPrimaryValue = 0xFF1ff0ca;
 
   static const MaterialColor tosca = MaterialColor(_toscaPrimaryValue, {
-    50: Color(_toscaPrimaryValue),
+    50: Color(0xffeefffa),
     100: Color(0xffc4fff2),
     200: Color(0xff8affe6),
     300: Color(0xff47ffda),
-    400: Color(0xFF1ff0ca),
+    400: Color(_toscaPrimaryValue),
     500: Color(0xff00d3af),
     600: Color(0xff00aa90),
     700: Color(0xff008774),
