@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/service_order/presentation/widgets/tolak_order_form_page.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/enums/action_button_variant_enum.dart';
 import 'package:foto_in/utils/enums/order_status_enum.dart';
@@ -37,87 +39,107 @@ class ServiceOrderMenuItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            constraints: BoxConstraints(
-              maxWidth: 70,
-            ),
+          Expanded(
+            flex: 1,
             child: Text(
               name,
               style: FotoInSubHeadingTypography.medium(
                   color: AppColor.textPrimary),
             ),
           ),
-          Container(
-            constraints: BoxConstraints(
-              maxWidth: 600,
+          Expanded(
+            flex: 1,
+            child: Text(
+              bookingDate,
+              style: FotoInSubHeadingTypography.medium(
+                  color: AppColor.textPrimary),
             ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(
+              photoSessionDate,
+              style: FotoInSubHeadingTypography.medium(
+                  color: AppColor.textPrimary),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(
+              statusText,
+              style: FotoInSubHeadingTypography.medium(
+                  color: AppColor.textPrimary),
+            ),
+          ),
+          Expanded(
+            flex: 2,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  constraints: BoxConstraints(minWidth: 90),
-                  child: Text(
-                    bookingDate,
-                    style: FotoInSubHeadingTypography.medium(
-                        color: AppColor.textPrimary),
+                if (status == OrderStatus.pendingConfirmation)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: ActionButton(
+                      variant: ActionButtonVariant.accept,
+                      text: 'Terima',
+                      onPressed: () {},
+                    ),
                   ),
-                ),
-                Text(
-                  photoSessionDate,
-                  style: FotoInSubHeadingTypography.medium(
-                      color: AppColor.textPrimary),
-                ),
-                Container(
-                  constraints: BoxConstraints(minWidth: 170),
-                  child: Text(
-                    statusText,
-                    style: FotoInSubHeadingTypography.medium(
-                        color: AppColor.textPrimary),
+                if (status > OrderStatus.pendingConfirmation)
+                  const Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: SizedBox(
+                      width: 126,
+                    ),
                   ),
+                if (status == OrderStatus.pendingConfirmation)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: ActionButton(
+                      variant: ActionButtonVariant.reject,
+                      text: 'Tolak',
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              backgroundColor: Colors.transparent,
+                              surfaceTintColor: Colors.transparent,
+                              child: Container(
+                                clipBehavior: Clip.antiAlias,
+                                child: Material(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(40),
+                                    child: TolakOrderFormPage(),
+                                  ),
+                                  color: Colors.white,
+                                ),
+                                constraints: BoxConstraints(
+                                    maxWidth: 490, maxHeight: 640),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                if (status > OrderStatus.pendingConfirmation)
+                  const Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: SizedBox(
+                      width: 126,
+                    ),
+                  ),
+                ActionButton(
+                  variant: ActionButtonVariant.detail,
+                  text: 'Detail',
+                  onPressed: () {},
                 ),
               ],
             ),
-          ),
-          Row(
-            children: [
-              if (status == OrderStatus.pendingConfirmation)
-                Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: ActionButton(
-                    variant: ActionButtonVariant.accept,
-                    text: 'Terima',
-                    onPressed: () {},
-                  ),
-                ),
-              if (status > OrderStatus.pendingConfirmation)
-                const Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: SizedBox(
-                    width: 126,
-                  ),
-                ),
-              if (status == OrderStatus.pendingConfirmation)
-                Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: ActionButton(
-                    variant: ActionButtonVariant.reject,
-                    text: 'Tolak',
-                    onPressed: () {},
-                  ),
-                ),
-              if (status > OrderStatus.pendingConfirmation)
-                const Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: SizedBox(
-                    width: 126,
-                  ),
-                ),
-              ActionButton(
-                variant: ActionButtonVariant.detail,
-                text: 'Detail',
-                onPressed: () {},
-              ),
-            ],
           )
         ],
       ),

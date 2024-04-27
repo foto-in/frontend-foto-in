@@ -9,8 +9,14 @@ import 'package:foto_in/feature/galeri/presentation/widgets/galeri_card.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_details_widgets.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_widgets.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
+import 'package:foto_in/feature/order_user/presentation/view/order_user_detail_view.dart';
+import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dart';
+import 'package:foto_in/feature/order_user/presentation/widgets/user_order_web.dart';
+import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
+import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
+import 'package:foto_in/feature/order_user/presentation/widgets/order_user_detail.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -34,8 +40,11 @@ class MyApp extends StatelessWidget {
           ProfileView.routeName: (context) => const ProfileView(),
           RegisterPhotographer.routeName: (context) =>
               const RegisterPhotographer(),
+          OderDetailUserView.routeName: (context) => const OderDetailUserView(),
           GaleriView.routeName: (context) => const GaleriView(),
           GaleriDetails.routeName: (context) => const GaleriDetails(),
+          UserOrderView.routeName: (context) => const UserOrderView(),
+          PaymentView.routeName: (context) => const PaymentView(),
         },
         title: 'Flutter Demo',
         home: const Scaffold(

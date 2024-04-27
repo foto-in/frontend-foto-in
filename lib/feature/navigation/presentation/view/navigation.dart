@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
 import 'package:foto_in/utils/button.dart';
 
 class NavigationCustom extends StatefulWidget {
@@ -69,32 +70,48 @@ class _NavigationCustom extends State<NavigationCustom> {
               ],
             ),
           ),
-          Row(
-            children: [
-              SizedBox(
-                width: 120,
-                child: BtnPrimaryWhite(
-                  tvButton: "Masuk",
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/login');
-                  },
+          ResizeWidgets(
+            width: 450,
+            sChild: Row(
+              children: [
+                SizedBox(
+                  width: 120,
+                  child: BtnPrimaryWhite(
+                    tvButton: "Masuk",
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/login');
+                    },
+                  ),
                 ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              SizedBox(
-                width: 120,
-                child: BtnPrimary(
-                  radius: 8,
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/register');
-                  },
-                  tvButton: "Daftar",
+              ],
+            ),
+            lChild: Row(
+              children: [
+                SizedBox(
+                  width: 120,
+                  child: BtnPrimaryWhite(
+                    tvButton: "Masuk",
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/login');
+                    },
+                  ),
                 ),
-              ),
-            ],
-          ),
+                const SizedBox(
+                  width: 16,
+                ),
+                SizedBox(
+                  width: 120,
+                  child: BtnPrimary(
+                    radius: 8,
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/register');
+                    },
+                    tvButton: "Daftar",
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -119,26 +136,5 @@ class _NavItem extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class ResizeWidgets extends StatelessWidget {
-  const ResizeWidgets(
-      {super.key,
-      required this.width,
-      required this.sChild,
-      required this.lChild});
-
-  final double width;
-  final Widget sChild;
-  final Widget lChild;
-
-  @override
-  Widget build(BuildContext context) {
-    if (width > MediaQuery.of(context).size.width) {
-      return sChild;
-    } else {
-      return lChild;
-    }
   }
 }

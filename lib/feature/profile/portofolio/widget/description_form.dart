@@ -24,7 +24,7 @@ class _DescriptionFormState extends State<DescriptionForm> {
           title: "Tambah Portofolio",
           subtitle: "Lengkapi form berikut dengan benar.",
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         LabeledTextField(
           label: "Judul",
           controller: judulController,
@@ -36,7 +36,7 @@ class _DescriptionFormState extends State<DescriptionForm> {
             return null;
           },
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         LabeledTextField(
           label: "Deskripsi",
           controller: deskripsiController,

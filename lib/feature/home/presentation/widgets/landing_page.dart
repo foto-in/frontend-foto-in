@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -885,26 +886,5 @@ class LandingPageWidgets extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class ResizeWidgets extends StatelessWidget {
-  const ResizeWidgets(
-      {super.key,
-      required this.width,
-      required this.sChild,
-      required this.lChild});
-
-  final double width;
-  final Widget sChild;
-  final Widget lChild;
-
-  @override
-  Widget build(BuildContext context) {
-    if (width > MediaQuery.of(context).size.width) {
-      return sChild;
-    } else {
-      return lChild;
-    }
   }
 }

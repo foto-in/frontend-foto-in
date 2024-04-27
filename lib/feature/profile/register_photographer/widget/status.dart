@@ -24,8 +24,8 @@ class _StatusState extends State<Status> {
           title: "Status",
           subtitle: "Pilih salah satu dari opsi berikut.",
         ),
-        SizedBox(height: 20),
-        Container(
+        const SizedBox(height: 20),
+        SizedBox(
           height: 210,
           child: Row(
             children: [
@@ -33,7 +33,7 @@ class _StatusState extends State<Status> {
                 title: "Individu",
                 icon: Icons.person,
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               radio(
                 title: "Tim",
                 icon: Icons.people,
@@ -71,7 +71,7 @@ class _StatusState extends State<Status> {
                 size: 32,
                 color: isSelected ? Colors.white : AppColor.textSecondary,
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 title,
                 style: FotoInSubHeadingTypography.small(

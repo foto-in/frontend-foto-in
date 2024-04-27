@@ -30,7 +30,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
           subtitle:
               "Untuk mengetahui detail harga layanan dan spesifikasi perangkat Anda, silahkan mengisi form berikut dengan benar.",
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -47,7 +47,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
             // Input
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: 300,
                   child: TfAuth(
                     controller: mulaiDari,
@@ -73,10 +73,10 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
                     },
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Container(
                   width: 20,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
                         color: AppColor.textPrimary,
@@ -85,8 +85,8 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
-                Container(
+                const SizedBox(width: 8),
+                SizedBox(
                   width: 300,
                   child: TfAuth(
                     controller: hingga,
@@ -117,7 +117,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Column(
@@ -140,7 +140,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
                   padding: const EdgeInsets.only(bottom: 16),
                   child: Row(
                     children: [
-                      Container(
+                      SizedBox(
                         width: 400,
                         child: TfAuth(
                           controller: e,
@@ -159,7 +159,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
                           },
                         ),
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       // if the index is the last index, add button to add more textfield
                       // else add remove button to remove the textfield
                       if (_gearController.indexOf(e) ==
@@ -170,7 +170,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
                               _gearController.add(TextEditingController());
                             });
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Iconsax.add,
                             color: AppColor.textPrimary,
                           ),
@@ -183,7 +183,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
                               _gearController.remove(e);
                             });
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Iconsax.trash,
                             color: AppColor.textPrimary,
                           ),

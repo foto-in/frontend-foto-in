@@ -10,8 +10,8 @@ class ProfileMenu extends StatefulWidget {
 class _ProfileMenuState extends State<ProfileMenu> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const <Widget>[],
+    return const Column(
+      children: <Widget>[],
     );
   }
 }
