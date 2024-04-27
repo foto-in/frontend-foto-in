@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/service_order/presentation/widgets/tolak_order_form_page.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/enums/action_button_variant_enum.dart';
 import 'package:foto_in/utils/enums/order_status_enum.dart';
@@ -97,7 +98,32 @@ class ServiceOrderMenuItem extends StatelessWidget {
                     child: ActionButton(
                       variant: ActionButtonVariant.reject,
                       text: 'Tolak',
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              backgroundColor: Colors.transparent,
+                              surfaceTintColor: Colors.transparent,
+                              child: Container(
+                                clipBehavior: Clip.antiAlias,
+                                child: Material(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(40),
+                                    child: TolakOrderFormPage(),
+                                  ),
+                                  color: Colors.white,
+                                ),
+                                constraints: BoxConstraints(
+                                    maxWidth: 490, maxHeight: 640),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                   ),
                 if (status > OrderStatus.pendingConfirmation)
