@@ -11,6 +11,7 @@ class LabeledTextField extends StatelessWidget {
     required this.keyboardType,
     required this.validator,
     this.obscureText = false,
+    this.maxLines,
   });
 
   final TextEditingController controller;
@@ -18,6 +19,7 @@ class LabeledTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? Function(String? p1)? validator;
   final bool obscureText;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class LabeledTextField extends StatelessWidget {
 
         // Input
         TfAuth(
+          maxLines: maxLines,
           controller: controller,
           hintText: label,
           hintStyle: FotoInLabelTypography.small(
