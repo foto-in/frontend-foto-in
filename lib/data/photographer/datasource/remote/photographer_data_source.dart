@@ -20,10 +20,10 @@ abstract class PhotographerDataSource {
       {required String photographerId, required String portofolioId});
 }
 
-class PortofolioDataSourceImpl implements PhotographerDataSource {
+class PhotographerDataSourceImpl implements PhotographerDataSource {
   final Dio dio;
 
-  PortofolioDataSourceImpl({required this.dio}) {
+  PhotographerDataSourceImpl({required this.dio}) {
     //dio.interceptors.add(LogInterceptor(responseBody: true));
   }
 

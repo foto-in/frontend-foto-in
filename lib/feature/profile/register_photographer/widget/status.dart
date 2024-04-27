@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
+import 'package:provider/provider.dart';
 
 class Status extends StatefulWidget {
   const Status({
@@ -50,12 +52,16 @@ class _StatusState extends State<Status> {
     required IconData icon,
   }) {
     bool isSelected = status == title;
-    return Expanded(
-      child: GestureDetector(
+    return Expanded(child:
+        Consumer<RegisterPhotographerProvider>(builder: (context, state, _) {
+      return GestureDetector(
         onTap: () {
-          setState(() {
-            status = title;
-          });
+          try {
+            setState(() {
+              status = title;
+            });
+            state.type = status;
+          } catch (e) {}
         },
         child: Container(
           alignment: Alignment.center,
@@ -81,7 +87,7 @@ class _StatusState extends State<Status> {
             ],
           ),
         ),
-      ),
-    );
+      );
+    }));
   }
 }
