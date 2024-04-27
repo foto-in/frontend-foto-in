@@ -8,9 +8,12 @@ import 'package:foto_in/feature/galeri/presentation/widgets/galeri_card.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_details_widgets.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_widgets.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
+import 'package:foto_in/feature/order_user/presentation/view/order_user_detai_view.dart';
+import 'package:foto_in/feature/payment/presentation/widgets/payments_widgets.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
 import 'package:foto_in/feature/service_order/presentation/view/service_order_view.dart';
+import 'package:foto_in/feature/order_user/presentation/widgets/order_user_detail.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -35,11 +38,12 @@ class MyApp extends StatelessWidget {
           RegisterPhotographer.routeName: (context) =>
               const RegisterPhotographer(),
           GaleriView.routeName: (context) => const GaleriView(),
+          OderDetailUserView.routeName: (context) => const OderDetailUserView(),
         },
         title: 'Flutter Demo',
         home: const Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: GaleriDetails(),
+          body: PaymentWidget(),
         ),
       ),
     );
