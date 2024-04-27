@@ -20,6 +20,7 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
   var isObsecure = true;
   var tfUsernameController = TextEditingController();
   var tfPasswordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Function get onPressed => () {
         setState(() {
           isObsecure = !isObsecure;
@@ -75,18 +76,27 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
                   const SizedBox(
                     height: 20,
                   ),
-                  TfAuth(
-                      controller: tfUsernameController,
-                      hintText: "Username",
-                      keyboardType: TextInputType.name),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  TfPasswordType(
-                      tfPasswordController: tfPasswordController,
-                      isObsecure: isObsecure,
-                      hintText: "Password",
-                      onPressed: onPressed),
+                  Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TfFotoin(
+                            controller: tfUsernameController,
+                            hintText: "Username",
+                            keyboardType: TextInputType.name,
+                            maxLines: 1,
+                            validator: "Username",
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          TfPasswordType(
+                              tfPasswordController: tfPasswordController,
+                              isObsecure: isObsecure,
+                              hintText: "Password",
+                              onPressed: onPressed),
+                        ],
+                      )),
                   const SizedBox(
                     height: 16,
                   ),
@@ -113,20 +123,25 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
                     return BtnPrimary(
                       radius: 8,
                       onPressed: () {
-                        try {
-                          state.login(
-                            loginRequest: LoginRequest(
-                                username: tfUsernameController.text,
-                                password: tfPasswordController.text),
-                          );
-                        } catch (e) {
-                          setState(() {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Gagal Login"),
-                              ),
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          try {
+                            state.login(
+                              loginRequest: LoginRequest(
+                                  username: tfUsernameController.text,
+                                  password: tfPasswordController.text),
                             );
-                          });
+
+                            Navigator.pushNamed(context, '/beranda');
+                          } catch (e) {
+                            setState(() {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Gagal Login"),
+                                ),
+                              );
+                            });
+                          }
                         }
                       },
                       tvButton: "Masuk",
