@@ -7,7 +7,9 @@ import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/informasi_pribadi.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/informasi_tambahan.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/jenis_pemotretan.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/portofolio_page_form.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/status.dart';
+import 'package:foto_in/utils/button.dart';
 import 'package:iconsax/iconsax.dart';
 
 class RegisterPhotographerWidget extends StatefulWidget {
@@ -28,11 +30,13 @@ class _RegisterPhotographerWidgetState
     JenisPemotretan(),
     InformasiPribadi(),
     InformasiTambahan(),
+    PortofolioPageForm(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.backgroundPrimary,
       body: Column(
         children: [
           NavigationCustom(),
@@ -97,33 +101,32 @@ class _RegisterPhotographerWidgetState
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        textButton(
-          onTap: () {
-            if (currentPage > 0) {
-              currentPage--;
-              controller.previousPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            }
-          },
-          child: Row(
-            children: [
-              Icon(
-                Iconsax.arrow_left_2,
-                size: 20,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                "Kembali",
-                style: FotoInSubHeadingTypography.medium(
-                  color: AppColor.textPrimary,
+        FotoInTextButton(
+            onTap: () {
+              if (currentPage > 0) {
+                currentPage--;
+                controller.previousPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              }
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Iconsax.arrow_left_2,
+                  size: 20,
                 ),
-              ),
-            ],
-          ),
-        ),
-        textButton(
+                const SizedBox(width: 8),
+                Text(
+                  "Kembali",
+                  style: FotoInSubHeadingTypography.medium(
+                    color: AppColor.textPrimary,
+                  ),
+                ),
+              ],
+            )),
+        FotoInTextButton(
           onTap: () {
             if (currentPage < pages.length - 1) {
               currentPage++;
@@ -150,21 +153,6 @@ class _RegisterPhotographerWidgetState
           ),
         ),
       ],
-    );
-  }
-
-  InkWell textButton({
-    required Row child,
-    required Function() onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(10),
-      splashColor: AppColor.textTeriary.withOpacity(0.5),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: child,
-      ),
     );
   }
 }

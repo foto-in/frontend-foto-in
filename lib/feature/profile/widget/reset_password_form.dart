@@ -38,6 +38,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
           children: [
             // Current Password
             LabeledTextField(
+              maxLines: 1,
               label: 'Password  saat ini',
               controller: currentPassword,
               validator: (value) {
@@ -54,6 +55,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
 
             // New Password
             LabeledTextField(
+              maxLines: 1,
               label: 'Password baru',
               controller: newPassword,
               validator: (value) {
@@ -70,6 +72,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
 
             // Confirm New Password
             LabeledTextField(
+              maxLines: 1,
               label: 'Konfirmasi Password',
               controller: confirmNewPassword,
               validator: (value) {
