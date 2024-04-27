@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         home: const Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: RegisterPhotographer(),
+          body: ProfileView(),
         ),
       ),
     );
