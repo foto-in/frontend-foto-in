@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/auth/login/presentation/provider/login_provider.dart';
 import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:provider/provider.dart';
 
 class NavigationCustom extends StatefulWidget {
   const NavigationCustom({super.key});
@@ -70,48 +72,58 @@ class _NavigationCustom extends State<NavigationCustom> {
               ],
             ),
           ),
-          ResizeWidgets(
-            width: 450,
-            sChild: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: BtnPrimaryWhite(
-                    tvButton: "Masuk",
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/login');
-                    },
-                  ),
+          Consumer<LoginProvider>(
+            builder: (context, state, _) {
+              // print(state.isLoginVar);
+              // print(state.isLogin());
+
+              if (state.isLoginVar) {
+                return Text("Suda Login");
+              }
+              return ResizeWidgets(
+                width: 450,
+                sChild: Row(
+                  children: [
+                    SizedBox(
+                      width: 120,
+                      child: BtnPrimaryWhite(
+                        tvButton: "Masuk",
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/login');
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            lChild: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: BtnPrimaryWhite(
-                    tvButton: "Masuk",
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/login');
-                    },
-                  ),
+                lChild: Row(
+                  children: [
+                    SizedBox(
+                      width: 120,
+                      child: BtnPrimaryWhite(
+                        tvButton: "Masuk",
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/login');
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    SizedBox(
+                      width: 120,
+                      child: BtnPrimary(
+                        radius: 8,
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/register');
+                        },
+                        tvButton: "Daftar",
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  width: 16,
-                ),
-                SizedBox(
-                  width: 120,
-                  child: BtnPrimary(
-                    radius: 8,
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/register');
-                    },
-                    tvButton: "Daftar",
-                  ),
-                ),
-              ],
-            ),
-          )
+              );
+            },
+          ),
         ],
       ),
     );

@@ -122,25 +122,23 @@ class _LoginWebWidgetsState extends State<LoginWebWidgets> {
                   Consumer<LoginProvider>(builder: (context, state, _) {
                     return BtnPrimary(
                       radius: 8,
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          try {
-                            state.login(
-                              loginRequest: LoginRequest(
-                                  username: tfUsernameController.text,
-                                  password: tfPasswordController.text),
-                            );
+                          await state.login(
+                            loginRequest: LoginRequest(
+                                username: tfUsernameController.text,
+                                password: tfPasswordController.text),
+                          );
 
+                          if (state.failure != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("Gagal Login"),
+                              ),
+                            );
+                          } else {
                             Navigator.pushNamed(context, '/beranda');
-                          } catch (e) {
-                            setState(() {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("Gagal Login"),
-                                ),
-                              );
-                            });
                           }
                         }
                       },
