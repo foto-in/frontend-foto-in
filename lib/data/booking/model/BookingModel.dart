@@ -1,3 +1,6 @@
+import 'package:foto_in/utils/enums/order_status_enum.dart';
+import 'package:foto_in/utils/extensions/extensions.dart';
+
 class BookingModel {
   final String userId;
   final String photographerId;
@@ -8,7 +11,7 @@ class BookingModel {
   final int durasi;
   final String konsep;
   final int totalHarga;
-  final String status;
+  final OrderStatus status;
   final int totalDp;
   final bool statusPaid;
   final String waktuMulai;
@@ -41,7 +44,7 @@ class BookingModel {
         durasi: json["durasi"],
         konsep: json["konsep"],
         totalHarga: json["total_harga"],
-        status: json["status"],
+        status: json["status"].toString().parseBookingStatusFromString(),
         totalDp: json["total_dp"],
         statusPaid: json["status_paid"],
         waktuMulai: json["waktu_mulai"],
