@@ -95,6 +95,7 @@ class TfAuth extends StatelessWidget {
     this.validator,
     this.hintStyle,
     this.obscureText = false,
+    this.maxLines,
   });
 
   final TextEditingController controller;
@@ -103,6 +104,7 @@ class TfAuth extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextStyle? hintStyle;
   final bool obscureText;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +122,7 @@ class TfAuth extends StatelessWidget {
       ),
       validator: validator,
       obscureText: obscureText,
+      maxLines: maxLines,
     );
   }
 }
