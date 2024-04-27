@@ -5,6 +5,7 @@ import 'package:foto_in/feature/auth/register/presentation/provider/register_pro
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
+import 'package:foto_in/feature/service_order/presentation/view/service_order_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         home: const Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: Beranda(),
+          body: ServiceOrderView(),
         ),
       ),
     );

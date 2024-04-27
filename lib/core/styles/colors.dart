@@ -15,6 +15,9 @@ abstract class AppColor {
 
   static const Color textFieldBackground = Color(0xffF4F6F7);
   static const Color textFieldBorder = Color(0xffF4F4F6);
+
+  static final red600 = _FotoInColor.red.shade600;
+  static final green600 = _FotoInColor.green.shade600;
 }
 
 abstract class _FotoInColor {
@@ -83,5 +86,37 @@ abstract class _FotoInColor {
     800: Color(0xff3D454D),
     900: Color(0xff363B43),
     950: Color(0xff1F2328),
+  });
+
+  static const int _greenPrimaryValue = 0xff00B943;
+
+  static const MaterialColor green = MaterialColor(_greenPrimaryValue, {
+    50: Color(0xffE6F9E6),
+    100: Color(0xffC0F0C0),
+    200: Color(0xff8CE68C),
+    300: Color(0xff5AD95A),
+    400: Color(0xff2FBE2F),
+    500: Color(_greenPrimaryValue),
+    600: Color(0xff00A200),
+    700: Color(0xff008A00),
+    800: Color(0xff007300),
+    900: Color(0xff005B00),
+    950: Color(0xff003200),
+  });
+
+  static const int _redPrimaryValue = 0xffE71735;
+
+  static const MaterialColor red = MaterialColor(_redPrimaryValue, {
+    50: Color(0xffFCE8EB),
+    100: Color(0xffF8C2CC),
+    200: Color(0xffF18A97),
+    300: Color(0xffE85362),
+    400: Color(0xffE12A3A),
+    500: Color(_redPrimaryValue),
+    600: Color(0xffC9001A),
+    700: Color(0xffA80016),
+    800: Color(0xff8A0012),
+    900: Color(0xff6E000F),
+    950: Color(0xff3A0008),
   });
 }

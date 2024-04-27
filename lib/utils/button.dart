@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/utils/enums/action_button_variant_enum.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BtnPrimary extends StatelessWidget {
@@ -9,10 +10,14 @@ class BtnPrimary extends StatelessWidget {
     required this.tvButton,
     required this.onPressed,
     required this.radius,
+    this.backgroundColor = AppColor.primary,
+    this.textColor = Colors.white,
   });
   final String tvButton;
   final Function onPressed;
   final double radius;
+  final Color backgroundColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class BtnPrimary extends StatelessWidget {
           onPressed();
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.primary,
+          backgroundColor: backgroundColor,
           padding: const EdgeInsets.all(16),
           elevation: 0,
           splashFactory: NoSplash.splashFactory,
@@ -36,7 +41,7 @@ class BtnPrimary extends StatelessWidget {
           style: GoogleFonts.plusJakartaSans(
             fontSize: 16,
             fontWeight: FontWeight.w700,
-            color: AppColor.primary.shade50,
+            color: textColor,
           ),
         ),
       ),
@@ -129,4 +134,56 @@ class FotoInButton extends StatelessWidget {
       ),
     );
   }
+}
+
+class ActionButton extends FotoInButton {
+  const ActionButton({
+    super.key,
+    required this.variant,
+    required String text,
+    required Function() onPressed,
+  }) : super(
+          text: text,
+          onPressed: onPressed,
+        );
+
+  final ActionButtonVariant variant;
+
+  @override
+  Color get backgroundColor {
+    switch (variant) {
+      case ActionButtonVariant.accept:
+        return AppColor.green600;
+      case ActionButtonVariant.reject:
+        return AppColor.red600;
+      case ActionButtonVariant.detail:
+        return AppColor.backgroundTertiary;
+    }
+  }
+
+  @override
+  Color get textColor {
+    switch (variant) {
+      case ActionButtonVariant.accept:
+        return Colors.white;
+      case ActionButtonVariant.reject:
+        return Colors.white;
+      case ActionButtonVariant.detail:
+        return AppColor.textSecondary;
+    }
+  }
+
+  @override
+  double get borderRadius => 8.0;
+
+  @override
+  EdgeInsets get padding =>
+      const EdgeInsets.symmetric(horizontal: 36.0, vertical: 12.0);
+
+  @override
+  TextStyle? get textStyle =>
+      FotoInSubHeadingTypography.small(color: textColor);
+
+  @override
+  double? get width => 126.0;
 }
