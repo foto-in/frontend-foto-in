@@ -4,6 +4,7 @@ import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
 import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
+import 'package:foto_in/feature/galeri/presentation/widgets/galeri_details_widgets.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/order_user/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
               const RegisterPhotographer(),
           OderDetailUserView.routeName: (context) => const OderDetailUserView(),
           GaleriView.routeName: (context) => const GaleriView(),
+          GaleriDetails.routeName: (context) => const GaleriDetails(),
           UserOrderView.routeName: (context) => const UserOrderView(),
           PaymentView.routeName: (context) => const PaymentView(),
         },
