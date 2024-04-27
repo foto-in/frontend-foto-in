@@ -20,8 +20,8 @@ class _PortofolioFormPageState extends State<PortofolioFormPage> {
 
   // pages
   List<Widget> pages = [
-    DescriptionForm(),
-    ImagesForm(),
+    const DescriptionForm(),
+    const ImagesForm(),
   ];
 
   @override
@@ -29,11 +29,11 @@ class _PortofolioFormPageState extends State<PortofolioFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
+        const Icon(
           Iconsax.arrow_left,
           weight: 5,
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Expanded(
           child: PageView.builder(
             itemCount: pages.length,
@@ -46,7 +46,7 @@ class _PortofolioFormPageState extends State<PortofolioFormPage> {
             itemBuilder: (context, index) => pages[index],
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         formNavigation(),
       ],
     );
@@ -68,7 +68,7 @@ class _PortofolioFormPageState extends State<PortofolioFormPage> {
             },
             child: Row(
               children: [
-                Icon(
+                const Icon(
                   Iconsax.arrow_left_2,
                   size: 20,
                 ),
@@ -100,7 +100,7 @@ class _PortofolioFormPageState extends State<PortofolioFormPage> {
                 ),
               ),
               const SizedBox(width: 8),
-              Icon(
+              const Icon(
                 Iconsax.arrow_right_3,
                 size: 20,
               )

@@ -27,10 +27,10 @@ class _InformasiPribadiState extends State<InformasiPribadi> {
           title: "Informasi Pribadi",
           subtitle: "Lengkapi form berikut dengan benar untuk melanjutkan.",
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         GridView(
           shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,

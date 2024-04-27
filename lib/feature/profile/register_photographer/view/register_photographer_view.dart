@@ -8,6 +8,6 @@ class RegisterPhotographer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RegisterPhotographerWidget();
+    return const RegisterPhotographerWidget();
   }
 }

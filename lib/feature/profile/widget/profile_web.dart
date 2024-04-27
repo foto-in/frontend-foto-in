@@ -24,9 +24,9 @@ class _ProfileWebState extends State<ProfileWeb> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          NavigationCustom(),
+          const NavigationCustom(),
           Container(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 1500,
             ),
             width: double.infinity,
@@ -49,11 +49,11 @@ class _ProfileWebState extends State<ProfileWeb> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     menu(),
-                    SizedBox(width: 40),
+                    const SizedBox(width: 40),
                     Expanded(child: menuPage[menus.indexOf(activeMenu)]),
-                    SizedBox(width: 40),
+                    const SizedBox(width: 40),
                     activeMenu != menus[2]
-                        ? RegisterPhotographerBanner()
+                        ? const RegisterPhotographerBanner()
                         : Container(),
                   ],
                 ),
@@ -68,13 +68,13 @@ class _ProfileWebState extends State<ProfileWeb> {
   Container menu() {
     return Container(
       clipBehavior: Clip.antiAlias,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxWidth: 300,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: Color(0xffF5F5F5),
+          color: const Color(0xffF5F5F5),
           width: 1.5,
         ),
       ),
@@ -131,7 +131,7 @@ final List<ProfileMenuItemModel> menus = [
 ];
 
 final List<Widget> menuPage = [
-  EditProfileForm(),
-  ResetPasswordForm(),
-  PortofolioPage()
+  const EditProfileForm(),
+  const ResetPasswordForm(),
+  const PortofolioPage()
 ];

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -50,7 +49,7 @@ class RegisterPhotographerBanner extends StatelessWidget {
 
           // Text
           Container(
-            padding: EdgeInsets.all(32),
+            padding: const EdgeInsets.all(32),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -60,9 +59,9 @@ class RegisterPhotographerBanner extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 ConstrainedBox(
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     maxWidth: 320,
                   ),
                   child: Text(
@@ -72,14 +71,14 @@ class RegisterPhotographerBanner extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 FotoInButton(
                   text: "Bergabung menjadi Fotografer",
                   onPressed: () {
                     Navigator.of(context).pushNamed('/register_photographer');
                   },
                   backgroundColor: AppColor.secondary,
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 15,
                     vertical: 9,
                   ),

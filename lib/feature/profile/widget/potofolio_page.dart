@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/profile/portofolio/widget/portofolio_form_page.dart';
@@ -13,14 +11,14 @@ class PortofolioPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView(
       shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 24,
         mainAxisSpacing: 24,
         mainAxisExtent: 250,
       ),
       children: [
-        PortofolioCard(),
+        const PortofolioCard(),
         addPortofolio(context),
       ],
     );
@@ -37,16 +35,17 @@ class PortofolioPage extends StatelessWidget {
               surfaceTintColor: Colors.transparent,
               child: Container(
                 clipBehavior: Clip.antiAlias,
-                child: Material(
-                  child: Padding(
-                    padding: const EdgeInsets.all(40),
-                    child: PortofolioFormPage(),
-                  ),
-                  color: Colors.white,
-                ),
-                constraints: BoxConstraints(maxWidth: 620, maxHeight: 630),
+                constraints:
+                    const BoxConstraints(maxWidth: 620, maxHeight: 630),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Material(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: EdgeInsets.all(40),
+                    child: PortofolioFormPage(),
+                  ),
                 ),
               ),
             );
@@ -59,18 +58,18 @@ class PortofolioPage extends StatelessWidget {
         decoration: ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 2, color: AppColor.primary),
+            side: const BorderSide(width: 2, color: AppColor.primary),
             borderRadius: BorderRadius.circular(8),
           ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Iconsax.add,
               color: AppColor.primary,
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Text(
               'Tambah Portofolio',
               style: FotoInHeadingTypography.xxSmall(
@@ -93,7 +92,7 @@ class PortofolioCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 250,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
@@ -105,7 +104,7 @@ class PortofolioCard extends StatelessWidget {
       child: Column(
         children: [
           previewImage(),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -116,7 +115,7 @@ class PortofolioCard extends StatelessWidget {
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Pernikahan pasangan Budi dan Ani yang diadakan di tepi pantai dengan tema romantis dan alami. Foto-foto ini menampilkan momen-momen istimewa sepanjang acara pernikahan mereka, mulai dari persiapan pagi hingga pesta malam hari.',
                 style: FotoInParagraph.small(
@@ -141,16 +140,16 @@ class PortofolioCard extends StatelessWidget {
           children: [
             imageContainer(),
             Padding(
-              child: imageContainer(),
               padding: EdgeInsets.only(left: gap),
+              child: imageContainer(),
             ),
             Padding(
-              child: imageContainer(),
               padding: EdgeInsets.only(left: gap * 2),
+              child: imageContainer(),
             ),
             Padding(
-              child: imageContainer(),
               padding: EdgeInsets.only(left: gap * 3),
+              child: imageContainer(),
             ),
           ],
         );

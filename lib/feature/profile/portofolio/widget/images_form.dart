@@ -22,10 +22,10 @@ class _ImagesFormState extends State<ImagesForm> {
           title: "Tambah Portofolio",
           subtitle: "Lengkapi form berikut dengan benar.",
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         GridView(
           shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
@@ -46,7 +46,7 @@ class _ImagesFormState extends State<ImagesForm> {
       decoration: BoxDecoration(
         color: AppColor.backgroundSecondary,
         borderRadius: BorderRadius.circular(8),
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage("assets/images/image-carousel-web.png"),
           fit: BoxFit.cover,
         ),
@@ -63,17 +63,17 @@ class _ImagesFormState extends State<ImagesForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.add,
             color: AppColor.textSecondary,
           ),
-          SizedBox(height: 8),
-          Container(
+          const SizedBox(height: 8),
+          SizedBox(
+            width: 55,
             child: Text(
               "Tambah Gambar",
               style: FotoInLabelTypography.small(color: AppColor.textSecondary),
             ),
-            width: 55,
           ),
         ],
       ),
