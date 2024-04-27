@@ -15,8 +15,6 @@ class Status extends StatefulWidget {
 }
 
 class _StatusState extends State<Status> {
-  String? status;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,11 +30,13 @@ class _StatusState extends State<Status> {
           child: Row(
             children: [
               radio(
+                context,
                 title: "Individu",
                 icon: Icons.person,
               ),
               const SizedBox(width: 16),
               radio(
+                context,
                 title: "Tim",
                 icon: Icons.people,
               ),
@@ -47,10 +47,12 @@ class _StatusState extends State<Status> {
     );
   }
 
-  Widget radio({
+  Widget radio(
+    context, {
     required String title,
     required IconData icon,
   }) {
+    String? status = Provider.of<RegisterPhotographerProvider>(context).status;
     bool isSelected = status == title;
     return Expanded(child:
         Consumer<RegisterPhotographerProvider>(builder: (context, state, _) {
@@ -60,7 +62,7 @@ class _StatusState extends State<Status> {
             setState(() {
               status = title;
             });
-            state.type = status;
+            state.status = status;
           } catch (e) {}
         },
         child: Container(

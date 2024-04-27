@@ -11,7 +11,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 class RegisterPhotographerProvider extends ChangeNotifier {
   PhotographerResponse? registerPhotographerResponse;
   Failure? failure;
-  String? type;
+  String? status;
 
   final PhotographerRepository photographerRepository =
       PhotographerRepositoryImpl(
