@@ -30,11 +30,11 @@ class LoginProvider extends ChangeNotifier {
         loginResponse = null;
         failure = l;
         notifyListeners();
-      }, (r) {
+      }, (r) async {
         failure = null;
         loginResponse = r;
         print('Token: ${r.data.token}');
-        SecureStorage().writeSecureData('token', r.data.token);
+        await SecureStorage().writeSecureData('token', r.data.token);
         notifyListeners();
       });
     } catch (e) {
@@ -47,18 +47,18 @@ class LoginProvider extends ChangeNotifier {
     }
   }
 
-  // Future<bool> isLogin() async {
-  //   isLoginVar = false;
-  //   notifyListeners();
-  //   String token = await SecureStorage().readSecureData('token');
-  //   if (token != 'No data found!') {
-  //     isLoginVar = true;
-  //     notifyListeners();
-  //     return true;
-  //   } else {
-  //     isLoginVar = false;
-  //     notifyListeners();
-  //     return false;
-  //   }
-  // }
+  Future<bool> isLogin() async {
+    isLoginVar = false;
+    notifyListeners();
+    String token = await SecureStorage().readSecureData('token');
+    if (token != 'No data found!') {
+      isLoginVar = true;
+      notifyListeners();
+      return true;
+    } else {
+      isLoginVar = false;
+      notifyListeners();
+      return false;
+    }
+  }
 }
