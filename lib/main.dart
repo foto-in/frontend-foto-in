@@ -11,6 +11,8 @@ import 'package:foto_in/feature/galeri/presentation/widgets/galeri_card.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_details_widgets.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_widgets.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
+import 'package:foto_in/feature/home/presentation/widgets/mobile/home_widgets.dart';
+import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
 import 'package:foto_in/feature/order_user/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/user_order_web.dart';
@@ -54,7 +56,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         home: const Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: BookingWidgets(),
+          body: NavigationBarMobile(),
         ),
       ),
     );
