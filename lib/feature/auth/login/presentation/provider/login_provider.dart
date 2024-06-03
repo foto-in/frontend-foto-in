@@ -29,10 +29,12 @@ class LoginProvider extends ChangeNotifier {
       result.fold((l) {
         loginResponse = null;
         failure = l;
+        isLoginVar = false;
         notifyListeners();
       }, (r) async {
         failure = null;
         loginResponse = r;
+        isLoginVar = true;
         print('Token: ${r.data.token}');
         await SecureStorage().writeSecureData('token', r.data.token);
         notifyListeners();

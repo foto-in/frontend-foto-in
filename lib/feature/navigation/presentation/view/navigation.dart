@@ -75,7 +75,6 @@ class _NavigationCustom extends State<NavigationCustom> {
           Consumer<LoginProvider>(
             builder: (context, state, _) {
               print(state.isLoginVar);
-              print(state.isLogin());
 
               if (state.isLoginVar) {
                 return Text("Suda Login");
