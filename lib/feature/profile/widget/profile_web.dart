@@ -5,7 +5,7 @@ import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/feature/profile/widget/edit_profile_form.dart';
 import 'package:foto_in/feature/profile/widget/potofolio_page.dart';
 import 'package:foto_in/feature/profile/widget/profile_menu_item.dart';
-import 'package:foto_in/feature/profile/widget/register_photographer_banner.dart';
+import 'package:foto_in/feature/profile/widget/register_photographer_banner_web.dart';
 import 'package:foto_in/feature/profile/widget/reset_password_form.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -53,7 +53,7 @@ class _ProfileWebState extends State<ProfileWeb> {
                     Expanded(child: menuPage[menus.indexOf(activeMenu)]),
                     const SizedBox(width: 40),
                     activeMenu != menus[2]
-                        ? const RegisterPhotographerBanner()
+                        ? const RegisterPhotographerBannerWeb()
                         : Container(),
                   ],
                 ),

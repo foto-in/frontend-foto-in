@@ -20,6 +20,11 @@ import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/register_photograph_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_pribadi_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_tambahan_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/jenis_pemotretan_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/status_mobile.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
 import 'package:provider/provider.dart';
 
@@ -56,7 +61,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         home: const Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: NavigationBarMobile(),
+          body: MobileHomeWidgets(),
         ),
       ),
     );
