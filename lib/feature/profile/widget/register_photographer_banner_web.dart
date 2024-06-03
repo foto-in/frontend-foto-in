@@ -3,8 +3,8 @@ import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/utils/button.dart';
 
-class RegisterPhotographerBanner extends StatelessWidget {
-  const RegisterPhotographerBanner({
+class RegisterPhotographerBannerWeb extends StatelessWidget {
+  const RegisterPhotographerBannerWeb({
     super.key,
   });
 

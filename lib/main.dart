@@ -20,8 +20,14 @@ import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/register_photograph_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_pribadi_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_tambahan_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/jenis_pemotretan_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/status_mobile.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,9 +60,18 @@ class MyApp extends StatelessWidget {
           PaymentView.routeName: (context) => const PaymentView(),
         },
         title: 'Flutter Demo',
-        home: const Scaffold(
+        home: Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: NavigationBarMobile(),
+          body: ResponsiveBuilder(
+            builder: (context, sizingInformation) {
+              if (sizingInformation.deviceScreenType ==
+                  DeviceScreenType.desktop) {
+                return const Beranda();
+              } else {
+                return const NavigationBarMobile();
+              }
+            },
+          ),
         ),
       ),
     );

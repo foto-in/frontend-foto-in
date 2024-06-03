@@ -9,7 +9,7 @@ abstract class AppColor {
   static final backgroundTertiary = _FotoInColor.light.shade100;
 
   static const textPrimary = Color(0xff1f2328);
-  static const textSecondary = Color(0xffD1D7E6);
+  static const textSecondary = Color(0xff5C707E);
   static const textTeriary = Color(0xffCAD2D7);
   static final blackWithOpacity = const Color(0xff000000).withOpacity(0.1);
 

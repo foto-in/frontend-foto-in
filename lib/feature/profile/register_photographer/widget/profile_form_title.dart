@@ -6,11 +6,11 @@ class ProfileFormTitle extends StatelessWidget {
   const ProfileFormTitle({
     super.key,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
   });
 
   final String title;
-  final String subtitle;
+  final String? subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +23,14 @@ class ProfileFormTitle extends StatelessWidget {
             color: AppColor.textPrimary,
           ),
         ),
-        const SizedBox(height: 8),
-        Text(
-          subtitle,
-          style: FotoInParagraph.small(
-            color: AppColor.textSecondary,
+        if (subtitle != null) const SizedBox(height: 8),
+        if (subtitle != null)
+          Text(
+            subtitle!,
+            style: FotoInParagraph.small(
+              color: AppColor.textSecondary,
+            ),
           ),
-        ),
       ],
     );
   }

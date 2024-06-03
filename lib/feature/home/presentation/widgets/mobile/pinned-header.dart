@@ -50,6 +50,8 @@ class PinnedHeaderDelegate extends SliverPersistentHeaderDelegate {
   @override
   double get minExtent => 88; // Height of the pinned widget
 
+  bool get overLapsContent => false;
+
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return _needsRebuild;
