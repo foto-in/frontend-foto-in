@@ -27,6 +27,7 @@ import 'package:foto_in/feature/profile/register_photographer/widget/mobile/jeni
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/status_mobile.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,9 +60,18 @@ class MyApp extends StatelessWidget {
           PaymentView.routeName: (context) => const PaymentView(),
         },
         title: 'Flutter Demo',
-        home: const Scaffold(
+        home: Scaffold(
           backgroundColor: Color(0xffFFFFFF),
-          body: MobileHomeWidgets(),
+          body: ResponsiveBuilder(
+            builder: (context, sizingInformation) {
+              if (sizingInformation.deviceScreenType ==
+                  DeviceScreenType.desktop) {
+                return const Beranda();
+              } else {
+                return const NavigationBarMobile();
+              }
+            },
+          ),
         ),
       ),
     );

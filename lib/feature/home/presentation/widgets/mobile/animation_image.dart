@@ -26,6 +26,7 @@ class _AnimationSwitcherWidgetsState extends State<AnimationSwitcherWidgets> {
 
   void _startAutoSwitch() {
     Future.delayed(const Duration(seconds: 5), () {
+      if (!mounted) return;
       setState(() {
         _currentImageIndex = (_currentImageIndex + 1) % _images.length;
       });
