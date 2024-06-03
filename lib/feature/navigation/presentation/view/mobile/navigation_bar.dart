@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
-import 'package:foto_in/feature/home/presentation/view/beranda_mobile.dart';
 import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dart';
-import 'package:foto_in/feature/order_user/presentation/widgets/user_order_web.dart';
 import 'package:foto_in/feature/profile/view/profile_view.dart';
 
 class NavigationBarMobile extends StatefulWidget {
@@ -39,7 +38,7 @@ class _NavigationBarMobileState extends State<NavigationBarMobile> {
             NavigationDestination(
               icon: SvgPicture.asset('assets/icons/find-outline.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/find-filled.svg'),
-              label: 'Cari',
+              label: 'Galeri',
             ),
             NavigationDestination(
               icon: SvgPicture.asset('assets/icons/invoice-outline.svg'),
@@ -55,7 +54,7 @@ class _NavigationBarMobileState extends State<NavigationBarMobile> {
         ),
         body: <Widget>[
           const Beranda(),
-          const Text('Cari'),
+          const GaleriView(),
           const UserOrderView(),
           const ProfileView(),
         ][_currentImageIndex]);
