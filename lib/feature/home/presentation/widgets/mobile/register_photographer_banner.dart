@@ -4,8 +4,11 @@ import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 
 class RegisterPhotographerBannerMobile extends StatelessWidget {
+  final Function()? onPressed;
+
   const RegisterPhotographerBannerMobile({
     super.key,
+    required this.onPressed,
   });
 
   @override
@@ -53,7 +56,7 @@ class RegisterPhotographerBannerMobile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: onPressed,
                     child: Text(
                       "Daftar Sekarang",
                       style: FotoInHeadingTypography.xxSmall(

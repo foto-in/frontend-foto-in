@@ -137,7 +137,9 @@ class MobileHomeWidgets extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  child: RegisterPhotographerBannerMobile(),
+                  child: RegisterPhotographerBannerMobile(
+                    onPressed: () {},
+                  ),
                 )
               ],
             )),
