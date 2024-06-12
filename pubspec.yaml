@@ -8,25 +8,27 @@ environment:
   sdk: ">=3.2.4 <4.0.0"
 
 dependencies:
+  auto_height_grid_view: ^1.0.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   data_connection_checker_tv: ^0.3.5-nullsafety
   dio: ^5.4.3+1
   ficonsax: ^0.0.3
+  fluentui_system_icons: ^1.1.239
   flutter:
     sdk: flutter
+  flutter_layout_grid: ^2.0.7
+  flutter_rating_bar: ^4.0.1
   flutter_secure_storage: ^9.0.0
+  flutter_svg: ^2.0.10+1
   google_fonts: ^6.2.1
   iconsax: ^0.0.8
   internet_connection_checker_plus: ^2.3.0
-  syncfusion_flutter_datepicker: ^25.1.41
   intl: ^0.19.0
-  flutter_rating_bar: ^4.0.1
+  lottie: ^3.1.0
   provider: ^6.1.2
   responsive_builder: ^0.7.0
-  lottie: ^3.1.0
-  fluentui_system_icons: ^1.1.239
-  flutter_svg: ^2.0.10+1
+  syncfusion_flutter_datepicker: ^25.1.41
 
 dev_dependencies:
   flutter_lints: ^2.0.0

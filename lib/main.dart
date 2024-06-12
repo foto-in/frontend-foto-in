@@ -6,9 +6,11 @@ import 'package:foto_in/feature/auth/register/presentation/view/register_view.da
 import 'package:foto_in/feature/booking/presentation/widgets/booking_widgets.dart';
 import 'package:foto_in/feature/booking_detail/presentation/presentation/booking_detail_provider.dart';
 import 'package:foto_in/feature/booking_detail/presentation/view/booking_detail_view.dart';
+import 'package:foto_in/feature/galeri/galeri_details/full_screen_photo/presentation/view/full_screen_photo_view.dart';
+import 'package:foto_in/feature/galeri/galeri_details/presentation/view/galeri_details_view.dart';
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_card.dart';
-import 'package:foto_in/feature/galeri/presentation/widgets/galeri_details_widgets.dart';
+import 'package:foto_in/feature/galeri/galeri_details/presentation/widgets/galeri_details_widgets.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_widgets.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/home_widgets.dart';
@@ -55,7 +57,9 @@ class MyApp extends StatelessWidget {
               const RegisterPhotographer(),
           OderDetailUserView.routeName: (context) => const OderDetailUserView(),
           GaleriView.routeName: (context) => const GaleriView(),
-          GaleriDetails.routeName: (context) => const GaleriDetails(),
+          GaleriDetailsView.routeName: (context) => const GaleriDetailsView(),
+          FullScreenPhotoView.routeName: (context) =>
+              const FullScreenPhotoView(),
           UserOrderView.routeName: (context) => const UserOrderView(),
           PaymentView.routeName: (context) => const PaymentView(),
         },

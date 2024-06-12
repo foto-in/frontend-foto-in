@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/image_card.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:iconsax/iconsax.dart';
 
-class GaleriDetails extends StatelessWidget {
-  static const String routeName = '/galeri-details';
-  const GaleriDetails({super.key});
+class GaleriDetailsWidget extends StatelessWidget {
+  const GaleriDetailsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +39,7 @@ class GaleriDetails extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed(GaleriView.routeName);
+                          Navigator.of(context).pop();
                         },
                         icon: const Icon(
                           Iconsax.arrow_left,
