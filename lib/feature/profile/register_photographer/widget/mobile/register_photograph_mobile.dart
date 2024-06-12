@@ -55,50 +55,65 @@ class _ProgressPageState extends State<ProgressPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 32),
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                        height: 8,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColor.primary)),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                        height: 8,
-                        width: _progress,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColor.secondary,
-                        )),
-                  ),
-                ],
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 32, bottom: 20),
+              child: progressBar(),
+            ),
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                children: _createPage(),
               ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  children: _createPage(),
-                ),
-              ),
-              formNavigation()
-            ],
-          ),
+            ),
+            formNavigation()
+          ],
         ),
       ),
     );
   }
 
+  Stack progressBar() {
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            height: 8,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: AppColor.primary),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: AnimatedContainer(
+            height: 8,
+            width: _progress,
+            curve: Curves.easeInOut,
+            duration: const Duration(milliseconds: 300),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: AppColor.secondary,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   List<Widget> _createPage() {
-    return widgets;
+    return widgets
+        .map(
+          (e) => Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: e,
+          ),
+        )
+        .toList();
   }
 
   void _moveNextPage() {
@@ -110,64 +125,67 @@ class _ProgressPageState extends State<ProgressPage> {
     }
   }
 
-  Row formNavigation() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        FotoInTextButton(
+  Widget formNavigation() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          FotoInTextButton(
+              onTap: () {
+                if (_currentPage > 0) {
+                  _currentPage = _currentPage - 1;
+                  _pageController.previousPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                } else {
+                  Navigator.pop(context);
+                }
+              },
+              child: Row(
+                children: [
+                  const Icon(
+                    Iconsax.arrow_left_2,
+                    size: 20,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    "Kembali",
+                    style: FotoInSubHeadingTypography.medium(
+                      color: AppColor.textPrimary,
+                    ),
+                  ),
+                ],
+              )),
+          FotoInTextButton(
             onTap: () {
-              if (_currentPage > 0) {
-                _currentPage = _currentPage - 1;
-                _pageController.previousPage(
+              if (_currentPage < widgets.length - 1) {
+                _currentPage = _currentPage + 1;
+                _pageController.nextPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
-              } else {
-                Navigator.pop(context);
               }
             },
             child: Row(
               children: [
-                const Icon(
-                  Iconsax.arrow_left_2,
-                  size: 20,
-                ),
-                const SizedBox(width: 8),
                 Text(
-                  "Kembali",
+                  "Selanjutnya",
                   style: FotoInSubHeadingTypography.medium(
                     color: AppColor.textPrimary,
                   ),
                 ),
+                const SizedBox(width: 8),
+                const Icon(
+                  Iconsax.arrow_right_3,
+                  size: 20,
+                )
               ],
-            )),
-        FotoInTextButton(
-          onTap: () {
-            if (_currentPage < widgets.length - 1) {
-              _currentPage = _currentPage + 1;
-              _pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            }
-          },
-          child: Row(
-            children: [
-              Text(
-                "Selanjutnya",
-                style: FotoInSubHeadingTypography.medium(
-                  color: AppColor.textPrimary,
-                ),
-              ),
-              const SizedBox(width: 8),
-              const Icon(
-                Iconsax.arrow_right_3,
-                size: 20,
-              )
-            ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
