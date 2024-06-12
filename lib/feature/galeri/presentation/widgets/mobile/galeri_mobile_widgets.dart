@@ -1,13 +1,8 @@
 import 'package:auto_height_grid_view/auto_height_grid_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:foto_in/core/styles/colors.dart';
-import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/mobile/galeri_item.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
-import 'package:iconsax/iconsax.dart';
 
 class GaleriMobileWidget extends StatelessWidget {
   const GaleriMobileWidget({super.key});
