@@ -4,6 +4,7 @@ import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_pribadi_mobile.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_tambahan_mobile.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/jenis_pemotretan_mobile.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/mobile/portofolio.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/status_mobile.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,6 +14,7 @@ List<Widget> widgets = [
   JenisPemotretanMobile(),
   InformasiPribadiMobile(),
   InformasiTambahanMobile(),
+  PortofolioPageMobile()
 ];
 
 class ProgressPage extends StatefulWidget {

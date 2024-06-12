@@ -20,6 +20,7 @@ import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dar
 import 'package:foto_in/feature/order_user/presentation/widgets/user_order_web.dart';
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
+import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/register_photograph_mobile.dart';
@@ -49,17 +50,27 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         routes: {
+          // Auth
           LoginView.routeName: (context) => const LoginView(),
           RegisterView.routeName: (context) => const RegisterView(),
+
+          // Home
           Beranda.routeName: (context) => const Beranda(),
+
+          // Portofolio
           ProfileView.routeName: (context) => const ProfileView(),
           RegisterPhotographer.routeName: (context) =>
               const RegisterPhotographer(),
-          OderDetailUserView.routeName: (context) => const OderDetailUserView(),
+          AddPortofolioView.routeName: (context) => const AddPortofolioView(),
+
+          // Galeri
           GaleriView.routeName: (context) => const GaleriView(),
           GaleriDetailsView.routeName: (context) => const GaleriDetailsView(),
           FullScreenPhotoView.routeName: (context) =>
               const FullScreenPhotoView(),
+
+          // Booking
+          OderDetailUserView.routeName: (context) => const OderDetailUserView(),
           UserOrderView.routeName: (context) => const UserOrderView(),
           PaymentView.routeName: (context) => const PaymentView(),
         },

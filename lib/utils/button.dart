@@ -102,6 +102,8 @@ class FotoInButton extends StatelessWidget {
     this.textStyle,
     this.width,
     this.margin,
+    this.leading,
+    this.border = BorderSide.none,
   });
 
   final Color backgroundColor;
@@ -113,6 +115,8 @@ class FotoInButton extends StatelessWidget {
   final TextStyle? textStyle;
   final double? width;
   final EdgeInsets? margin;
+  final Widget? leading;
+  final BorderSide border;
 
   @override
   Widget build(BuildContext context) {
@@ -128,11 +132,19 @@ class FotoInButton extends StatelessWidget {
           splashFactory: NoSplash.splashFactory,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
+            side: border,
           ),
         ),
-        child: Text(
-          text,
-          style: textStyle ?? FotoInHeadingTypography.xxSmall(color: textColor),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            leading ?? Container(),
+            Text(
+              text,
+              style: textStyle ??
+                  FotoInHeadingTypography.xxSmall(color: textColor),
+            ),
+          ],
         ),
       ),
     );
