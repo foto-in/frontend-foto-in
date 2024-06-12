@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
-import 'package:foto_in/feature/profile/widget/portofolio_card.dart';
+import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:iconsax/iconsax.dart';
 

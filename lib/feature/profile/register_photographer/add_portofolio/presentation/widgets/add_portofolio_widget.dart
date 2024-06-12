@@ -1,6 +1,5 @@
 import 'package:auto_height_grid_view/auto_height_grid_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
@@ -108,7 +107,9 @@ class AddPortofolioWidget extends StatelessWidget {
                       // Button
                       FotoInButton(
                         text: "Tambahkan",
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         width: double.infinity,
                         margin: const EdgeInsets.symmetric(vertical: 40),
                       )

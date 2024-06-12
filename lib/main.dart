@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:foto_in/core/token/SecureStorage.dart';
 import 'package:foto_in/feature/auth/login/presentation/provider/login_provider.dart';
 import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
+import 'package:foto_in/feature/auth/presentation/auth_view.dart';
+import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
 import 'package:foto_in/feature/booking/presentation/widgets/booking_widgets.dart';
@@ -23,12 +26,7 @@ import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dar
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/mobile/register_photograph_mobile.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_pribadi_mobile.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_tambahan_mobile.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/mobile/jenis_pemotretan_mobile.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/mobile/status_mobile.dart';
-import 'package:foto_in/feature/profile/view/profile_view.dart';
+import 'package:foto_in/feature/profile/presentation/view/profile_view.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -36,13 +34,20 @@ void main() {
   runApp(const MyApp());
 }
 
+final SecureStorage secureStorage = SecureStorage();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => RegisterProvider()),
+        // Auth
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        // ChangeNotifierProvider(
+        //     create: (context) => RegisterProvider(
+        //           secureStorage: secureStorage,
+        //         )),
         ChangeNotifierProvider(create: (context) => LoginProvider()),
         ChangeNotifierProvider(create: (context) => BookingDetailProvider()),
         ChangeNotifierProvider(
@@ -55,6 +60,8 @@ class MyApp extends StatelessWidget {
           RegisterView.routeName: (context) => const RegisterView(),
 
           // Home
+          NavigationBarMobile.routeName: (context) =>
+              const NavigationBarMobile(),
           Beranda.routeName: (context) => const Beranda(),
 
           // Portofolio
@@ -83,7 +90,8 @@ class MyApp extends StatelessWidget {
                   DeviceScreenType.desktop) {
                 return const Beranda();
               } else {
-                return const NavigationBarMobile();
+                // return const NavigationBarMobile();
+                return AuthView();
               }
             },
           ),

@@ -6,16 +6,19 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
-import 'package:foto_in/feature/profile/widget/mobile/profile_menu_item.dart';
+import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
+import 'package:provider/provider.dart';
 
 class ProfileMobile extends StatelessWidget {
   const ProfileMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final AuthProvider authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.backgroundPrimary,
       body: SafeArea(
@@ -127,33 +130,37 @@ class ProfileMobile extends StatelessWidget {
                       },
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 20,
-                    ),
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                          horizontal: 24,
+                  Consumer<AuthProvider>(builder: (context, authProvider, _) {
+                    return Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 20,
+                      ),
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 16,
+                            horizontal: 24,
+                          ),
+                          backgroundColor: AppColor.backgroundPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(color: AppColor.red600),
+                          ),
                         ),
-                        backgroundColor: AppColor.backgroundPrimary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: BorderSide(color: AppColor.red600),
+                        onPressed: () {
+                          authProvider.logout();
+                        },
+                        child: Text(
+                          "Keluar",
+                          style: FotoInHeadingTypography.xxSmall(
+                            color: AppColor.red600,
+                          ),
                         ),
                       ),
-                      onPressed: () {},
-                      child: Text(
-                        "Keluar",
-                        style: FotoInHeadingTypography.xxSmall(
-                          color: AppColor.red600,
-                        ),
-                      ),
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               ),
             ),

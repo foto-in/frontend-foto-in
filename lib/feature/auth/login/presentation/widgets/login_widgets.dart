@@ -2,8 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/core/token/SecureStorage.dart';
+import 'package:foto_in/data/auth/model/LoginRequest.dart';
+import 'package:foto_in/feature/auth/login/presentation/provider/login_provider.dart';
+import 'package:foto_in/feature/auth/provider/auth_provider.dart';
+import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
+import 'package:foto_in/feature/home/presentation/view/beranda.dart';
+import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -16,6 +24,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   var isObsecure = true;
   var tfEmailController = TextEditingController();
   var tfPasswordController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   Function get onPressed => () {
         setState(() {
           isObsecure = !isObsecure;
@@ -32,14 +43,17 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _content(),
+      body: SafeArea(
+        child: _content(),
+      ),
     );
   }
 
-  Center _content() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
+  Widget _content() {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Form(
+        key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -122,7 +136,32 @@ class _LoginWidgetState extends State<LoginWidget> {
             BtnPrimary(
               radius: 8,
               tvButton: "Masuk",
-              onPressed: () {},
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  final LoginProvider loginProvider =
+                      Provider.of<LoginProvider>(context, listen: false);
+                  final AuthProvider authProvider =
+                      Provider.of<AuthProvider>(context, listen: false);
+
+                  _formKey.currentState!.save();
+                  await loginProvider.login(
+                    loginRequest: LoginRequest(
+                      username: tfEmailController.text,
+                      password: tfPasswordController.text,
+                    ),
+                  );
+
+                  if (loginProvider.failure != null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Gagal Login"),
+                      ),
+                    );
+                  } else {
+                    await authProvider.update();
+                  }
+                }
+              },
             ),
             const SizedBox(
               height: 20,
@@ -160,7 +199,8 @@ class _LoginWidgetState extends State<LoginWidget> {
             BtnPrimaryWhite(
               tvButton: "Daftar",
               onPressed: () {
-                Navigator.pushNamed(context, '/register');
+                Provider.of<AuthProvider>(context, listen: false)
+                    .changeAuthState(AuthState.register);
               },
             ),
           ],

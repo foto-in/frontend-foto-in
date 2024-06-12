@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
-import 'package:foto_in/feature/profile/widget/edit_profile_form.dart';
-import 'package:foto_in/feature/profile/widget/potofolio_page.dart';
-import 'package:foto_in/feature/profile/widget/profile_menu_item.dart';
-import 'package:foto_in/feature/profile/widget/register_photographer_banner_web.dart';
-import 'package:foto_in/feature/profile/widget/reset_password_form.dart';
+import 'package:foto_in/feature/profile/presentation/widget/edit_profile_form.dart';
+import 'package:foto_in/feature/profile/presentation/widget/potofolio_page.dart';
+import 'package:foto_in/feature/profile/presentation/widget/profile_menu_item.dart';
+import 'package:foto_in/feature/profile/presentation/widget/register_photographer_banner_web.dart';
+import 'package:foto_in/feature/profile/presentation/widget/reset_password_form.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileWeb extends StatefulWidget {
