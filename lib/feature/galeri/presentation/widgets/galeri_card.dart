@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/galeri/presentation/widgets/galeri_details_widgets.dart';
+import 'package:foto_in/feature/galeri/galeri_details/presentation/view/galeri_details_view.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GaleriCard extends StatelessWidget {
@@ -12,7 +12,7 @@ class GaleriCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
-          GaleriDetails.routeName,
+          GaleriDetailsView.routeName,
         );
       },
       child: Container(

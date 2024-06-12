@@ -101,6 +101,7 @@ class FotoInButton extends StatelessWidget {
     this.padding = const EdgeInsets.all(16),
     this.textStyle,
     this.width,
+    this.margin,
   });
 
   final Color backgroundColor;
@@ -111,10 +112,12 @@ class FotoInButton extends StatelessWidget {
   final EdgeInsets padding;
   final TextStyle? textStyle;
   final double? width;
+  final EdgeInsets? margin;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      margin: margin,
       width: width,
       child: ElevatedButton(
         onPressed: onPressed,
@@ -135,7 +138,6 @@ class FotoInButton extends StatelessWidget {
     );
   }
 }
-
 
 class FotoInTextButton extends StatelessWidget {
   const FotoInTextButton({
@@ -160,6 +162,7 @@ class FotoInTextButton extends StatelessWidget {
     );
   }
 }
+
 class ActionButton extends FotoInButton {
   const ActionButton({
     super.key,

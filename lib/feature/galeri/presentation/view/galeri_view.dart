@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/feature/galeri/presentation/widgets/galeri_widgets.dart';
+import 'package:foto_in/feature/galeri/presentation/widgets/mobile/galeri_mobile_widgets.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class GaleriView extends StatelessWidget {
   static const String routeName = '/galeri';
@@ -7,6 +9,12 @@ class GaleriView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GaleriWidgets();
+    return ResponsiveBuilder(builder: (context, sizingInformation) {
+      if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+        return const GaleriWidgets();
+      } else {
+        return const GaleriMobileWidget();
+      }
+    });
   }
 }
