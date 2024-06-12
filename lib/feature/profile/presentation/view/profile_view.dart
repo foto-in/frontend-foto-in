@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foto_in/feature/profile/widget/mobile/profile_mobile.dart';
-import 'package:foto_in/feature/profile/widget/profile_web.dart';
+import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_mobile.dart';
+import 'package:foto_in/feature/profile/presentation/widget/profile_web.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ProfileView extends StatelessWidget {

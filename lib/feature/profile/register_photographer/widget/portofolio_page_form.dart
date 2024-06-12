@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
-import 'package:foto_in/feature/profile/widget/potofolio_page.dart';
+import 'package:foto_in/feature/profile/presentation/widget/potofolio_page.dart';
 
 class PortofolioPageForm extends StatelessWidget {
   const PortofolioPageForm({super.key});

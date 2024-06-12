@@ -5,9 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dart';
-import 'package:foto_in/feature/profile/view/profile_view.dart';
+import 'package:foto_in/feature/profile/presentation/view/profile_view.dart';
 
 class NavigationBarMobile extends StatefulWidget {
+  static const routeName = '/navigation_bar';
   const NavigationBarMobile({super.key});
 
   @override

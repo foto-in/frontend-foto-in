@@ -26,15 +26,15 @@ class LoginProvider extends ChangeNotifier {
 
       final result = await repository.login(loginRequest: loginRequest);
 
-      result.fold((l) {
+      await result.fold((l) {
         loginResponse = null;
         failure = l;
         notifyListeners();
-      }, (r) {
+      }, (r) async {
         failure = null;
         loginResponse = r;
         print('Token: ${r.data.token}');
-        SecureStorage().writeSecureData('token', r.data.token);
+        await SecureStorage().writeSecureData('token', r.data.token);
         notifyListeners();
       });
     } catch (e) {

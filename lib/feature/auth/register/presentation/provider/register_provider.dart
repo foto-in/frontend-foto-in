@@ -2,19 +2,21 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/failure.dart';
+import 'package:foto_in/core/token/SecureStorage.dart';
 import 'package:foto_in/data/auth/datasource/remote/auth_remote_datasource.dart';
 import 'package:foto_in/data/auth/model/RegisterRequest.dart';
 import 'package:foto_in/data/auth/model/RegisterResponse.dart';
 import 'package:foto_in/data/auth/repository/auth_repository.dart';
+import 'package:foto_in/main.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 class RegisterProvider extends ChangeNotifier {
   RegisterResponse? registerResponse;
   Failure? failure;
 
-  RegisterProvider({this.registerResponse, this.failure});
+  RegisterProvider();
 
-  void register({required RegisterRequest registerRequest}) async {
+  Future<void> register({required RegisterRequest registerRequest}) async {
     try {
       RepositoryImpl repository = RepositoryImpl(
         remoteDataSource: AuthRemoteDataSourceImpl(dio: Dio()),
@@ -24,11 +26,13 @@ class RegisterProvider extends ChangeNotifier {
       final result =
           await repository.register(registerRequest: registerRequest);
 
-      result.fold((l) {
+      await result.fold((l) {
         failure = l;
         notifyListeners();
       }, (r) {
         registerResponse = r;
+        print('Token: ${r.data}');
+        // secureStorage.writeSecureData('token',);
         notifyListeners();
       });
     } catch (e) {
