@@ -9,6 +9,7 @@ import 'package:foto_in/feature/auth/register/presentation/view/register_view.da
 import 'package:foto_in/feature/booking/presentation/widgets/booking_widgets.dart';
 import 'package:foto_in/feature/booking_detail/presentation/presentation/booking_detail_provider.dart';
 import 'package:foto_in/feature/booking_detail/presentation/view/booking_detail_view.dart';
+import 'package:foto_in/feature/fotografer/presentation/view/fotografer_detail_view.dart';
 import 'package:foto_in/feature/galeri/galeri_details/full_screen_photo/presentation/view/full_screen_photo_view.dart';
 import 'package:foto_in/feature/galeri/galeri_details/presentation/view/galeri_details_view.dart';
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
@@ -63,6 +64,10 @@ class MyApp extends StatelessWidget {
           NavigationBarMobile.routeName: (context) =>
               const NavigationBarMobile(),
           Beranda.routeName: (context) => const Beranda(),
+
+          // Fotografer Detail
+          FotograferDetailView.routeName: (context) =>
+              const FotograferDetailView(),
 
           // Portofolio
           ProfileView.routeName: (context) => const ProfileView(),
