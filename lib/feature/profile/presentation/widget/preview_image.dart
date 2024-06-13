@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/feature/profile/presentation/widget/image_container.dart';
-import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 
 class PreviewImage extends StatelessWidget {
   final int count;

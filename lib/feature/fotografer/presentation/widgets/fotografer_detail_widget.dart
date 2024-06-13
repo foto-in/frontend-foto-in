@@ -1,17 +1,15 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/booking_bottom_bar.dart';
+import 'package:foto_in/feature/fotografer/presentation/widgets/fotografer_kamera.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/fotografer_tag.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/photographer_achievement.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/portofolio_card_small.dart';
-import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
-import 'package:foto_in/feature/profile/presentation/widget/preview_image.dart';
-import 'package:foto_in/utils/button.dart';
-import 'package:iconsax/iconsax.dart';
 
 class FotograferDetailWidget extends StatelessWidget {
   const FotograferDetailWidget({super.key});
@@ -154,7 +152,7 @@ class FotograferDetailWidget extends StatelessWidget {
                     PortofolioCardSmall(),
                     PortofolioCardSmall(),
 
-                    // Gear
+                    // Kamera
                     Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -169,37 +167,38 @@ class FotograferDetailWidget extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 16),
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: AppColor.backgroundSecondary,
-                            borderRadius: BorderRadius.circular(8),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Container(
+                        clipBehavior: Clip.none,
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: IntrinsicHeight(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              FotograferKamera(
+                                image:
+                                    "assets/images/fotografer/camera/Canon EOS 5D Mark IV Kit.png",
+                                kamera: "Canon EOS 5D Mark IV Kit",
+                              ),
+                              FotograferKamera(
+                                image:
+                                    "assets/images/fotografer/camera/Nikon D780.png",
+                                kamera: "Nikon D780",
+                              ),
+                              FotograferKamera(
+                                image:
+                                    "assets/images/fotografer/camera/Nikon D780.png",
+                                kamera: "Nikon D780",
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 16),
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: AppColor.backgroundSecondary,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 16),
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: AppColor.backgroundSecondary,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
+                    SizedBox(
+                      height: 16,
+                    )
                   ],
                 ),
               ),
