@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
 import 'package:foto_in/utils/button.dart';
 
 class BookingBottomBar extends StatelessWidget {
@@ -45,7 +46,9 @@ class BookingBottomBar extends StatelessWidget {
           ),
           FotoInButton(
             text: "Booking",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, BookingView.routeName);
+            },
             padding: EdgeInsets.symmetric(horizontal: 56, vertical: 16),
           ),
         ],

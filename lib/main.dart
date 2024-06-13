@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/token/SecureStorage.dart';
 import 'package:foto_in/feature/auth/login/presentation/provider/login_provider.dart';
 import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
@@ -6,6 +7,7 @@ import 'package:foto_in/feature/auth/presentation/auth_view.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
+import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
 import 'package:foto_in/feature/booking/presentation/widgets/booking_widgets.dart';
 import 'package:foto_in/feature/booking_detail/presentation/presentation/booking_detail_provider.dart';
 import 'package:foto_in/feature/booking_detail/presentation/view/booking_detail_view.dart';
@@ -55,6 +57,14 @@ class MyApp extends StatelessWidget {
             create: (context) => RegisterPhotographerProvider()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppColor.backgroundPrimary,
+          primarySwatch: AppColor.primary,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: AppColor.backgroundPrimary,
+            foregroundColor: AppColor.textPrimary,
+          ),
+        ),
         routes: {
           // Auth
           LoginView.routeName: (context) => const LoginView(),
@@ -68,6 +78,9 @@ class MyApp extends StatelessWidget {
           // Fotografer Detail
           FotograferDetailView.routeName: (context) =>
               const FotograferDetailView(),
+
+          // Booking
+          BookingView.routeName: (context) => const BookingView(),
 
           // Portofolio
           ProfileView.routeName: (context) => const ProfileView(),
