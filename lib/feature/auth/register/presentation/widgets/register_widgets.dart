@@ -25,6 +25,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   final TextEditingController tfUsernameController = TextEditingController();
   final TextEditingController tfEmailController = TextEditingController();
   final TextEditingController tfPasswordController = TextEditingController();
+  final TextEditingController tfConfirmPasswordController =
+      TextEditingController();
 
   Function get onPressed => () {
         setState(() {
@@ -112,7 +114,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             height: 16,
           ),
           TfPasswordType(
-            tfPasswordController: tfPasswordController,
+            tfPasswordController: tfConfirmPasswordController,
             isObsecure: isObsecure,
             hintText: "Konfirmasi Password",
             onPressed: onPressed,

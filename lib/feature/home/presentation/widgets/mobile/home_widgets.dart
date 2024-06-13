@@ -8,6 +8,7 @@ import 'package:foto_in/feature/home/presentation/widgets/mobile/animation_image
 import 'package:foto_in/feature/home/presentation/widgets/mobile/photographer_card.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/pinned-header.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
+import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 
 class MobileHomeWidgets extends StatelessWidget {
   const MobileHomeWidgets({super.key});
@@ -138,7 +139,12 @@ class MobileHomeWidgets extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: RegisterPhotographerBannerMobile(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        RegisterPhotographer.routeName,
+                      );
+                    },
                   ),
                 )
               ],
