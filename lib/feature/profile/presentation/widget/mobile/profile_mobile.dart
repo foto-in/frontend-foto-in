@@ -18,6 +18,7 @@ class ProfileMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.backgroundPrimary,
       body: SafeArea(
@@ -129,37 +130,35 @@ class ProfileMobile extends StatelessWidget {
                       },
                     ),
                   ),
-                  Consumer<AuthProvider>(builder: (context, authProvider, _) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 20,
-                      ),
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 16,
-                            horizontal: 24,
-                          ),
-                          backgroundColor: AppColor.backgroundPrimary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            side: BorderSide(color: AppColor.red600),
-                          ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 20,
+                    ),
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 24,
                         ),
-                        onPressed: () {
-                          authProvider.logout();
-                        },
-                        child: Text(
-                          "Keluar",
-                          style: FotoInHeadingTypography.xxSmall(
-                            color: AppColor.red600,
-                          ),
+                        backgroundColor: AppColor.backgroundPrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: BorderSide(color: AppColor.red600),
                         ),
                       ),
-                    );
-                  }),
+                      onPressed: () {
+                        authProvider.logout();
+                      },
+                      child: Text(
+                        "Keluar",
+                        style: FotoInHeadingTypography.xxSmall(
+                          color: AppColor.red600,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
