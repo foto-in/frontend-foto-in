@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/failure.dart';
-import 'package:foto_in/core/token/SecureStorage.dart';
 import 'package:foto_in/data/auth/datasource/remote/auth_remote_datasource.dart';
 import 'package:foto_in/data/auth/model/RegisterRequest.dart';
 import 'package:foto_in/data/auth/model/RegisterResponse.dart';
@@ -29,10 +28,10 @@ class RegisterProvider extends ChangeNotifier {
       await result.fold((l) {
         failure = l;
         notifyListeners();
-      }, (r) {
+      }, (r) async {
         registerResponse = r;
-        print('Token: ${r.data}');
-        // secureStorage.writeSecureData('token',);
+        print('Token: ${r.data.token}');
+        await secureStorage.writeSecureData('token', r.data.token);
         notifyListeners();
       });
     } catch (e) {
