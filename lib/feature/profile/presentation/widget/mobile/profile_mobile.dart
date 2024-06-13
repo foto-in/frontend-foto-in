@@ -18,7 +18,6 @@ class ProfileMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthProvider authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.backgroundPrimary,
       body: SafeArea(
