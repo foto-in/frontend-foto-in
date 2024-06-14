@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/core/token/SecureStorage.dart';
 
 // create enum of login and register state
-enum AuthState { login, register }
+enum AuthState { login, register, onboarding }
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider() {
@@ -23,7 +23,7 @@ class AuthProvider extends ChangeNotifier {
   bool isLogin = false;
 
   // auth state
-  AuthState authState = AuthState.login;
+  AuthState authState = AuthState.onboarding;
 
   // change auth state
   void changeAuthState(AuthState state) {
@@ -37,7 +37,7 @@ class AuthProvider extends ChangeNotifier {
     isLogin = _isLogin;
 
     if (!isLogin) {
-      authState = AuthState.login;
+      authState = AuthState.onboarding;
     }
 
     isLoading = false;
