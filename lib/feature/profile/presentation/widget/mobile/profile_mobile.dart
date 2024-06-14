@@ -8,9 +8,11 @@ import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
+import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 class ProfileMobile extends StatelessWidget {
@@ -101,16 +103,32 @@ class ProfileMobile extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: const Column(
+                    child: Column(
                       children: [
                         ProfileMenuItem(
-                          leadingIcon: Icons.lock,
-                          title: "Ubah Password",
+                          leadingIcon: Iconsax.task,
+                          title: "Pesanan",
+                          trailingIcon: Icons.arrow_forward_ios,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              FotograferOrderView.routeName,
+                            );
+                          },
+                        ),
+                        ProfileMenuItem(
+                          leadingIcon: Iconsax.notification5,
+                          title: "Notifikasi",
                           trailingIcon: Icons.arrow_forward_ios,
                         ),
                         ProfileMenuItem(
-                          leadingIcon: Icons.lock,
-                          title: "Ubah Password",
+                          leadingIcon: Iconsax.global5,
+                          title: "Bahasa",
+                          trailingIcon: Icons.arrow_forward_ios,
+                        ),
+                        ProfileMenuItem(
+                          leadingIcon: Iconsax.message_question5,
+                          title: "Bantuan",
                           trailingIcon: Icons.arrow_forward_ios,
                         ),
                       ],

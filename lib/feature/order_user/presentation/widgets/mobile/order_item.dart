@@ -2,20 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/order_user/order_user_detail/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_info.dart';
 
 class OrderItem extends StatelessWidget {
+  final void Function() onTap;
+
   const OrderItem({
     super.key,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, OrderUserDetailView.routeName);
-      },
+      // onTap: () {
+      //   Navigator.pushNamed(context, OrderUserDetailView.routeName);
+      // },
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(
           left: 16,
