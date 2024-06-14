@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class BookingRequest {
   final String photographerId;
   final String acara;

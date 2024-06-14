@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations
+
 import 'package:flutter/material.dart';
 
 abstract class AppColor {
@@ -20,7 +22,7 @@ abstract class AppColor {
   static final green600 = _FotoInColor.green.shade600;
   static final yellow = _FotoInColor.yellow;
 
-  static final border = Color(0xFFF5F5F5);
+  static final border = const Color(0xFFF5F5F5);
 }
 
 abstract class _FotoInColor {

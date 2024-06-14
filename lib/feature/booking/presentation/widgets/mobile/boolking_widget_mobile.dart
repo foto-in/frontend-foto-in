@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -22,6 +21,7 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  @override
   void initState() {
     super.initState();
     _selectedController.text = _selectedDate;
@@ -74,13 +74,13 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
   final TextEditingController _selectedController = TextEditingController();
   final TextEditingController _tfEditingJenisAcara = TextEditingController();
   final TextEditingController _tfEditingLokasiAcara = TextEditingController();
-  final TextEditingController _tfEditingTanggalAcara = TextEditingController();
   final TextEditingController _tfEditingDurasi = TextEditingController();
   final TextEditingController _tfEditingWaktuMulai = TextEditingController();
   final TextEditingController _tfEditingKonsep = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.backgroundPrimary,
       appBar: AppBar(
         backgroundColor: AppColor.backgroundPrimary,
@@ -88,15 +88,16 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
           color: AppColor.textPrimary,
         ),
         centerTitle: true,
-        title: Text('Booking'),
+        title: const Text('Booking'),
       ),
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
                 child: Form(
+              key: _formKey,
               child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   Text(
                     "Jenis Acara",
@@ -270,7 +271,7 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                                                                 color: AppColor
                                                                     .textPrimary),
                                                   ),
-                                                  dayFormat: 'EEE',
+                                                  dayFormat: 'E',
                                                   weekNumberStyle:
                                                       DateRangePickerWeekNumberStyle(
                                                           textStyle: FotoInSubHeadingTypography
@@ -337,6 +338,79 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                   const SizedBox(
                     height: 16,
                   ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Durasi(Jam)",
+                              style: FotoInSubHeadingTypography.small(
+                                  color: AppColor.textPrimary),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            TfFotoin(
+                                controller: _tfEditingDurasi,
+                                hintText: "Durasi(Jam)",
+                                keyboardType: TextInputType.name,
+                                maxLines: 1,
+                                validator: "Durasi"),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Waktu Mulai",
+                              style: FotoInSubHeadingTypography.small(
+                                  color: AppColor.textPrimary),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: TfFotoin(
+                                      controller: _tfEditingWaktuMulai,
+                                      hintText: "08:00",
+                                      keyboardType: TextInputType.name,
+                                      maxLines: 1,
+                                      readOnly: true,
+                                      validator: "Waktu Mulai"),
+                                ),
+                                const SizedBox(
+                                  width: 4,
+                                ),
+                                InkWell(
+                                    onTap: () {
+                                      showTimePicker(
+                                        context: context,
+                                        initialTime: TimeOfDay.now(),
+                                      ).then((TimeOfDay? value) {
+                                        if (value != null) {
+                                          _tfEditingWaktuMulai.text =
+                                              value.format(context);
+                                        }
+                                      });
+                                    },
+                                    child: const Icon(Iconsax.clock_1,
+                                        color: AppColor.textPrimary))
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                   Text(
                     "Lokasi Acara",
                     style: FotoInSubHeadingTypography.small(
@@ -355,10 +429,33 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                       maxLines: 1,
                       validator: "Tempat Acara",
                       keyboardType: TextInputType.name),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    "Catatan Tambahan",
+                    style: FotoInSubHeadingTypography.small(
+                        color: AppColor.textPrimary),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  TfFotoin(
+                      controller: _tfEditingKonsep,
+                      hintText: "Konsep",
+                      maxLines: 5,
+                      validator: "Konsep",
+                      keyboardType: TextInputType.name),
                 ],
               ),
             )),
-            BookingBottomBar()
+            BookingBottomBar(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  Navigator.pop(context);
+                }
+              },
+            )
           ],
         ),
       ),
