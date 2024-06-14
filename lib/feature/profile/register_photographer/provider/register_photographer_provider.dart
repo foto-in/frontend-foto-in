@@ -20,16 +20,16 @@ class RegisterPhotographerProvider extends ChangeNotifier {
   PhotographerResponse? registerPhotographerResponse;
   ProfileResponse? profileResponse;
   Failure? failure;
-  TextEditingController namaLengkap = TextEditingController();
-  TextEditingController username = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController noTelp = TextEditingController();
-  TextEditingController noTelegram = TextEditingController();
+  final TextEditingController namaLengkap = TextEditingController();
+  final TextEditingController username = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController noTelp = TextEditingController();
+  final TextEditingController noTelegram = TextEditingController();
   String? type;
   List<String> specialization = [];
   List<TextEditingController> camera = [TextEditingController()];
-  TextEditingController startPrice = TextEditingController();
-  TextEditingController endPrice = TextEditingController();
+  final TextEditingController startPrice = TextEditingController();
+  final TextEditingController endPrice = TextEditingController();
 
   final PhotographerRepository photographerRepository =
       PhotographerRepositoryImpl(

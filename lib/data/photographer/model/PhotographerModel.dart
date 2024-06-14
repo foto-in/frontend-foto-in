@@ -1,4 +1,8 @@
+import 'package:foto_in/data/photographer/model/PortofolioDetail.dart';
+import 'package:foto_in/data/users/model/ProfileDetail.dart';
+
 class PhotographerModel {
+  final String id;
   final String userId;
   final String email;
   final String noHp;
@@ -8,9 +12,13 @@ class PhotographerModel {
   final List<String> camera;
   final int startPrice;
   final int endPrice;
-  final String id;
+  final String name;
+  final String? profileImage;
+  final List<PortofolioDetail> portofolios;
+  final ProfileDetail user;
 
   PhotographerModel({
+    required this.id,
     required this.userId,
     required this.email,
     required this.noHp,
@@ -20,11 +28,15 @@ class PhotographerModel {
     required this.camera,
     required this.startPrice,
     required this.endPrice,
-    required this.id,
+    required this.name,
+    required this.profileImage,
+    required this.portofolios,
+    required this.user,
   });
 
   factory PhotographerModel.fromJson(Map<String, dynamic> json) =>
       PhotographerModel(
+        id: json["id"],
         userId: json["user_id"],
         email: json["email"],
         noHp: json["no_hp"],
@@ -34,10 +46,15 @@ class PhotographerModel {
         camera: List<String>.from(json["camera"].map((x) => x)),
         startPrice: json["start_price"],
         endPrice: json["end_price"],
-        id: json["id"],
+        name: json["name"],
+        profileImage: json["profile_image"],
+        portofolios:
+            List<PortofolioDetail>.from(json["portofolios"].map((x) => x)),
+        user: ProfileDetail.fromJson(json["user"]),
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "user_id": userId,
         "email": email,
         "no_hp": noHp,
@@ -47,6 +64,9 @@ class PhotographerModel {
         "camera": List<dynamic>.from(camera.map((x) => x)),
         "start_price": startPrice,
         "end_price": endPrice,
-        "id": id,
+        "name": name,
+        "profile_image": profileImage,
+        "portofolios": List<dynamic>.from(portofolios.map((x) => x)),
+        "user": user.toJson(),
       };
 }

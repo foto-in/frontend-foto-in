@@ -7,3 +7,5 @@ String portofolio_path = "/portofolio";
 String photographer_path = "/photographer";
 String booking_path = "/booking";
 String user_path = "/user";
+String get_photographer_path = "/getallphotographer";
+String get_photographer_by_id_path = "/getphotographer";

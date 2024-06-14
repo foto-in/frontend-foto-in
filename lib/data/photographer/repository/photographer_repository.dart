@@ -3,6 +3,7 @@ import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/exceptions.dart';
 import 'package:foto_in/core/errors/failure.dart';
 import 'package:foto_in/data/photographer/datasource/remote/photographer_data_source.dart';
+import 'package:foto_in/data/photographer/model/PhotographerListResponse.dart';
 import 'package:foto_in/data/photographer/model/PhotographerRequest.dart';
 import 'package:foto_in/data/photographer/model/PhotographerResponse.dart';
 import 'package:foto_in/data/photographer/model/PortofolioDetailResponse.dart';
@@ -19,6 +20,7 @@ abstract class PhotographerRepository {
       {required String photographerId});
   Future<Either<Failure, PortofolioDetailResponse>> getDetailPortofolio(
       {required String photographerId, required String portofolioId});
+  Future<Either<Failure, PhotographerListResponse>> getAllPhotographer();
 }
 
 class PhotographerRepositoryImpl implements PhotographerRepository {
@@ -85,6 +87,21 @@ class PhotographerRepositoryImpl implements PhotographerRepository {
             await photographerDataSource.getDetailPortofolio(
                 photographerId: photographerId, portofolioId: portofolioId);
         return Right(remoteGetDetailPortofolio);
+      } on ServerException {
+        return Left(ServerFailure(errorMessage: "Server Error"));
+      }
+    } else {
+      return Left(ServerFailure(errorMessage: "No Internet Connection"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, PhotographerListResponse>> getAllPhotographer() async {
+    if (await networkInfo.isConnected!) {
+      try {
+        final remoteAllPhotographer =
+            await photographerDataSource.getAllPhotographer();
+        return Right(remoteAllPhotographer);
       } on ServerException {
         return Left(ServerFailure(errorMessage: "Server Error"));
       }
