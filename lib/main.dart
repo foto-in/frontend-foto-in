@@ -29,7 +29,6 @@ import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dar
 import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
-import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
@@ -52,10 +51,6 @@ class MyApp extends StatelessWidget {
       providers: [
         // Auth
         ChangeNotifierProvider(create: (context) => AuthProvider()),
-        // ChangeNotifierProvider(
-        //     create: (context) => RegisterProvider(
-        //           secureStorage: secureStorage,
-        //         )),
         ChangeNotifierProvider(create: (context) => LoginProvider()),
         ChangeNotifierProvider(create: (context) => BookingDetailProvider()),
         ChangeNotifierProvider(
@@ -64,6 +59,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: AppColor.primary,
+          ),
           scaffoldBackgroundColor: AppColor.backgroundPrimary,
           primarySwatch: AppColor.primary,
           appBarTheme: AppBarTheme(

@@ -1,21 +1,15 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
-import 'package:foto_in/feature/fotografer/presentation/widgets/portofolio_card_small.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
-import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
-import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
@@ -60,7 +54,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   const SizedBox(
-                    height: 20,
+                    height: 4,
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -121,27 +115,21 @@ class _ProfileMobileState extends State<ProfileMobile> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          "Portofolio",
-                          style: FotoInHeadingTypography.xSmall(),
-                        ),
+                      Text(
+                        "Portofolio",
+                        style: FotoInHeadingTypography.xSmall(),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              PortofolioPhotographerView.routeName,
-                            );
-                          },
-                          child: Text(
-                            "Lihat Semua",
-                            style: FotoInHeadingTypography.xxSmall(
-                              color: AppColor.secondary,
-                            ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            PortofolioPhotographerView.routeName,
+                          );
+                        },
+                        child: Text(
+                          "Lihat Semua",
+                          style: FotoInHeadingTypography.xxSmall(
+                            color: AppColor.secondary,
                           ),
                         ),
                       ),
@@ -150,32 +138,27 @@ class _ProfileMobileState extends State<ProfileMobile> {
                   const SizedBox(
                     height: 16,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: PortofolioCard(),
+                  PortofolioCard(
+                    onTap: () {},
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: FotoInButton(
-                      text: "Tambah Portofolio",
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, AddPortofolioView.routeName);
-                      },
-                      width: double.infinity,
-                      backgroundColor: AppColor.backgroundPrimary,
-                      textColor: AppColor.textPrimary,
-                      border: BorderSide(
-                        color: AppColor.textPrimary,
-                        width: 2,
-                      ),
-                      leading: Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: Icon(Iconsax.add, color: AppColor.textPrimary),
-                      ),
+                  FotoInButton(
+                    text: "Tambah Portofolio",
+                    onPressed: () {
+                      Navigator.pushNamed(context, AddPortofolioView.routeName);
+                    },
+                    width: double.infinity,
+                    backgroundColor: AppColor.backgroundPrimary,
+                    textColor: AppColor.textPrimary,
+                    border: BorderSide(
+                      color: AppColor.textPrimary,
+                      width: 2,
+                    ),
+                    leading: Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: Icon(Iconsax.add, color: AppColor.textPrimary),
                     ),
                   ),
                   SizedBox(

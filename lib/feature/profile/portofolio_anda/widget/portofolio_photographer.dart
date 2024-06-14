@@ -39,11 +39,11 @@ class _PhotographerPortofolioWidgetState
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
-              child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, EditPortofolioView.routeName);
-                  },
-                  child: const PortofolioCard()),
+              child: PortofolioCard(
+                onTap: () {
+                  Navigator.pushNamed(context, EditPortofolioView.routeName);
+                },
+              ),
             );
           },
         ),

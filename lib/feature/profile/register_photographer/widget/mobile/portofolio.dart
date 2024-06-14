@@ -19,7 +19,9 @@ class PortofolioPageMobile extends StatelessWidget {
           subtitle: "Anda harus melampirkan minimal satu portofolio anda.",
         ),
         const SizedBox(height: 20),
-        PortofolioCard(),
+        PortofolioCard(
+          onTap: () {},
+        ),
         const SizedBox(height: 20),
         FotoInButton(
           text: "Tambah Portofolio",
