@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
-import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_item.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 
