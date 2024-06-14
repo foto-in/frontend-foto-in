@@ -9,18 +9,33 @@ import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
+import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
-class ProfileMobile extends StatelessWidget {
+class ProfileMobile extends StatefulWidget {
   const ProfileMobile({super.key});
+
+  @override
+  State<ProfileMobile> createState() => _ProfileMobileState();
+}
+
+class _ProfileMobileState extends State<ProfileMobile> {
+  @override
+  void initState() {
+    super.initState();
+    final profileProvider =
+        Provider.of<ProfileProvider>(context, listen: false);
+    profileProvider.getProfile();
+  }
 
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
+    final profileProvider = Provider.of<ProfileProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.backgroundPrimary,
       body: SafeArea(
@@ -69,11 +84,15 @@ class ProfileMobile extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "John Doe",
+                                  profileProvider
+                                          .profileResponse?.data.username ??
+                                      "",
                                   style: FotoInHeadingTypography.xSmall(),
                                 ),
                                 Text(
-                                  "John Doe",
+                                  profileProvider
+                                          .profileResponse?.data.fullname ??
+                                      "",
                                   style: FotoInHeadingTypography.xxSmall(),
                                 ),
                               ],
