@@ -1,10 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/failure.dart';
-import 'package:foto_in/data/auth/datasource/remote/auth_remote_datasource.dart';
-import 'package:foto_in/data/auth/repository/auth_repository.dart';
 import 'package:foto_in/data/photographer/datasource/remote/photographer_data_source.dart';
 import 'package:foto_in/data/photographer/model/PhotographerRequest.dart';
 import 'package:foto_in/data/photographer/model/PhotographerResponse.dart';
@@ -12,9 +9,7 @@ import 'package:foto_in/data/photographer/repository/photographer_repository.dar
 import 'package:foto_in/data/users/datasource/users_data_source.dart';
 import 'package:foto_in/data/users/model/ProfileResponse.dart';
 import 'package:foto_in/data/users/repository/profile_repository.dart';
-import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:provider/provider.dart';
 
 class RegisterPhotographerProvider extends ChangeNotifier {
   PhotographerResponse? registerPhotographerResponse;

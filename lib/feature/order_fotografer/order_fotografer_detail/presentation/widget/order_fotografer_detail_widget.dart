@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -10,9 +9,7 @@ import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/detail_bayar_item.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/order_detail.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_info.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
-import 'package:iconsax/iconsax.dart';
 
 class OrderFotograferDetailWidget extends StatelessWidget {
   const OrderFotograferDetailWidget({super.key});
