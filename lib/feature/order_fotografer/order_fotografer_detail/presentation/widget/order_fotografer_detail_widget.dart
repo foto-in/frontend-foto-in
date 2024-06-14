@@ -2,10 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/presentation/widget/perbarui_status_dialog.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/presentation/widget/tolak_pesanan_dialog.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_hasil/presentation/view/upload_hasil_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/view/upload_preview_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/widget/success_dialog.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/detail_bayar_item.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/order_detail.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_info.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:iconsax/iconsax.dart';
 
 class OrderFotograferDetailWidget extends StatelessWidget {
   const OrderFotograferDetailWidget({super.key});
@@ -98,16 +105,68 @@ class OrderFotograferDetailWidget extends StatelessWidget {
           ),
           FotoInButton(
             text: "Terima",
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return SuccessDialog(
+                    title: "Pesanan Diterima",
+                    message: "Pesanan telah diterima, Terima kasih.",
+                    buttonText: "Kembali",
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+              );
+            },
             backgroundColor: AppColor.green600,
-          ),
-          SizedBox(
-            height: 16,
+            margin: EdgeInsets.only(bottom: 16),
           ),
           FotoInButton(
             text: "Tolak",
-            onPressed: () {},
+            onPressed: () {
+              // show dialog
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return TolakStatusDialog();
+                },
+              );
+            },
             backgroundColor: AppColor.red600,
+            margin: EdgeInsets.only(bottom: 16),
+          ),
+          FotoInButton(
+            text: "Perbarui Status",
+            onPressed: () {
+              // show dialog
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return PerbaruiStatusDialog();
+                },
+              );
+            },
+            margin: EdgeInsets.only(bottom: 16),
+          ),
+          FotoInButton(
+            text: "Upload Preview",
+            onPressed: () {
+              Navigator.pushNamed(context, UploadPreviewView.routeName);
+            },
+            margin: EdgeInsets.only(bottom: 16),
+          ),
+          FotoInButton(
+            text: "Upload Hasil",
+            onPressed: () {
+              Navigator.pushNamed(context, UploadHasilView.routeName);
+            },
+            margin: EdgeInsets.only(bottom: 16),
           ),
         ],
       ),
