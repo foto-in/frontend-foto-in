@@ -19,7 +19,9 @@ class PortofolioPage extends StatelessWidget {
         mainAxisExtent: 250,
       ),
       children: [
-        const PortofolioCard(),
+        PortofolioCard(
+          onTap: () {},
+        ),
         addPortofolio(context),
       ],
     );
