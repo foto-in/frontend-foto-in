@@ -29,6 +29,7 @@ dependencies:
   provider: ^6.1.2
   responsive_builder: ^0.7.0
   syncfusion_flutter_datepicker: ^25.1.41
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -47,3 +48,4 @@ flutter:
     - assets/images/home/
     - assets/lottie/
     - assets/icons/
+    - assets/images/onboarding/
