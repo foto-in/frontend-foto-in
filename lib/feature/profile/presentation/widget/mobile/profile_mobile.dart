@@ -7,12 +7,15 @@ import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
+import 'package:foto_in/feature/fotografer/presentation/widgets/portofolio_card_small.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
+import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
+import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
@@ -54,12 +57,12 @@ class _ProfileMobileState extends State<ProfileMobile> {
             ),
             Expanded(
               child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   const SizedBox(
                     height: 20,
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
                       color: const Color(0xffFFFFFF),
                       borderRadius: BorderRadius.circular(8),
@@ -179,7 +182,6 @@ class _ProfileMobileState extends State<ProfileMobile> {
                     height: 20,
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
                       color: const Color(0xffFFFFFF),
                       borderRadius: BorderRadius.circular(8),
@@ -194,16 +196,20 @@ class _ProfileMobileState extends State<ProfileMobile> {
                     ),
                     child: Column(
                       children: [
-                        ProfileMenuItem(
-                          leadingIcon: Iconsax.task,
-                          title: "Pesanan",
-                          trailingIcon: Icons.arrow_forward_ios,
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              FotograferOrderView.routeName,
-                            );
-                          },
+                        Visibility(
+                          visible: profileProvider.profileRole ==
+                              ProfileRole.photographer,
+                          child: ProfileMenuItem(
+                            leadingIcon: Iconsax.task,
+                            title: "Pesanan",
+                            trailingIcon: Icons.arrow_forward_ios,
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                FotograferOrderView.routeName,
+                              );
+                            },
+                          ),
                         ),
                         ProfileMenuItem(
                           leadingIcon: Iconsax.notification5,
@@ -226,8 +232,8 @@ class _ProfileMobileState extends State<ProfileMobile> {
                   SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                  Visibility(
+                    visible: profileProvider.profileRole == ProfileRole.client,
                     child: RegisterPhotographerBannerMobile(
                       onPressed: () {
                         Navigator.pushNamed(
@@ -239,7 +245,6 @@ class _ProfileMobileState extends State<ProfileMobile> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(
-                      horizontal: 16,
                       vertical: 20,
                     ),
                     width: double.infinity,
