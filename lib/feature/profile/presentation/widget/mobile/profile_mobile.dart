@@ -6,6 +6,7 @@ import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
+import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
@@ -139,7 +140,12 @@ class _ProfileMobileState extends State<ProfileMobile> {
                     height: 16,
                   ),
                   PortofolioCard(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        PortofolioDetailMobileView.routeName,
+                      );
+                    },
                   ),
                   SizedBox(
                     height: 20,
