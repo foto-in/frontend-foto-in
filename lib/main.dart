@@ -23,6 +23,8 @@ import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/home_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
 import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/presentation/view/order_fotografer_detail_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_hasil/presentation/view/upload_hasil_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/view/upload_preview_view.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/preview/presentation/view/preview_view.dart';
@@ -72,6 +74,9 @@ class MyApp extends StatelessWidget {
               color: AppColor.textPrimary,
             ),
           ),
+          radioTheme: RadioThemeData(
+            fillColor: MaterialStateProperty.all(AppColor.primary),
+          ),
         ),
         routes: {
           // Auth
@@ -95,6 +100,8 @@ class MyApp extends StatelessWidget {
           OrderUserDetailView.routeName: (context) =>
               const OrderUserDetailView(),
           PreviewView.routeName: (context) => const PreviewView(),
+          UploadPreviewView.routeName: (context) => const UploadPreviewView(),
+          UploadHasilView.routeName: (context) => const UploadHasilView(),
 
           // Fotografer Order
           FotograferOrderView.routeName: (context) =>
