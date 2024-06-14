@@ -7,6 +7,7 @@ import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
 import 'package:foto_in/feature/auth/presentation/auth_view.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
+import 'package:foto_in/feature/booking/presentation/provider/booking_provider.dart';
 import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
 import 'package:foto_in/feature/booking_detail/presentation/presentation/booking_detail_provider.dart';
 import 'package:foto_in/feature/fotografer/presentation/view/fotografer_detail_view.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => RegisterPhotographerProvider()),
         ChangeNotifierProvider(create: (context) => ProfileProvider()),
+        // ChangeNotifierProvider(create: (context) => BookingProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -92,7 +94,10 @@ class MyApp extends StatelessWidget {
               const FotograferDetailView(),
 
           // Booking
-          BookingView.routeName: (context) => const BookingView(),
+          BookingView.routeName: (context) => ChangeNotifierProvider(
+                create: (context) => BookingProvider(),
+                child: const BookingView(),
+              ),
 
           // User Order
           OrderUserDetailView.routeName: (context) =>
