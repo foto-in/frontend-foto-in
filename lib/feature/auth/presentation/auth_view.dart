@@ -7,24 +7,11 @@ import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_b
 import 'package:provider/provider.dart';
 
 class AuthView extends StatelessWidget {
+  static const String routeName = '/auth';
   const AuthView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // final AuthProvider authProvider = Provider.of<AuthProvider>(context);
-
-    // if (!authProvider.isLogin) {
-    //   return LoginView();
-    // }
-
-    // if (authProvider.isLogin) {
-    //   return NavigationBarMobile();
-    // }
-
-    // return Center(
-    //   child: Text("Loading..."),
-    // );
-
     return Consumer<AuthProvider>(
         builder: (context, AuthProvider authProvider, child) {
       print(authProvider.isLogin);
