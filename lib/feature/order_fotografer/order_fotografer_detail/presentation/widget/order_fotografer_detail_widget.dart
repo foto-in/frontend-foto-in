@@ -2,15 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/presentation/widget/perbarui_status_dialog.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/presentation/widget/tolak_pesanan_dialog.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_hasil/presentation/view/upload_hasil_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/view/upload_preview_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/widget/success_dialog.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/detail_bayar_item.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/order_detail.dart';
-import 'package:foto_in/feature/order_user/order_user_detail/preview/presentation/view/preview_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_info.dart';
-import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
+import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:iconsax/iconsax.dart';
 
-class OrderUserDetailWidget extends StatelessWidget {
-  const OrderUserDetailWidget({super.key});
+class OrderFotograferDetailWidget extends StatelessWidget {
+  const OrderFotograferDetailWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,107 +103,70 @@ class OrderUserDetailWidget extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Jumlah yang harus dibayar",
-                style: FotoInSubHeadingTypography.xSmall(
-                  color: AppColor.textSecondary,
-                ),
-              ),
-              SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColor.backgroundPrimary,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: AppColor.primary,
-                  ),
-                ),
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    DetailBayarItem(
-                      title: "DP",
-                      value: "500.000",
-                      style: FotoInSubHeadingTypography.medium(
-                        color: AppColor.textSecondary,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    // devider
-                    Container(
-                      height: 1,
-                      color: AppColor.border,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    DetailBayarItem(
-                      title: "Total",
-                      value: "500.000",
-                      style: FotoInSubHeadingTypography.medium(),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Column(
-            children: [
-              Text(
-                "*Anda dapat melakukan pembayaran DP setelah fotografer mengkonfirmasi pesanan Anda dan Anda dapat melakukan pelunasan setelah sesi foto selesai.",
-                style: FotoInParagraph.xSmall(
-                  color: AppColor.textSecondary,
-                ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                "*Harap Lakukan pembayaran dalam waktu 24 jam setelah fotografer mengkonfirmasi pesanan Anda, jika tidak, pesanan akan dibatalkan secara otomatis.",
-                style: FotoInParagraph.xSmall(
-                  color: AppColor.textSecondary,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
           FotoInButton(
-            text: "Bayar",
+            text: "Terima",
             onPressed: () {
-              Navigator.pushNamed(context, PaymentView.routeName);
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return SuccessDialog(
+                    title: "Pesanan Diterima",
+                    message: "Pesanan telah diterima, Terima kasih.",
+                    buttonText: "Kembali",
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+              );
             },
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          FotoInButton(
-            text: "Batalkan",
-            onPressed: () {},
-            backgroundColor: AppColor.backgroundPrimary,
-            textColor: AppColor.red600,
-            border: BorderSide(
-              color: AppColor.red600,
-              width: 1,
-            ),
-          ),
-          SizedBox(
-            height: 16,
+            backgroundColor: AppColor.green600,
+            margin: EdgeInsets.only(bottom: 16),
           ),
           FotoInButton(
-            text: "Lihat Preview",
+            text: "Tolak",
             onPressed: () {
-              Navigator.pushNamed(context, PreviewView.routeName);
+              // show dialog
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return TolakStatusDialog();
+                },
+              );
             },
+            backgroundColor: AppColor.red600,
+            margin: EdgeInsets.only(bottom: 16),
+          ),
+          FotoInButton(
+            text: "Perbarui Status",
+            onPressed: () {
+              // show dialog
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return PerbaruiStatusDialog();
+                },
+              );
+            },
+            margin: EdgeInsets.only(bottom: 16),
+          ),
+          FotoInButton(
+            text: "Upload Preview",
+            onPressed: () {
+              Navigator.pushNamed(context, UploadPreviewView.routeName);
+            },
+            margin: EdgeInsets.only(bottom: 16),
+          ),
+          FotoInButton(
+            text: "Upload Hasil",
+            onPressed: () {
+              Navigator.pushNamed(context, UploadHasilView.routeName);
+            },
+            margin: EdgeInsets.only(bottom: 16),
           ),
         ],
       ),

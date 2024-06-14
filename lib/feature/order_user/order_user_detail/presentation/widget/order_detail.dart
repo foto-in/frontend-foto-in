@@ -31,10 +31,6 @@ class _OrderDetailState extends State<OrderDetail> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 20,
-      ),
       decoration: BoxDecoration(
         color: AppColor.backgroundPrimary,
         borderRadius: BorderRadius.circular(8),
