@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/auth/provider/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class OnboardingPage extends StatefulWidget {
   static const routeName = '/onboarding';
@@ -88,40 +91,46 @@ class _OnboardingPageState extends State<OnboardingPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 8,
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.bounceInOut,
+                  width: currentIndex == 0 ? 24 : 8,
                   height: 8,
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     right: 4,
                   ),
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                    borderRadius: BorderRadius.circular(8),
                     color: currentIndex == 0
                         ? AppColor.secondary
-                        : Color(0xff1FF0CA).withOpacity(0.3),
+                        : const Color(0xff1FF0CA).withOpacity(0.3),
                   ),
                 ),
-                Container(
-                  width: 8,
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.bounceInOut,
+                  width: currentIndex == 1 ? 24 : 8,
                   height: 8,
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     right: 4,
                   ),
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                    borderRadius: BorderRadius.circular(8),
                     color: currentIndex == 1
                         ? AppColor.secondary
-                        : Color(0xff1FF0CA).withOpacity(0.3),
+                        : const Color(0xff1FF0CA).withOpacity(0.3),
                   ),
                 ),
-                Container(
-                  width: 8,
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.bounceInOut,
+                  width: currentIndex == 2 ? 24 : 8,
                   height: 8,
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                    borderRadius: BorderRadius.circular(8),
                     color: currentIndex == 2
                         ? AppColor.secondary
-                        : Color(0xff1FF0CA).withOpacity(0.3),
+                        : const Color(0xff1FF0CA).withOpacity(0.3),
                   ),
                 ),
               ],
@@ -134,7 +143,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
               height: 50,
               child: TextButton(
                 onPressed: () {
-                  carouselController.nextPage();
+                  if (currentIndex == 2) {
+                    Provider.of<AuthProvider>(context, listen: false)
+                        .changeAuthState(AuthState.login);
+                  } else {
+                    carouselController.nextPage();
+                  }
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: AppColor.primary,

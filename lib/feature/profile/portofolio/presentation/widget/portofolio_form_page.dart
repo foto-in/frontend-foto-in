@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/profile/portofolio/widget/description_form.dart';
-import 'package:foto_in/feature/profile/portofolio/widget/images_form.dart';
+import 'package:foto_in/feature/profile/portofolio/presentation/widget/description_form.dart';
+import 'package:foto_in/feature/profile/portofolio/presentation/widget/images_form.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:iconsax/iconsax.dart';
 

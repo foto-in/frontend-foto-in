@@ -44,7 +44,7 @@ class _AnimationSwitcherWidgetsState extends State<AnimationSwitcherWidgets> {
       child: Image.asset(
         _images[_currentImageIndex],
         key: ValueKey<int>(_currentImageIndex),
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
         width: double.infinity,
         height: 214,
       ),

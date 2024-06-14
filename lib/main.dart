@@ -7,6 +7,7 @@ import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
 import 'package:foto_in/feature/auth/presentation/auth_view.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
+import 'package:foto_in/feature/booking/presentation/provider/booking_provider.dart';
 import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
 import 'package:foto_in/feature/booking_detail/presentation/presentation/booking_detail_provider.dart';
 import 'package:foto_in/feature/fotografer/presentation/view/fotografer_detail_view.dart';
@@ -28,7 +29,8 @@ import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dar
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
-import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
+import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
+import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
@@ -51,19 +53,20 @@ class MyApp extends StatelessWidget {
       providers: [
         // Auth
         ChangeNotifierProvider(create: (context) => AuthProvider()),
-        // ChangeNotifierProvider(
-        //     create: (context) => RegisterProvider(
-        //           secureStorage: secureStorage,
-        //         )),
         ChangeNotifierProvider(create: (context) => LoginProvider()),
         ChangeNotifierProvider(create: (context) => BookingDetailProvider()),
         ChangeNotifierProvider(
             create: (context) => RegisterPhotographerProvider()),
         ChangeNotifierProvider(create: (context) => ProfileProvider()),
+
         ChangeNotifierProvider(create: (context) => HomeProvider()),
+        // ChangeNotifierProvider(create: (context) => BookingProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: AppColor.primary,
+          ),
           scaffoldBackgroundColor: AppColor.backgroundPrimary,
           primarySwatch: AppColor.primary,
           appBarTheme: AppBarTheme(
@@ -94,7 +97,10 @@ class MyApp extends StatelessWidget {
               const FotograferDetailView(),
 
           // Booking
-          BookingView.routeName: (context) => const BookingView(),
+          BookingView.routeName: (context) => ChangeNotifierProvider(
+                create: (context) => BookingProvider(),
+                child: const BookingView(),
+              ),
 
           // User Order
           OrderUserDetailView.routeName: (context) =>
@@ -131,6 +137,9 @@ class MyApp extends StatelessWidget {
               const PortofolioMobileView(),
           PortofolioDetailMobileView.routeName: (context) =>
               const PortofolioDetailMobileView(),
+          PortofolioPhotographerView.routeName: (context) =>
+              const PortofolioPhotographerView(),
+          EditPortofolioView.routeName: (context) => const EditPortofolioView(),
 
           // Onboarding
           OnboardingPage.routeName: (context) => const OnboardingPage(),

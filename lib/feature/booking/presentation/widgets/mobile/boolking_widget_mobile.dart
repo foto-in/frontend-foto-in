@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/booking/presentation/provider/booking_provider.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/booking_bottom_bar.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/text_field.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class BookingWidgetMobile extends StatefulWidget {
@@ -24,7 +26,9 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
   @override
   void initState() {
     super.initState();
-    _selectedController.text = _selectedDate;
+    final BookingProvider bookingProvider =
+        Provider.of<BookingProvider>(context, listen: false);
+    bookingProvider.selectedController.text = _selectedDate;
     initializeDateFormatting('id_ID', null);
   }
 
@@ -66,19 +70,23 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
   void _onSubmit() {
     setState(() {
       //when click submit button
-      _selectedController.text = _selectedDate;
+      final BookingProvider bookingProvider =
+          Provider.of<BookingProvider>(context, listen: false);
+      bookingProvider.selectedController.text = _selectedDate;
       Navigator.pop(context);
     });
   }
 
-  final TextEditingController _selectedController = TextEditingController();
-  final TextEditingController _tfEditingJenisAcara = TextEditingController();
-  final TextEditingController _tfEditingLokasiAcara = TextEditingController();
-  final TextEditingController _tfEditingDurasi = TextEditingController();
-  final TextEditingController _tfEditingWaktuMulai = TextEditingController();
-  final TextEditingController _tfEditingKonsep = TextEditingController();
+  // final TextEditingController _selectedController = TextEditingController();
+  // final TextEditingController _tfEditingJenisAcara = TextEditingController();
+  // final TextEditingController _tfEditingLokasiAcara = TextEditingController();
+  // final TextEditingController _tfEditingDurasi = TextEditingController();
+  // final TextEditingController _tfEditingWaktuMulai = TextEditingController();
+  // final TextEditingController _tfEditingKonsep = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final BookingProvider bookingProvider =
+        Provider.of<BookingProvider>(context, listen: false);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.backgroundPrimary,
@@ -108,7 +116,7 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                     height: 8,
                   ),
                   TfFotoin(
-                      controller: _tfEditingJenisAcara,
+                      controller: bookingProvider.tfEditingJenisAcara,
                       hintText: "Prewedding",
                       maxLines: 1,
                       validator: "Jenis Acara",
@@ -128,7 +136,7 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                     children: [
                       Expanded(
                         child: TfFotoin(
-                            controller: _selectedController,
+                            controller: bookingProvider.selectedController,
                             readOnly: true,
                             maxLines: 1,
                             validator: "Tanggal",
@@ -353,7 +361,7 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                               height: 8,
                             ),
                             TfFotoin(
-                                controller: _tfEditingDurasi,
+                                controller: bookingProvider.tfEditingDurasi,
                                 hintText: "Durasi(Jam)",
                                 keyboardType: TextInputType.name,
                                 maxLines: 1,
@@ -380,7 +388,8 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                               children: [
                                 Expanded(
                                   child: TfFotoin(
-                                      controller: _tfEditingWaktuMulai,
+                                      controller:
+                                          bookingProvider.tfEditingWaktuMulai,
                                       hintText: "08:00",
                                       keyboardType: TextInputType.name,
                                       maxLines: 1,
@@ -390,20 +399,23 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                                 const SizedBox(
                                   width: 4,
                                 ),
-                                InkWell(
-                                    onTap: () {
-                                      showTimePicker(
-                                        context: context,
-                                        initialTime: TimeOfDay.now(),
-                                      ).then((TimeOfDay? value) {
-                                        if (value != null) {
-                                          _tfEditingWaktuMulai.text =
-                                              value.format(context);
-                                        }
-                                      });
-                                    },
-                                    child: const Icon(Iconsax.clock_1,
-                                        color: AppColor.textPrimary))
+                                Consumer<BookingProvider>(
+                                    builder: (context, state, _) {
+                                  return InkWell(
+                                      onTap: () {
+                                        showTimePicker(
+                                          context: context,
+                                          initialTime: TimeOfDay.now(),
+                                        ).then((TimeOfDay? value) {
+                                          if (value != null) {
+                                            state.tfEditingWaktuMulai.text =
+                                                value.format(context);
+                                          }
+                                        });
+                                      },
+                                      child: const Icon(Iconsax.clock_1,
+                                          color: AppColor.textPrimary));
+                                })
                               ],
                             )
                           ],
@@ -424,7 +436,7 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                         Iconsax.location5,
                         color: Color(0xff788B98),
                       ),
-                      controller: _tfEditingLokasiAcara,
+                      controller: bookingProvider.tfEditingLokasiAcara,
                       hintText: "Gedung Serbaguna Telkom University",
                       maxLines: 1,
                       validator: "Tempat Acara",
@@ -441,7 +453,7 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
                     height: 8,
                   ),
                   TfFotoin(
-                      controller: _tfEditingKonsep,
+                      controller: bookingProvider.tfEditingKonsep,
                       hintText: "Konsep",
                       maxLines: 5,
                       validator: "Konsep",
@@ -450,8 +462,9 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
               ),
             )),
             BookingBottomBar(
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
+                  await bookingProvider.booking();
                   Navigator.pop(context);
                 }
               },
