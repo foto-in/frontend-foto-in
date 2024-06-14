@@ -1,5 +1,4 @@
 class PhotographerRequest {
-  final String userId;
   final String username;
   final String fullname;
   final String email;
@@ -12,7 +11,6 @@ class PhotographerRequest {
   final int endPrice;
 
   PhotographerRequest({
-    required this.userId,
     required this.username,
     required this.fullname,
     required this.email,
@@ -25,9 +23,33 @@ class PhotographerRequest {
     required this.endPrice,
   });
 
+  PhotographerRequest copyWith({
+    String? username,
+    String? fullname,
+    String? email,
+    String? noHp,
+    String? noTelegram,
+    String? type,
+    List<String>? specialization,
+    List<String>? camera,
+    int? startPrice,
+    int? endPrice,
+  }) =>
+      PhotographerRequest(
+        username: username ?? this.username,
+        fullname: fullname ?? this.fullname,
+        email: email ?? this.email,
+        noHp: noHp ?? this.noHp,
+        noTelegram: noTelegram ?? this.noTelegram,
+        type: type ?? this.type,
+        specialization: specialization ?? this.specialization,
+        camera: camera ?? this.camera,
+        startPrice: startPrice ?? this.startPrice,
+        endPrice: endPrice ?? this.endPrice,
+      );
+
   factory PhotographerRequest.fromJson(Map<String, dynamic> json) =>
       PhotographerRequest(
-        userId: json["user_id"],
         username: json["username"],
         fullname: json["fullname"],
         email: json["email"],
@@ -41,7 +63,6 @@ class PhotographerRequest {
       );
 
   Map<String, dynamic> toJson() => {
-        "user_id": userId,
         "username": username,
         "fullname": fullname,
         "email": email,

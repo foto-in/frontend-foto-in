@@ -94,7 +94,19 @@ class PhotographerDataSourceImpl implements PhotographerDataSource {
     final response = await dio.post(base_url + photographer_path,
         options: Options(
           headers: {'Authorization': 'Bearer $token}'},
-        ));
+        ),
+        data: {
+          "username": photographerRequest.username,
+          "fullname": photographerRequest.fullname,
+          "email": photographerRequest.email,
+          "no_hp": photographerRequest.noHp,
+          "no_telegram": photographerRequest.noTelegram,
+          "type": photographerRequest.type,
+          "specialization": photographerRequest.specialization,
+          "camera": photographerRequest.camera,
+          "start_price": photographerRequest.startPrice,
+          "end_price": photographerRequest.endPrice
+        });
 
     print(response);
     print(response.statusCode);

@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
+import 'package:provider/provider.dart';
 
 class JenisPemotretanMobile extends StatefulWidget {
   const JenisPemotretanMobile({
@@ -16,6 +18,8 @@ class JenisPemotretanMobile extends StatefulWidget {
 class _JenisPemotretanMobileState extends State<JenisPemotretanMobile> {
   @override
   Widget build(BuildContext context) {
+    List<String>? selectedCategory =
+        Provider.of<RegisterPhotographerProvider>(context).specialization;
     return ListView(
       children: [
         const ProfileFormTitle(
@@ -41,8 +45,6 @@ class _JenisPemotretanMobileState extends State<JenisPemotretanMobile> {
       ],
     );
   }
-
-  List<String> selectedCategory = [];
 
   Widget categoryCard({required String category, bool isSelected = false}) {
     // checkbox with text
