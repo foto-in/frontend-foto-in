@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/detail_bayar_item.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_info.dart';
+import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/utils/button.dart';
 
 class OrderUserDetailWidget extends StatelessWidget {
@@ -259,7 +261,9 @@ class OrderUserDetailWidget extends StatelessWidget {
           ),
           FotoInButton(
             text: "Bayar",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, PaymentView.routeName);
+            },
             margin: EdgeInsets.symmetric(horizontal: 16),
           ),
           SizedBox(
@@ -278,36 +282,6 @@ class OrderUserDetailWidget extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class DetailBayarItem extends StatelessWidget {
-  final String title;
-  final String value;
-  final TextStyle style;
-
-  DetailBayarItem({
-    super.key,
-    required this.title,
-    required this.value,
-    required this.style,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: style,
-        ),
-        Text(
-          value,
-          style: style,
-        ),
-      ],
     );
   }
 }
