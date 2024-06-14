@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/labeled_text_field.dart';
+import 'package:provider/provider.dart';
 
 class InformasiPribadiMobile extends StatefulWidget {
   const InformasiPribadiMobile({
@@ -12,12 +14,6 @@ class InformasiPribadiMobile extends StatefulWidget {
 }
 
 class _InformasiPribadiMobileState extends State<InformasiPribadiMobile> {
-  final TextEditingController namaLengkap = TextEditingController();
-  final TextEditingController username = TextEditingController();
-  final TextEditingController email = TextEditingController();
-  final TextEditingController noTelp = TextEditingController();
-  final TextEditingController noTelegram = TextEditingController();
-
   ScrollController _controller = ScrollController();
   FocusNode _focusNode = FocusNode();
 
@@ -40,10 +36,18 @@ class _InformasiPribadiMobileState extends State<InformasiPribadiMobile> {
       // This is if you want to automatically toggle the keyboard when visitting the screen
       _focusNode.requestFocus();
     });
+    final registerPhotographerProvider =
+        Provider.of<RegisterPhotographerProvider>(context, listen: false);
+    registerPhotographerProvider.getProfile();
   }
 
   @override
   Widget build(BuildContext context) {
+    final registerPhotographerProvider =
+        Provider.of<RegisterPhotographerProvider>(context, listen: false);
+    TextEditingController namaLengkap =
+        registerPhotographerProvider.namaLengkap;
+    TextEditingController username = registerPhotographerProvider.username;
     return SafeArea(
       child: ListView(
         children: [
@@ -80,7 +84,8 @@ class _InformasiPribadiMobileState extends State<InformasiPribadiMobile> {
               const SizedBox(height: 16),
               LabeledTextField(
                 label: "Email",
-                controller: email,
+                controller:
+                    Provider.of<RegisterPhotographerProvider>(context).email,
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -92,7 +97,8 @@ class _InformasiPribadiMobileState extends State<InformasiPribadiMobile> {
               const SizedBox(height: 16),
               LabeledTextField(
                 label: "Nomor Telp",
-                controller: noTelp,
+                controller:
+                    Provider.of<RegisterPhotographerProvider>(context).noTelp,
                 keyboardType: TextInputType.phone,
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -104,7 +110,8 @@ class _InformasiPribadiMobileState extends State<InformasiPribadiMobile> {
               const SizedBox(height: 16),
               LabeledTextField(
                 label: "Nomor Telegram",
-                controller: noTelegram,
+                controller: Provider.of<RegisterPhotographerProvider>(context)
+                    .noTelegram,
                 keyboardType: TextInputType.phone,
                 validator: (value) {
                   if (value!.isEmpty) {

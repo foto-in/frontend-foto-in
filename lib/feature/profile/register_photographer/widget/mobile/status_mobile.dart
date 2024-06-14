@@ -31,13 +31,13 @@ class _StatusMobileState extends State<StatusMobile> {
             children: [
               radio(
                 context,
-                title: "Individu",
+                title: "individu",
                 icon: Icons.person,
               ),
               const SizedBox(height: 16),
               radio(
                 context,
-                title: "Tim",
+                title: "tim",
                 icon: Icons.people,
               ),
             ],

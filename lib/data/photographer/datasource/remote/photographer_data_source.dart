@@ -67,7 +67,7 @@ class PhotographerDataSourceImpl implements PhotographerDataSource {
     final response = await dio.post(
       base_url + portofolio_path,
       options: Options(
-        headers: {'Authorization': 'Bearer $token}'},
+        headers: {'Authorization': 'Bearer $token'},
       ),
       data: {
         "title": portofolioRequest.title,
@@ -91,30 +91,45 @@ class PhotographerDataSourceImpl implements PhotographerDataSource {
       {required PhotographerRequest photographerRequest}) async {
     final token = await SecureStorage().readSecureData('token');
 
-    final response = await dio.post(base_url + photographer_path,
-        options: Options(
-          headers: {'Authorization': 'Bearer $token}'},
-        ),
-        data: {
-          "username": photographerRequest.username,
-          "fullname": photographerRequest.fullname,
-          "email": photographerRequest.email,
-          "no_hp": photographerRequest.noHp,
-          "no_telegram": photographerRequest.noTelegram,
-          "type": photographerRequest.type,
-          "specialization": photographerRequest.specialization,
-          "camera": photographerRequest.camera,
-          "start_price": photographerRequest.startPrice,
-          "end_price": photographerRequest.endPrice
-        });
+    try {
+      final response = await dio.post(base_url + photographer_path,
+          options: Options(headers: {'Authorization': 'Bearer $token'}),
+          data: photographerRequest.toJson());
 
-    print(response);
-    print(response.statusCode);
-
-    if (response.statusCode == 200) {
-      return PhotographerResponse.fromJson(response.data);
-    } else {
+      if (response.statusCode == 200) {
+        return PhotographerResponse.fromJson(response.data);
+      } else {
+        throw ServerException();
+      }
+    } on DioException catch (e) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx and is also not 304.
+      if (e.response != null) {
+        print(e.response?.data);
+        print(e.response?.headers);
+        print(e.response?.requestOptions);
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        print(e.requestOptions);
+        print(e.message);
+      }
       throw ServerException();
+      // data: {
+      //   "username": photographerRequest.username,
+      //   "fullname": photographerRequest.fullname,
+      //   "email": photographerRequest.email,
+      //   "no_hp": photographerRequest.noHp,
+      //   "no_telegram": photographerRequest.noTelegram,
+      //   "type": photographerRequest.type,
+      //   "specialization": photographerRequest.specialization,
+      //   "camera": photographerRequest.camera,
+      //   "start_price": photographerRequest.startPrice,
+      //   "end_price": photographerRequest.endPrice
+      // },
+      // );
+
+      // print(response);
+      // print(response.statusCode);
     }
   }
 }
