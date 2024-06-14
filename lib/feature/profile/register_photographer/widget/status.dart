@@ -52,7 +52,7 @@ class _StatusState extends State<Status> {
     required String title,
     required IconData icon,
   }) {
-    String? status = Provider.of<RegisterPhotographerProvider>(context).status;
+    String? status = Provider.of<RegisterPhotographerProvider>(context).type;
     bool isSelected = status == title;
     return Expanded(child:
         Consumer<RegisterPhotographerProvider>(builder: (context, state, _) {
@@ -62,7 +62,7 @@ class _StatusState extends State<Status> {
             setState(() {
               status = title;
             });
-            state.status = status;
+            state.type = status;
           } catch (e) {}
         },
         child: Container(

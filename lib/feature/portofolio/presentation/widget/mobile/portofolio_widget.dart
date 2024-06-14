@@ -10,26 +10,28 @@ class PortofolioMobileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.backgroundPrimary,
+      appBar: AppBar(
+        title: Text('Portofolio'),
         backgroundColor: AppColor.backgroundPrimary,
-        appBar: AppBar(
-          title: Text('Portofolio'),
-          backgroundColor: AppColor.backgroundPrimary,
-          centerTitle: true,
-          titleTextStyle: FotoInHeadingTypography.xSmall(
-            color: AppColor.textPrimary,
-          ),
+        centerTitle: true,
+        titleTextStyle: FotoInHeadingTypography.xSmall(
+          color: AppColor.textPrimary,
         ),
-        body: SafeArea(
-          child: ListView.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(
-                        context, PortofolioDetailMobileView.routeName);
-                  },
-                  child: PortofolioCardSmall());
-            },
-          ),
-        ));
+      ),
+      body: SafeArea(
+        child: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {
+                Navigator.pushNamed(
+                    context, PortofolioDetailMobileView.routeName);
+              },
+              child: PortofolioCardSmall(),
+            );
+          },
+        ),
+      ),
+    );
   }
 }

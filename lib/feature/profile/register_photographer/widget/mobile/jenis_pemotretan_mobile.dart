@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
+import 'package:provider/provider.dart';
 
 class JenisPemotretanMobile extends StatefulWidget {
   const JenisPemotretanMobile({
@@ -16,6 +18,8 @@ class JenisPemotretanMobile extends StatefulWidget {
 class _JenisPemotretanMobileState extends State<JenisPemotretanMobile> {
   @override
   Widget build(BuildContext context) {
+    List<String>? selectedCategory =
+        Provider.of<RegisterPhotographerProvider>(context).specialization;
     return ListView(
       children: [
         const ProfileFormTitle(
@@ -32,6 +36,7 @@ class _JenisPemotretanMobileState extends State<JenisPemotretanMobile> {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: categoryCard(
+                    context: context,
                     category: _kategori[index],
                     isSelected: selectedCategory.contains(_kategori[index]),
                   ),
@@ -42,51 +47,54 @@ class _JenisPemotretanMobileState extends State<JenisPemotretanMobile> {
     );
   }
 
-  List<String> selectedCategory = [];
-
-  Widget categoryCard({required String category, bool isSelected = false}) {
+  Widget categoryCard(
+      {context, required String category, bool isSelected = false}) {
+    List<String>? selectedCategory =
+        Provider.of<RegisterPhotographerProvider>(context).specialization;
     // checkbox with text
-    return GestureDetector(
-      onTap: () {
-        // add or remove category
-        setState(() {
-          selectedCategory.contains(category)
-              ? selectedCategory.remove(category)
-              : selectedCategory.add(category);
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: isSelected ? AppColor.primary : AppColor.backgroundSecondary,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              category,
-              style: FotoInLabelTypography.medium(
-                color: isSelected ? Colors.white : AppColor.textPrimary,
+    return Consumer<RegisterPhotographerProvider>(builder: (context, state, _) {
+      return GestureDetector(
+        onTap: () {
+          // add or remove category
+          setState(() {
+            selectedCategory.contains(category)
+                ? selectedCategory.remove(category)
+                : selectedCategory.add(category);
+          });
+        },
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: isSelected ? AppColor.primary : AppColor.backgroundSecondary,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                category,
+                style: FotoInLabelTypography.medium(
+                  color: isSelected ? Colors.white : AppColor.textPrimary,
+                ),
               ),
-            ),
-            Checkbox(
-              value: isSelected,
-              onChanged: (value) {
-                // add or remove category
-                setState(() {
-                  selectedCategory.contains(category)
-                      ? selectedCategory.remove(category)
-                      : selectedCategory.add(category);
-                });
-              },
-              activeColor: Colors.white,
-              checkColor: AppColor.primary,
-            ),
-          ],
+              Checkbox(
+                value: isSelected,
+                onChanged: (value) {
+                  // add or remove category
+                  setState(() {
+                    selectedCategory.contains(category)
+                        ? selectedCategory.remove(category)
+                        : selectedCategory.add(category);
+                  });
+                },
+                activeColor: Colors.white,
+                checkColor: AppColor.primary,
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

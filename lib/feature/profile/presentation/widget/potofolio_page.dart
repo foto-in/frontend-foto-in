@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/profile/portofolio/widget/portofolio_form_page.dart';
+import 'package:foto_in/feature/profile/portofolio/presentation/widget/portofolio_form_page.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -19,7 +19,9 @@ class PortofolioPage extends StatelessWidget {
         mainAxisExtent: 250,
       ),
       children: [
-        const PortofolioCard(),
+        PortofolioCard(
+          onTap: () {},
+        ),
         addPortofolio(context),
       ],
     );

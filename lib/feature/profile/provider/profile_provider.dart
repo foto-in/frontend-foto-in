@@ -11,7 +11,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 enum ProfileRole { client, photographer }
 
 class ProfileProvider extends ChangeNotifier {
-  ProfileRepository profileRepository = ProfileRepositoryImpl(
+  final ProfileRepository profileRepository = ProfileRepositoryImpl(
     usersDataSource: UserDataSourceImpl(dio: Dio()),
     networkInfo: NetworkInfoImpl(InternetConnection()),
   );
