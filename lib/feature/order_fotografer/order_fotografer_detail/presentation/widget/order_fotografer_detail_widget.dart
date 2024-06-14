@@ -9,8 +9,8 @@ import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_inf
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/utils/button.dart';
 
-class OrderUserDetailWidget extends StatelessWidget {
-  const OrderUserDetailWidget({super.key});
+class OrderFotograferDetailWidget extends StatelessWidget {
+  const OrderFotograferDetailWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,107 +98,18 @@ class OrderUserDetailWidget extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Jumlah yang harus dibayar",
-                style: FotoInSubHeadingTypography.xSmall(
-                  color: AppColor.textSecondary,
-                ),
-              ),
-              SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColor.backgroundPrimary,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: AppColor.primary,
-                  ),
-                ),
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    DetailBayarItem(
-                      title: "DP",
-                      value: "500.000",
-                      style: FotoInSubHeadingTypography.medium(
-                        color: AppColor.textSecondary,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    // devider
-                    Container(
-                      height: 1,
-                      color: AppColor.border,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    DetailBayarItem(
-                      title: "Total",
-                      value: "500.000",
-                      style: FotoInSubHeadingTypography.medium(),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Column(
-            children: [
-              Text(
-                "*Anda dapat melakukan pembayaran DP setelah fotografer mengkonfirmasi pesanan Anda dan Anda dapat melakukan pelunasan setelah sesi foto selesai.",
-                style: FotoInParagraph.xSmall(
-                  color: AppColor.textSecondary,
-                ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                "*Harap Lakukan pembayaran dalam waktu 24 jam setelah fotografer mengkonfirmasi pesanan Anda, jika tidak, pesanan akan dibatalkan secara otomatis.",
-                style: FotoInParagraph.xSmall(
-                  color: AppColor.textSecondary,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
           FotoInButton(
-            text: "Bayar",
-            onPressed: () {
-              Navigator.pushNamed(context, PaymentView.routeName);
-            },
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          FotoInButton(
-            text: "Batalkan",
+            text: "Terima",
             onPressed: () {},
-            backgroundColor: AppColor.backgroundPrimary,
-            textColor: AppColor.red600,
-            border: BorderSide(
-              color: AppColor.red600,
-              width: 1,
-            ),
+            backgroundColor: AppColor.green600,
           ),
           SizedBox(
             height: 16,
           ),
           FotoInButton(
-            text: "Lihat Preview",
-            onPressed: () {
-              Navigator.pushNamed(context, PreviewView.routeName);
-            },
+            text: "Tolak",
+            onPressed: () {},
+            backgroundColor: AppColor.red600,
           ),
         ],
       ),
