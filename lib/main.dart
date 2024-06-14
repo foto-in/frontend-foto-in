@@ -26,7 +26,6 @@ import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dar
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
-import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';

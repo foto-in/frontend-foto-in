@@ -4,14 +4,17 @@ import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/profile/presentation/widget/preview_image.dart';
 
 class PortofolioCardSmall extends StatelessWidget {
+  final double marginSide;
+
   const PortofolioCardSmall({
     super.key,
+    this.marginSide = 16,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16, left: 16, right: 16),
+      margin: EdgeInsets.only(bottom: 16, left: marginSide, right: marginSide),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
