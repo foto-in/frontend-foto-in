@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
+import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/core/token/SecureStorage.dart';
 import 'package:foto_in/feature/auth/login/presentation/provider/login_provider.dart';
 import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
@@ -61,13 +62,17 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: AppColor.backgroundPrimary,
           primarySwatch: AppColor.primary,
-          appBarTheme: const AppBarTheme(
+          appBarTheme: AppBarTheme(
             backgroundColor: AppColor.backgroundPrimary,
             foregroundColor: AppColor.textPrimary,
+            titleTextStyle: FotoInHeadingTypography.xSmall(
+              color: AppColor.textPrimary,
+            ),
           ),
         ),
         routes: {
           // Auth
+          AuthView.routeName: (context) => const AuthView(),
           LoginView.routeName: (context) => const LoginView(),
           RegisterView.routeName: (context) => const RegisterView(),
 

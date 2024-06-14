@@ -2,9 +2,11 @@ import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/auth/presentation/auth_view.dart';
 import 'package:foto_in/feature/booking_detail/presentation/widgets/booking_detail_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
 import 'package:foto_in/utils/button.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class PaymentWidget extends StatefulWidget {
   const PaymentWidget({super.key});
@@ -15,381 +17,358 @@ class PaymentWidget extends StatefulWidget {
 
 class _PaymentWidgetState extends State<PaymentWidget> {
   PaymentItemModel activeMenu = menus.first;
+
+  void dialogButtonAction(SizingInformation sizingInformation) {
+    if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+      Navigator.pushNamedAndRemoveUntil(context, "/pesanan", (route) => false);
+    } else {
+      Navigator.pop(context);
+      Navigator.pop(context);
+      Navigator.pop(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffffffff),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const NavigationCustom(),
-            const SizedBox(
-              height: 64,
+    return ResizeWidgets(
+      width: 920,
+      lChild: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Pilih Metode Pembayaran",
+                  style: FotoInSubHeadingTypography.medium(
+                      color: AppColor.textSecondary),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  child: Column(
+                    children: menus
+                        .map(
+                          (e) => GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                activeMenu = e;
+                              });
+                            },
+                            child: PaymentMenuItem(
+                              title: e.title,
+                              icon: e.icon,
+                              isActive: e == activeMenu,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                )
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Row(
+          ),
+          SizedBox(
+            width: 40,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Ringkasan Pembayaran",
+                style: FotoInSubHeadingTypography.medium(
+                    color: AppColor.textSecondary),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Container(
+                width: 381,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: AppColor.primary,
+                  ),
+                ),
+                child: Column(
                   children: [
-                    const Icon(
-                      IconsaxOutline.arrow_left,
-                      size: 24,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "DP",
+                          style: FotoInLabelTypography.large(
+                              color: AppColor.textSecondary),
+                        ),
+                        Text(
+                          "500.000",
+                          style: FotoInLabelTypography.large(
+                              color: AppColor.textSecondary),
+                        )
+                      ],
                     ),
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      height: 8,
                     ),
-                    Text(
-                      'Pesanan/Detail/Pembayaran',
-                      style: FotoInSubHeadingTypography.medium(
-                        color: AppColor.textSecondary,
-                      ),
+                    Divider(
+                      color: AppColor.textSecondary,
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Total Pembayaran",
+                          style: FotoInSubHeadingTypography.xLarge(
+                              color: AppColor.textPrimary),
+                        ),
+                        Text(
+                          "500.000",
+                          style: FotoInSubHeadingTypography.xLarge(
+                              color: AppColor.textPrimary),
+                        )
+                      ],
                     ),
                   ],
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 48,
-            ),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
-                child: ResizeWidgets(
-                  width: 920,
-                  lChild: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Pilih Metode Pembayaran",
-                              style: FotoInSubHeadingTypography.medium(
-                                  color: AppColor.textSecondary),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            SizedBox(
-                              child: Column(
-                                children: menus
-                                    .map(
-                                      (e) => GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            activeMenu = e;
-                                          });
-                                        },
-                                        child: PaymentMenuItem(
-                                          title: e.title,
-                                          icon: e.icon,
-                                          isActive: e == activeMenu,
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: 381,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    setState(
+                      () {
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              backgroundColor: Colors.transparent,
+                              surfaceTintColor: Colors.transparent,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: const Color(0xffffffff),
+                                ),
+                                padding: const EdgeInsets.all(40),
+                                constraints: const BoxConstraints(
+                                    maxWidth: 345, maxHeight: 380),
+                                child: ResponsiveBuilder(
+                                  builder: (context, sizingInformation) {
+                                    return DialogItem(onPressed: () {
+                                      dialogButtonAction(sizingInformation);
+                                    });
+                                  },
+                                ),
                               ),
-                            )
-                          ],
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColor.primary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    "Bayar",
+                    style: FotoInSubHeadingTypography.medium(
+                      color: Color(0xffffffff),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+      sChild: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Pilih Metode Pembayaran",
+                style: FotoInSubHeadingTypography.medium(
+                    color: AppColor.textSecondary),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                child: Column(
+                  children: menus
+                      .map(
+                        (e) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              activeMenu = e;
+                            });
+                          },
+                          child: PaymentMenuItem(
+                            title: e.title,
+                            icon: e.icon,
+                            isActive: e == activeMenu,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 40,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Ringkasan Pembayaran",
-                            style: FotoInSubHeadingTypography.medium(
-                                color: AppColor.textSecondary),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Container(
-                            width: 381,
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: AppColor.primary,
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "DP",
-                                      style: FotoInLabelTypography.large(
-                                          color: AppColor.textSecondary),
-                                    ),
-                                    Text(
-                                      "500.000",
-                                      style: FotoInLabelTypography.large(
-                                          color: AppColor.textSecondary),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                const Divider(
-                                  color: AppColor.textSecondary,
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Total Pembayaran",
-                                      style: FotoInSubHeadingTypography.xLarge(
-                                          color: AppColor.textPrimary),
-                                    ),
-                                    Text(
-                                      "500.000",
-                                      style: FotoInSubHeadingTypography.xLarge(
-                                          color: AppColor.textPrimary),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: 381,
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    showDialog(
-                                        barrierDismissible: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return Dialog(
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              surfaceTintColor:
-                                                  Colors.transparent,
-                                              child: Container(
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16),
-                                                    color:
-                                                        const Color(0xffffffff),
-                                                  ),
-                                                  padding:
-                                                      const EdgeInsets.all(40),
-                                                  constraints:
-                                                      const BoxConstraints(
-                                                          maxWidth: 345,
-                                                          maxHeight: 380),
-                                                  child: const DialogItem(
-                                                    path: "/pesanan",
-                                                  )));
-                                        });
-                                  },
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColor.primary,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                              child: Text(
-                                "Bayar",
-                                style: FotoInSubHeadingTypography.medium(
-                                  color: const Color(0xffffffff),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
+                      )
+                      .toList(),
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            width: 40,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Ringkasan Pembayaran",
+                style: FotoInSubHeadingTypography.medium(
+                    color: AppColor.textSecondary),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              ResponsiveBuilder(builder: (context, sizingInformation) {
+                return Container(
+                  width: sizingInformation.deviceScreenType ==
+                          DeviceScreenType.desktop
+                      ? 381
+                      : double.infinity,
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: AppColor.primary,
+                    ),
                   ),
-                  sChild: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Pilih Metode Pembayaran",
-                            style: FotoInSubHeadingTypography.medium(
+                            "DP",
+                            style: FotoInLabelTypography.large(
                                 color: AppColor.textSecondary),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          SizedBox(
-                            child: Column(
-                              children: menus
-                                  .map(
-                                    (e) => GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          activeMenu = e;
-                                        });
-                                      },
-                                      child: PaymentMenuItem(
-                                        title: e.title,
-                                        icon: e.icon,
-                                        isActive: e == activeMenu,
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
+                          Text(
+                            "500.000",
+                            style: FotoInLabelTypography.large(
+                                color: AppColor.textSecondary),
                           )
                         ],
                       ),
-                      const SizedBox(
-                        width: 40,
+                      SizedBox(
+                        height: 8,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Divider(
+                        color: AppColor.textSecondary,
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Ringkasan Pembayaran",
-                            style: FotoInSubHeadingTypography.medium(
-                                color: AppColor.textSecondary),
+                            "Total Pembayaran",
+                            style: FotoInSubHeadingTypography.xLarge(
+                                color: AppColor.textPrimary),
                           ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Container(
-                            width: 381,
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: AppColor.primary,
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "DP",
-                                      style: FotoInLabelTypography.large(
-                                          color: AppColor.textSecondary),
-                                    ),
-                                    Text(
-                                      "500.000",
-                                      style: FotoInLabelTypography.large(
-                                          color: AppColor.textSecondary),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                const Divider(
-                                  color: AppColor.textSecondary,
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Total Pembayaran",
-                                      style: FotoInSubHeadingTypography.xLarge(
-                                          color: AppColor.textPrimary),
-                                    ),
-                                    Text(
-                                      "500.000",
-                                      style: FotoInSubHeadingTypography.xLarge(
-                                          color: AppColor.textPrimary),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: 381,
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    showDialog(
-                                        barrierDismissible: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return Dialog(
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              surfaceTintColor:
-                                                  Colors.transparent,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(16),
-                                                  color:
-                                                      const Color(0xffffffff),
-                                                ),
-                                                padding:
-                                                    const EdgeInsets.all(40),
-                                                constraints:
-                                                    const BoxConstraints(
-                                                        maxWidth: 345,
-                                                        maxHeight: 380),
-                                                child: const DialogItem(
-                                                  path: "/pesanan",
-                                                ),
-                                              ));
-                                        });
-                                  },
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColor.primary,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                              child: Text(
-                                "Bayar",
-                                style: FotoInSubHeadingTypography.medium(
-                                  color: const Color(0xffffffff),
-                                ),
-                              ),
-                            ),
+                          Text(
+                            "500.000",
+                            style: FotoInSubHeadingTypography.xLarge(
+                                color: AppColor.textPrimary),
                           )
                         ],
                       ),
                     ],
                   ),
-                ))
-          ],
-        ),
+                );
+              }),
+              SizedBox(
+                height: 20,
+              ),
+              ResponsiveBuilder(builder: (context, sizingInformation) {
+                return SizedBox(
+                  width: sizingInformation.deviceScreenType ==
+                          DeviceScreenType.desktop
+                      ? 381
+                      : double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                backgroundColor: Colors.transparent,
+                                surfaceTintColor: Colors.transparent,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: const Color(0xffffffff),
+                                  ),
+                                  padding: EdgeInsets.all(
+                                      sizingInformation.deviceScreenType ==
+                                              DeviceScreenType.desktop
+                                          ? 40
+                                          : 16),
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 345,
+                                    maxHeight: 380,
+                                  ),
+                                  width: double.infinity,
+                                  child: DialogItem(
+                                    // path: "/pesanan",
+                                    onPressed: () {
+                                      dialogButtonAction(sizingInformation);
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColor.primary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text(
+                      "Bayar",
+                      style: FotoInSubHeadingTypography.medium(
+                        color: Color(0xffffffff),
+                      ),
+                    ),
+                  ),
+                );
+              })
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -398,14 +377,17 @@ class _PaymentWidgetState extends State<PaymentWidget> {
 class DialogItem extends StatelessWidget {
   const DialogItem({
     super.key,
-    required this.path,
+    // required this.path,
+    required this.onPressed,
   });
 
-  final String path;
+  // final String path;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset(
@@ -425,13 +407,18 @@ class DialogItem extends StatelessWidget {
           textAlign: TextAlign.center,
           style: FotoInParagraph.small(color: AppColor.textPrimary),
         ),
+        SizedBox(
+          height: 20,
+        ),
         BtnPrimary(
-            tvButton: "Cek Pesanan",
-            onPressed: () {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, path, (route) => false);
-            },
-            radius: 8),
+          tvButton: "Cek Pesanan",
+          // onPressed: () {
+          //   Navigator.pushNamedAndRemoveUntil(
+          //       context, path, (route) => false);
+          // },
+          onPressed: onPressed,
+          radius: 8,
+        ),
       ],
     );
   }
