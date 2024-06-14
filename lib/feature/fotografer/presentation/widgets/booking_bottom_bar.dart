@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
 import 'package:foto_in/utils/button.dart';
 
 class BookingBottomBar extends StatelessWidget {
   const BookingBottomBar({
     super.key,
+    required this.onPressed,
   });
+
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(16),
+      decoration: const BoxDecoration(
         color: AppColor.backgroundPrimary,
         // border top
         border: Border(
@@ -34,7 +36,7 @@ class BookingBottomBar extends StatelessWidget {
                 style: FotoInSubHeadingTypography.small(
                     color: AppColor.textTeriary),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Text(
@@ -46,10 +48,8 @@ class BookingBottomBar extends StatelessWidget {
           ),
           FotoInButton(
             text: "Booking",
-            onPressed: () {
-              Navigator.pushNamed(context, BookingView.routeName);
-            },
-            padding: EdgeInsets.symmetric(horizontal: 56, vertical: 16),
+            onPressed: onPressed,
+            padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 16),
           ),
         ],
       ),

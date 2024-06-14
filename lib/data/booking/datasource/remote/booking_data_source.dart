@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
 import 'package:foto_in/core/const/constant.dart';
 import 'package:foto_in/core/errors/exceptions.dart';

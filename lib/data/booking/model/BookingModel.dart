@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:foto_in/utils/enums/order_status_enum.dart';
 import 'package:foto_in/utils/extensions/extensions.dart';
 
