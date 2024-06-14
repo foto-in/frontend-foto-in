@@ -30,6 +30,7 @@ import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dar
 import 'package:foto_in/feature/order_user/presentation/widgets/user_order_web.dart';
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
+import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => BookingDetailProvider()),
         ChangeNotifierProvider(
             create: (context) => RegisterPhotographerProvider()),
+        ChangeNotifierProvider(create: (context) => ProfileProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(

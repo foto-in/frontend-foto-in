@@ -69,6 +69,11 @@ class PhotographerDataSourceImpl implements PhotographerDataSource {
       options: Options(
         headers: {'Authorization': 'Bearer $token}'},
       ),
+      data: {
+        "title": portofolioRequest.title,
+        "description": portofolioRequest.description,
+        "photos": portofolioRequest.photos,
+      },
     );
 
     print(response);
