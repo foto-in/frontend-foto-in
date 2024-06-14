@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/presentation/view/order_fotografer_detail_view.dart';
-import 'package:foto_in/feature/order_user/order_user_detail/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_item.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/tab_pill.dart';
 
