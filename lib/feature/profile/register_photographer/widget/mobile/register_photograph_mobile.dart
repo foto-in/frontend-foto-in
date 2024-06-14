@@ -118,14 +118,14 @@ class _ProgressPageState extends State<ProgressPage> {
         .toList();
   }
 
-  void _moveNextPage() {
-    if (_pageController.page!.round() == _pageCount - 1) {
-      _pageController.jumpToPage(0);
-    } else {
-      _pageController.nextPage(
-          curve: Curves.bounceIn, duration: const Duration(milliseconds: 100));
-    }
-  }
+  // void _moveNextPage() {
+  //   if (_pageController.page!.round() == _pageCount - 1) {
+  //     _pageController.jumpToPage(0);
+  //   } else {
+  //     _pageController.nextPage(
+  //         curve: Curves.bounceIn, duration: const Duration(milliseconds: 100));
+  //   }
+  // }
 
   Widget formNavigation() {
     return Padding(
@@ -168,16 +168,25 @@ class _ProgressPageState extends State<ProgressPage> {
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
+              } else if (_currentPage == widgets.length - 1) {
+                Navigator.pop(context);
               }
             },
             child: Row(
               children: [
-                Text(
-                  "Selanjutnya",
-                  style: FotoInSubHeadingTypography.medium(
-                    color: AppColor.textPrimary,
-                  ),
-                ),
+                _currentPage == widgets.length - 1
+                    ? Text(
+                        "Daftar",
+                        style: FotoInSubHeadingTypography.medium(
+                          color: AppColor.textPrimary,
+                        ),
+                      )
+                    : Text(
+                        "Selanjutnya",
+                        style: FotoInSubHeadingTypography.medium(
+                          color: AppColor.textPrimary,
+                        ),
+                      ),
                 const SizedBox(width: 8),
                 const Icon(
                   Iconsax.arrow_right_3,
