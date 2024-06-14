@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:foto_in/core/const/constant.dart';
 import 'package:foto_in/core/errors/exceptions.dart';
 import 'package:foto_in/data/auth/model/LoginRequest.dart';
