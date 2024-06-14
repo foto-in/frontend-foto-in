@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/fotografer/presentation/widgets/portofolio_card_small.dart';
 import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
