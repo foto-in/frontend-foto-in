@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_pribadi_mobile.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/informasi_tambahan_mobile.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/jenis_pemotretan_mobile.dart';
@@ -8,6 +9,7 @@ import 'package:foto_in/feature/profile/register_photographer/widget/mobile/port
 import 'package:foto_in/feature/profile/register_photographer/widget/mobile/status_mobile.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 
 List<Widget> widgets = [
   StatusMobile(),
@@ -160,41 +162,46 @@ class _ProgressPageState extends State<ProgressPage> {
                   ),
                 ],
               )),
-          FotoInTextButton(
-            onTap: () {
-              if (_currentPage < widgets.length - 1) {
-                _currentPage = _currentPage + 1;
-                _pageController.nextPage(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-              } else if (_currentPage == widgets.length - 1) {
-                Navigator.pop(context);
-              }
-            },
-            child: Row(
-              children: [
-                _currentPage == widgets.length - 1
-                    ? Text(
-                        "Daftar",
-                        style: FotoInSubHeadingTypography.medium(
-                          color: AppColor.textPrimary,
+          Consumer<RegisterPhotographerProvider>(builder: (context, state, _) {
+            return FotoInTextButton(
+              onTap: () async {
+                if (_currentPage < widgets.length - 1) {
+                  _currentPage = _currentPage + 1;
+                  _pageController.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                } else if (_currentPage == widgets.length - 1) {
+                  await state.registerPhotographer();
+                  if (state.registerPhotographerResponse != null) {
+                    Navigator.pop(context);
+                  }
+                }
+              },
+              child: Row(
+                children: [
+                  _currentPage == widgets.length - 1
+                      ? Text(
+                          "Daftar",
+                          style: FotoInSubHeadingTypography.medium(
+                            color: AppColor.textPrimary,
+                          ),
+                        )
+                      : Text(
+                          "Selanjutnya",
+                          style: FotoInSubHeadingTypography.medium(
+                            color: AppColor.textPrimary,
+                          ),
                         ),
-                      )
-                    : Text(
-                        "Selanjutnya",
-                        style: FotoInSubHeadingTypography.medium(
-                          color: AppColor.textPrimary,
-                        ),
-                      ),
-                const SizedBox(width: 8),
-                const Icon(
-                  Iconsax.arrow_right_3,
-                  size: 20,
-                )
-              ],
-            ),
-          ),
+                  const SizedBox(width: 8),
+                  const Icon(
+                    Iconsax.arrow_right_3,
+                    size: 20,
+                  )
+                ],
+              ),
+            );
+          })
         ],
       ),
     );

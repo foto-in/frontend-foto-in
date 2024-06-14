@@ -15,7 +15,10 @@ import 'package:foto_in/feature/galeri/galeri_details/presentation/view/galeri_d
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
+import 'package:foto_in/feature/onboarding/onboarding_page.dart';
 import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/presentation/view/order_fotografer_detail_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_hasil/presentation/view/upload_hasil_view.dart';
+import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/view/upload_preview_view.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/preview/presentation/view/preview_view.dart';
@@ -26,6 +29,8 @@ import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dar
 import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
+import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
+import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
@@ -55,6 +60,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => BookingDetailProvider()),
         ChangeNotifierProvider(
             create: (context) => RegisterPhotographerProvider()),
+        ChangeNotifierProvider(create: (context) => ProfileProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -67,6 +73,9 @@ class MyApp extends StatelessWidget {
             titleTextStyle: FotoInHeadingTypography.xSmall(
               color: AppColor.textPrimary,
             ),
+          ),
+          radioTheme: RadioThemeData(
+            fillColor: MaterialStateProperty.all(AppColor.primary),
           ),
         ),
         routes: {
@@ -91,6 +100,8 @@ class MyApp extends StatelessWidget {
           OrderUserDetailView.routeName: (context) =>
               const OrderUserDetailView(),
           PreviewView.routeName: (context) => const PreviewView(),
+          UploadPreviewView.routeName: (context) => const UploadPreviewView(),
+          UploadHasilView.routeName: (context) => const UploadHasilView(),
 
           // Fotografer Order
           FotograferOrderView.routeName: (context) =>
@@ -123,6 +134,9 @@ class MyApp extends StatelessWidget {
           PortofolioPhotographerView.routeName: (context) =>
               const PortofolioPhotographerView(),
           EditPortofolioView.routeName: (context) => const EditPortofolioView(),
+
+          // Onboarding
+          OnboardingPage.routeName: (context) => const OnboardingPage(),
         },
         title: 'Flutter Demo',
         home: Scaffold(
