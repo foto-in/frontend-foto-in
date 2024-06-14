@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/widget/detail_bayar_item.dart';
+import 'package:foto_in/feature/order_user/order_user_detail/preview/presentation/view/preview_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_info.dart';
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/utils/button.dart';
@@ -279,6 +280,16 @@ class OrderUserDetailWidget extends StatelessWidget {
               color: AppColor.red600,
               width: 1,
             ),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          FotoInButton(
+            text: "Lihat Preview",
+            onPressed: () {
+              Navigator.pushNamed(context, PreviewView.routeName);
+            },
+            margin: EdgeInsets.symmetric(horizontal: 16),
           ),
         ],
       ),
