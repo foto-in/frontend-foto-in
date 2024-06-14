@@ -9,10 +9,14 @@ import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
+import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
+import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
+import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
+import 'package:foto_in/utils/button.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
@@ -51,6 +55,9 @@ class _ProfileMobileState extends State<ProfileMobile> {
             Expanded(
               child: ListView(
                 children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
@@ -103,6 +110,69 @@ class _ProfileMobileState extends State<ProfileMobile> {
                           Icons.arrow_forward_ios,
                         ),
                       ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          "Portofolio",
+                          style: FotoInHeadingTypography.xSmall(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              PortofolioPhotographerView.routeName,
+                            );
+                          },
+                          child: Text(
+                            "Lihat Semua",
+                            style: FotoInHeadingTypography.xxSmall(
+                              color: AppColor.secondary,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: PortofolioCard(),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: FotoInButton(
+                      text: "Tambah Portofolio",
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AddPortofolioView.routeName);
+                      },
+                      width: double.infinity,
+                      backgroundColor: AppColor.backgroundPrimary,
+                      textColor: AppColor.textPrimary,
+                      border: BorderSide(
+                        color: AppColor.textPrimary,
+                        width: 2,
+                      ),
+                      leading: Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: Icon(Iconsax.add, color: AppColor.textPrimary),
+                      ),
                     ),
                   ),
                   SizedBox(

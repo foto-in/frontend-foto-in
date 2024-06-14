@@ -27,6 +27,8 @@ import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dar
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
 import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
+import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
+import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
@@ -129,6 +131,9 @@ class MyApp extends StatelessWidget {
               const PortofolioMobileView(),
           PortofolioDetailMobileView.routeName: (context) =>
               const PortofolioDetailMobileView(),
+          PortofolioPhotographerView.routeName: (context) =>
+              const PortofolioPhotographerView(),
+          EditPortofolioView.routeName: (context) => const EditPortofolioView(),
 
           // Onboarding
           OnboardingPage.routeName: (context) => const OnboardingPage(),
