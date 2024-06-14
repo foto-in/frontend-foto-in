@@ -22,6 +22,7 @@ import 'package:foto_in/feature/galeri/presentation/widgets/galeri_widgets.dart'
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/home_widgets.dart';
 import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
+import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/preview/presentation/view/preview_view.dart';
 import 'package:foto_in/feature/order_user/presentation/view/order_user_detail_view.dart';
@@ -93,6 +94,10 @@ class MyApp extends StatelessWidget {
           OrderUserDetailView.routeName: (context) =>
               const OrderUserDetailView(),
           PreviewView.routeName: (context) => const PreviewView(),
+
+          // Fotografer Order
+          FotograferOrderView.routeName: (context) =>
+              const FotograferOrderView(),
 
           // Portofolio
           ProfileView.routeName: (context) => const ProfileView(),

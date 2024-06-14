@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/presentation/widgets/mobile/order_item.dart';
-import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
+import 'package:foto_in/feature/order_user/presentation/widgets/mobile/tab_pill.dart';
 
-import 'tab_pill.dart';
-
-class UserOrderMobile extends StatefulWidget {
-  const UserOrderMobile({super.key});
+class FotograferOrderWidget extends StatefulWidget {
+  const FotograferOrderWidget({super.key});
 
   @override
-  State<UserOrderMobile> createState() => _UserOrderMobileState();
+  State<FotograferOrderWidget> createState() => _FotograferOrderWidgetState();
 }
 
-class _UserOrderMobileState extends State<UserOrderMobile> {
+class _FotograferOrderWidgetState extends State<FotograferOrderWidget> {
   final List<String> _orderStatus = [
     "Semua",
     "Menunggu Konfirmasi",
@@ -32,28 +30,25 @@ class _UserOrderMobileState extends State<UserOrderMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundPrimary,
+      appBar: AppBar(
+        title: const Text('Pesanan'),
+        // border bottom
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            color: AppColor.border,
+            height: 1,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            title(),
             tabFilter(),
             Expanded(
               child: ListView(
                 children: [
-                  OrderItem(
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, OrderUserDetailView.routeName);
-                    },
-                  ),
-                  OrderItem(
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, OrderUserDetailView.routeName);
-                    },
-                  ),
                   OrderItem(
                     onTap: () {
                       Navigator.pushNamed(
@@ -71,7 +66,7 @@ class _UserOrderMobileState extends State<UserOrderMobile> {
 
   Padding tabFilter() {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20, top: 20),
       child: SingleChildScrollView(
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
@@ -90,15 +85,6 @@ class _UserOrderMobileState extends State<UserOrderMobile> {
               )
               .toList(),
         ),
-      ),
-    );
-  }
-
-  Widget title() {
-    return const Padding(
-      padding: EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 16),
-      child: ProfileFormTitle(
-        title: "Pesanan Anda",
       ),
     );
   }
