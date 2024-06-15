@@ -42,7 +42,8 @@ class UploadHasilWidget extends StatelessWidget {
             crossAxisSpacing: 15.5,
             shrinkWrap: true,
             builder: (context, index) {
-              return index == maxImage - 1 ? const AddPhoto() : const AddedPhoto();
+              // return index == maxImage - 1 ? const AddPhoto() : const AddedPhoto();
+              return SizedBox();
             },
           ),
         ],

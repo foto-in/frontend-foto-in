@@ -11,7 +11,7 @@ import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_v
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
-import 'package:foto_in/feature/profile/provider/profile_provider.dart';
+import 'package:foto_in/feature/profile/presentation/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';

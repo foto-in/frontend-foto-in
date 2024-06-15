@@ -81,6 +81,7 @@ class ProfileProvider extends ChangeNotifier {
   // get fotografer profile
   Future<void> getFotograferProfile() async {
     try {
+      print('Photographer ID: ${profileResponse!.data.id}');
       final result = await photographerRepository.getPhotographer(
         photographerId: profileResponse!.data.id,
       );
