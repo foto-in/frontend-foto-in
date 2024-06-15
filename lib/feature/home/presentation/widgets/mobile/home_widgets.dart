@@ -125,6 +125,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 8),
                                   child: PhotographCard(
+                                    id: photographerWedding[index].id,
                                     photoProfile:
                                         photographerWedding[index].profileImage,
                                     namaFotografer:
@@ -217,6 +218,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 8),
                                   child: PhotographCard(
+                                    id: photographerWisuda[index].id,
                                     photoProfile:
                                         photographerWisuda[index].profileImage,
                                     namaFotografer:

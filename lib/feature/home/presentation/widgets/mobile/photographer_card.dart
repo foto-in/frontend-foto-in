@@ -5,23 +5,30 @@ import 'package:foto_in/data/photographer/model/PortofolioDetail.dart';
 import 'package:foto_in/feature/fotografer/presentation/view/fotografer_detail_view.dart';
 
 class PhotographCard extends StatelessWidget {
+  final String id;
   final String namaFotografer;
   final double rating;
   final List<PortofolioDetail> portofolio;
   final String? photoProfile;
 
-  const PhotographCard(
-      {super.key,
-      required this.namaFotografer,
-      required this.rating,
-      required this.portofolio,
-      required this.photoProfile});
+  const PhotographCard({
+    super.key,
+    required this.id,
+    required this.namaFotografer,
+    required this.rating,
+    required this.portofolio,
+    required this.photoProfile,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, FotograferDetailView.routeName);
+        Navigator.pushNamed(
+          context,
+          FotograferDetailView.routeName,
+          arguments: id,
+        );
       },
       child: Container(
         child: Column(

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/core/utils/dotted_string_number.dart';
 import 'package:foto_in/utils/button.dart';
 
 class BookingBottomBar extends StatelessWidget {
   const BookingBottomBar({
     super.key,
+    required this.price,
     required this.onPressed,
   });
 
+  final int price;
   final Function() onPressed;
 
   @override
@@ -40,7 +43,7 @@ class BookingBottomBar extends StatelessWidget {
                 height: 4,
               ),
               Text(
-                "IDR 1.500.000",
+                "IDR ${intToCurrency(price)}",
                 style: FotoInSubHeadingTypography.large(
                     color: AppColor.textPrimary),
               )
