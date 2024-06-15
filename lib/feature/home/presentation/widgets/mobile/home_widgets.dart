@@ -1,20 +1,48 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/home/presentation/provider/home_provider.dart';
 import 'package:foto_in/feature/home/presentation/widgets/category_card.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/animation_image.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/photographer_card.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/pinned-header.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
+import 'package:provider/provider.dart';
 
-class MobileHomeWidgets extends StatelessWidget {
+class MobileHomeWidgets extends StatefulWidget {
   const MobileHomeWidgets({super.key});
 
   @override
+  State<MobileHomeWidgets> createState() => _MobileHomeWidgetsState();
+}
+
+class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
+  bool _isLoading = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _fetchData();
+  }
+
+  Future<void> _fetchData() async {
+    final homeProvider = Provider.of<HomeProvider>(context, listen: false);
+    await homeProvider.getAllPhotographer();
+    if (mounted) {
+      setState(() {
+        _isLoading = false; // Data loadEed, update state
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // final homeProvider = Provider.of<HomeProvider>(context);
+    final photographerWedding =
+        Provider.of<HomeProvider>(context).photographerListWedding;
+    final photographerWisuda =
+        Provider.of<HomeProvider>(context).photographerListWisuda;
     final safePadding = MediaQuery.of(context).padding.top;
     print(safePadding);
     return Scaffold(
@@ -74,10 +102,44 @@ class MobileHomeWidgets extends StatelessWidget {
                     ],
                   ),
                 ),
-                const PhotographCard(),
-                const SizedBox(height: 16),
-                const PhotographCard(),
-                const SizedBox(height: 16),
+                SizedBox(
+                  child: _isLoading
+                      ? Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child:
+                              const Center(child: CircularProgressIndicator()),
+                        )
+                      : photographerWedding.isEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.all(24.0),
+                              child: const Center(
+                                  child:
+                                      Text("No wedding photographers found.")),
+                            )
+                          : ListView.builder(
+                              itemCount: 2,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
+                                  child: PhotographCard(
+                                    photoProfile:
+                                        photographerWedding[index].profileImage,
+                                    namaFotografer:
+                                        photographerWedding[index].name,
+                                    rating: 5.0,
+                                    portofolio:
+                                        photographerWedding[index].portofolios,
+                                  ),
+                                );
+                              },
+                            ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
@@ -132,9 +194,52 @@ class MobileHomeWidgets extends StatelessWidget {
                     ],
                   ),
                 ),
-                const PhotographCard(),
-                const SizedBox(height: 16),
-                const PhotographCard(),
+                SizedBox(
+                  child: _isLoading
+                      ? Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child:
+                              const Center(child: CircularProgressIndicator()),
+                        )
+                      : photographerWisuda.isEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.all(24.0),
+                              child: const Center(
+                                  child: Text(
+                                      "No gradution photographers found.")),
+                            )
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: 2,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
+                                  child: PhotographCard(
+                                    photoProfile:
+                                        photographerWisuda[index].profileImage,
+                                    namaFotografer:
+                                        photographerWisuda[index].name,
+                                    rating: 5.0,
+                                    portofolio:
+                                        photographerWisuda[index].portofolios,
+                                  ),
+                                );
+                              },
+                            ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "Fotografi untuk Setiap Momen Penting",
+                    style: FotoInHeadingTypography.xxSmall(
+                        color: AppColor.textPrimary),
+                  ),
+                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 16),

@@ -4,7 +4,7 @@ class ProfileDetail {
   final String id;
   final String username;
   final String fullname;
-  final dynamic profileImage;
+  final String? profileImage;
   final dynamic localtion;
   final DateTime createdAt;
   final DateTime updatedAt;

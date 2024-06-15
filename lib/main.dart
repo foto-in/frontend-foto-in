@@ -14,6 +14,7 @@ import 'package:foto_in/feature/fotografer/presentation/view/fotografer_detail_v
 import 'package:foto_in/feature/galeri/galeri_details/full_screen_photo/presentation/view/full_screen_photo_view.dart';
 import 'package:foto_in/feature/galeri/galeri_details/presentation/view/galeri_details_view.dart';
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
+import 'package:foto_in/feature/home/presentation/provider/home_provider.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
 import 'package:foto_in/feature/onboarding/onboarding_page.dart';
@@ -57,6 +58,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => RegisterPhotographerProvider()),
         ChangeNotifierProvider(create: (context) => ProfileProvider()),
+
+        ChangeNotifierProvider(create: (context) => HomeProvider()),
         // ChangeNotifierProvider(create: (context) => BookingProvider()),
       ],
       child: MaterialApp(
