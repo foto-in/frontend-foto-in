@@ -49,12 +49,12 @@ class _FotograferOrderWidgetState extends State<FotograferOrderWidget> {
             Expanded(
               child: ListView(
                 children: [
-                  OrderItem(
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, OrderFotofgraferDetailView.routeName);
-                    },
-                  ),
+                  // OrderItem(
+                  //   onTap: () {
+                  //     Navigator.pushNamed(
+                  //         context, OrderFotofgraferDetailView.routeName);
+                  //   },
+                  // ),
                 ],
               ),
             )

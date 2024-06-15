@@ -10,7 +10,16 @@ class OrderItem extends StatelessWidget {
   const OrderItem({
     super.key,
     required this.onTap,
+    required this.tfNama,
+    required this.tfTanggalBooking,
+    required this.tfTanggalFoto,
+    required this.tfStatus,
   });
+
+  final String tfNama;
+  final String tfTanggalBooking;
+  final String tfTanggalFoto;
+  final String tfStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +46,7 @@ class OrderItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Cahaya Abafi Fotografi",
+              tfNama,
               style: FotoInSubHeadingTypography.large(),
             ),
             SizedBox(
@@ -48,13 +57,13 @@ class OrderItem extends StatelessWidget {
                 Expanded(
                   child: OrderInfo(
                     title: "Tanggal booking",
-                    value: "24/03/2024",
+                    value: tfTanggalBooking,
                   ),
                 ),
                 Expanded(
                   child: OrderInfo(
                     title: "Sesi foto",
-                    value: "31/03/2024",
+                    value: tfTanggalFoto,
                   ),
                 ),
               ],
@@ -68,7 +77,7 @@ class OrderItem extends StatelessWidget {
                 Expanded(
                   child: OrderInfo(
                     title: "Status",
-                    value: "Menunggu Konfirmasi",
+                    value: tfStatus,
                   ),
                 ),
                 Icon(Icons.chevron_right_rounded),

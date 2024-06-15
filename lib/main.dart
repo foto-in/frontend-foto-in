@@ -24,6 +24,7 @@ import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/preview/presentation/view/preview_view.dart';
+import 'package:foto_in/feature/order_user/presentation/provider/order_provider.dart';
 import 'package:foto_in/feature/order_user/presentation/view/order_user_detail_view.dart';
 import 'package:foto_in/feature/order_user/presentation/view/user_order_view.dart';
 import 'package:foto_in/feature/payment/presentation/view/payment_view.dart';
@@ -36,10 +37,16 @@ import 'package:foto_in/feature/profile/register_photographer/add_portofolio/pre
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/presentation/view/profile_view.dart';
+import 'package:foto_in/utils/timestamp_id.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 void main() {
+  initializeDateFormatting('id_ID', null).then((_) {
+    String timestamp = '2024-06-15 00:33:20.992921';
+    print(formatDateToIndonesian(timestamp));
+  });
   runApp(const MyApp());
 }
 
@@ -61,6 +68,7 @@ class MyApp extends StatelessWidget {
 
         ChangeNotifierProvider(create: (context) => HomeProvider()),
         // ChangeNotifierProvider(create: (context) => BookingProvider()),
+        ChangeNotifierProvider(create: (context) => OrderProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(

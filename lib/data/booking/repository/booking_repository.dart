@@ -6,12 +6,14 @@ import 'package:foto_in/data/booking/datasource/remote/booking_data_source.dart'
 import 'package:foto_in/data/booking/model/AcceptBookingRequest.dart';
 import 'package:foto_in/data/booking/model/BookingRequest.dart';
 import 'package:foto_in/data/booking/model/BookingResponse.dart';
+import 'package:foto_in/data/booking/model/bookings_model.dart';
 
 abstract class BookingRepository {
   Future<Either<Failure, BookingResponse>> postBooking(
       {required BookingRequest bookingRequest});
   Future<Either<Failure, BookingResponse>> acceptBooking(
       {required AcceptBookingRequest acceptBookingRequest});
+  Future<Either<Failure, BookingsResponse>> getAllBooking();
 }
 
 class BookingRepositoryImpl implements BookingRepository {
@@ -45,6 +47,20 @@ class BookingRepositoryImpl implements BookingRepository {
         final remotePostBooking =
             await bookingDataSource.postBooking(bookingRequest: bookingRequest);
         return Right(remotePostBooking);
+      } on ServerException {
+        return Left(ServerFailure(errorMessage: "Server Error"));
+      }
+    } else {
+      return Left(ServerFailure(errorMessage: "No Internet Connection"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, BookingsResponse>> getAllBooking() async {
+    if (await networkInfo.isConnected!) {
+      try {
+        final remoteGetAllBooking = await bookingDataSource.getAllBooking();
+        return Right(remoteGetAllBooking);
       } on ServerException {
         return Left(ServerFailure(errorMessage: "Server Error"));
       }
