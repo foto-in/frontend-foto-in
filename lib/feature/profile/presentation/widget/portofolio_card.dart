@@ -4,10 +4,16 @@ import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/profile/presentation/widget/preview_image.dart';
 
 class PortofolioCard extends StatelessWidget {
+  final String id;
+  final String title;
+  final String description;
   final void Function() onTap;
 
   const PortofolioCard({
     super.key,
+    required this.id,
+    required this.title,
+    required this.description,
     required this.onTap,
   });
 
@@ -37,7 +43,8 @@ class PortofolioCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Pernikahan Romantis di Pantai',
+                      // 'Pernikahan Romantis di Pantai',
+                      title,
                       style: FotoInHeadingTypography.xxSmall(
                         color: AppColor.primary,
                       ),
@@ -45,7 +52,8 @@ class PortofolioCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Pernikahan pasangan Budi dan Ani yang diadakan di tepi pantai dengan tema romantis dan alami. Foto-foto ini menampilkan momen-momen istimewa sepanjang acara pernikahan mereka, mulai dari persiapan pagi hingga pesta malam hari.',
+                      // 'Pernikahan pasangan Budi dan Ani yang diadakan di tepi pantai dengan tema romantis dan alami. Foto-foto ini menampilkan momen-momen istimewa sepanjang acara pernikahan mereka, mulai dari persiapan pagi hingga pesta malam hari.',
+                      description,
                       style: FotoInParagraph.small(
                         color: AppColor.textPrimary,
                       ),

@@ -32,9 +32,9 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> update() async {
-    final isLogin = await SecureStorage().isLogin();
-    print("isLogin: $isLogin");
-    isLogin = isLogin;
+    final _isLogin = await SecureStorage().isLogin();
+    print("isLogin: $_isLogin");
+    isLogin = _isLogin;
 
     if (!isLogin) {
       authState = AuthState.onboarding;

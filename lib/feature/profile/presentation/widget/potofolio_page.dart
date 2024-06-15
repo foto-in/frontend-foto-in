@@ -20,6 +20,10 @@ class PortofolioPage extends StatelessWidget {
       ),
       children: [
         PortofolioCard(
+          id: 'xxx',
+          title: 'Pernikahan Romantis di Pantai',
+          description:
+              'Pernikahan pasangan Budi dan Ani yang diadakan di tepi pantai dengan tema romantis dan alami. Foto-foto ini menampilkan momen-momen istimewa sepanjang acara pernikahan mereka, mulai dari persiapan pagi hingga pesta malam hari.',
           onTap: () {},
         ),
         addPortofolio(context),

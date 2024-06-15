@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
@@ -149,17 +150,31 @@ class _ProfileMobileState extends State<ProfileMobile> {
                           const SizedBox(
                             height: 16,
                           ),
-                          PortofolioCard(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                PortofolioDetailMobileView.routeName,
-                              );
-                            },
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          profileProvider.photographerDetailModel != null &&
+                                  profileProvider.photographerDetailModel!
+                                      .portofolios.isNotEmpty
+                              ? Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: PortofolioCard(
+                                    id: profileProvider.photographerDetailModel!
+                                        .portofolios[0].id,
+                                    title: profileProvider
+                                        .photographerDetailModel!
+                                        .portofolios[0]
+                                        .title,
+                                    description: profileProvider
+                                        .photographerDetailModel!
+                                        .portofolios[0]
+                                        .description,
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        PortofolioDetailMobileView.routeName,
+                                      );
+                                    },
+                                  ),
+                                )
+                              : const SizedBox(),
                           FotoInButton(
                             text: "Tambah Portofolio",
                             onPressed: () {
