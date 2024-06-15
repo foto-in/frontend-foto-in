@@ -1,21 +1,17 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
-import 'package:foto_in/feature/fotografer/presentation/widgets/portofolio_card_small.dart';
 import 'package:foto_in/feature/home/presentation/widgets/mobile/register_photographer_banner.dart';
 import 'package:foto_in/feature/order_fotografer/presentation/view/fotografer_order_view.dart';
+import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
-import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
-import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
@@ -42,7 +38,6 @@ class _ProfileMobileState extends State<ProfileMobile> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
-    final profileProvider = Provider.of<ProfileProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.backgroundPrimary,
       body: SafeArea(
@@ -60,7 +55,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   const SizedBox(
-                    height: 20,
+                    height: 4,
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -90,23 +85,26 @@ class _ProfileMobileState extends State<ProfileMobile> {
                             SizedBox(
                               width: 16,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  profileProvider
-                                          .profileResponse?.data.username ??
-                                      "",
-                                  style: FotoInHeadingTypography.xSmall(),
-                                ),
-                                Text(
-                                  profileProvider
-                                          .profileResponse?.data.fullname ??
-                                      "",
-                                  style: FotoInHeadingTypography.xxSmall(),
-                                ),
-                              ],
-                            ),
+                            Consumer<ProfileProvider>(
+                                builder: (context, profileProvider, child) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    profileProvider
+                                            .profileResponse?.data.username ??
+                                        "",
+                                    style: FotoInHeadingTypography.xSmall(),
+                                  ),
+                                  Text(
+                                    profileProvider
+                                            .profileResponse?.data.fullname ??
+                                        "",
+                                    style: FotoInHeadingTypography.xxSmall(),
+                                  ),
+                                ],
+                              );
+                            }),
                           ],
                         ),
                         Icon(
@@ -115,69 +113,77 @@ class _ProfileMobileState extends State<ProfileMobile> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          "Portofolio",
-                          style: FotoInHeadingTypography.xSmall(),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              PortofolioPhotographerView.routeName,
-                            );
-                          },
-                          child: Text(
-                            "Lihat Semua",
-                            style: FotoInHeadingTypography.xxSmall(
-                              color: AppColor.secondary,
+                  Consumer<ProfileProvider>(
+                      builder: (context, profileProvider, child) {
+                    return Visibility(
+                      visible: profileProvider.profileRole ==
+                          ProfileRole.photographer,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Portofolio",
+                                style: FotoInHeadingTypography.xSmall(),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    PortofolioPhotographerView.routeName,
+                                  );
+                                },
+                                child: Text(
+                                  "Lihat Semua",
+                                  style: FotoInHeadingTypography.xxSmall(
+                                    color: AppColor.secondary,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          PortofolioCard(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                PortofolioDetailMobileView.routeName,
+                              );
+                            },
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          FotoInButton(
+                            text: "Tambah Portofolio",
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, AddPortofolioView.routeName);
+                            },
+                            width: double.infinity,
+                            backgroundColor: AppColor.backgroundPrimary,
+                            textColor: AppColor.textPrimary,
+                            border: BorderSide(
+                              color: AppColor.textPrimary,
+                              width: 2,
+                            ),
+                            leading: Padding(
+                              padding: const EdgeInsets.only(right: 16),
+                              child: Icon(Iconsax.add,
+                                  color: AppColor.textPrimary),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: PortofolioCard(),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: FotoInButton(
-                      text: "Tambah Portofolio",
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, AddPortofolioView.routeName);
-                      },
-                      width: double.infinity,
-                      backgroundColor: AppColor.backgroundPrimary,
-                      textColor: AppColor.textPrimary,
-                      border: BorderSide(
-                        color: AppColor.textPrimary,
-                        width: 2,
-                      ),
-                      leading: Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: Icon(Iconsax.add, color: AppColor.textPrimary),
-                      ),
-                    ),
-                  ),
+                    );
+                  }),
                   SizedBox(
                     height: 20,
                   ),
@@ -196,21 +202,24 @@ class _ProfileMobileState extends State<ProfileMobile> {
                     ),
                     child: Column(
                       children: [
-                        Visibility(
-                          visible: profileProvider.profileRole ==
-                              ProfileRole.photographer,
-                          child: ProfileMenuItem(
-                            leadingIcon: Iconsax.task,
-                            title: "Pesanan",
-                            trailingIcon: Icons.arrow_forward_ios,
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                FotograferOrderView.routeName,
-                              );
-                            },
-                          ),
-                        ),
+                        Consumer<ProfileProvider>(
+                            builder: (context, profileProvider, child) {
+                          return Visibility(
+                            visible: profileProvider.profileRole ==
+                                ProfileRole.photographer,
+                            child: ProfileMenuItem(
+                              leadingIcon: Iconsax.task,
+                              title: "Pesanan",
+                              trailingIcon: Icons.arrow_forward_ios,
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  FotograferOrderView.routeName,
+                                );
+                              },
+                            ),
+                          );
+                        }),
                         ProfileMenuItem(
                           leadingIcon: Iconsax.notification5,
                           title: "Notifikasi",
@@ -232,17 +241,21 @@ class _ProfileMobileState extends State<ProfileMobile> {
                   SizedBox(
                     height: 20,
                   ),
-                  Visibility(
-                    visible: profileProvider.profileRole == ProfileRole.client,
-                    child: RegisterPhotographerBannerMobile(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          RegisterPhotographer.routeName,
-                        );
-                      },
-                    ),
-                  ),
+                  Consumer<ProfileProvider>(
+                      builder: (context, profileProvider, child) {
+                    return Visibility(
+                      visible:
+                          profileProvider.profileRole == ProfileRole.client,
+                      child: RegisterPhotographerBannerMobile(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            RegisterPhotographer.routeName,
+                          );
+                        },
+                      ),
+                    );
+                  }),
                   Container(
                     margin: const EdgeInsets.symmetric(
                       vertical: 20,

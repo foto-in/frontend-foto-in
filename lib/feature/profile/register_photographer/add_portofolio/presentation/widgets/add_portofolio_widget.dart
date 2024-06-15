@@ -7,7 +7,6 @@ import 'package:foto_in/feature/profile/register_photographer/add_portofolio/pre
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/text_field.dart';
-import 'package:iconsax/iconsax.dart';
 
 class AddPortofolioWidget extends StatelessWidget {
   // text field controller

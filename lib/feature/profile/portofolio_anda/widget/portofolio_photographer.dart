@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/feature/fotografer/presentation/widgets/portofolio_card_small.dart';
 import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
@@ -39,11 +38,11 @@ class _PhotographerPortofolioWidgetState
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
-              child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, EditPortofolioView.routeName);
-                  },
-                  child: const PortofolioCard()),
+              child: PortofolioCard(
+                onTap: () {
+                  Navigator.pushNamed(context, EditPortofolioView.routeName);
+                },
+              ),
             );
           },
         ),

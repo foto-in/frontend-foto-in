@@ -7,12 +7,15 @@ import 'package:foto_in/feature/auth/login/presentation/view/login_view.dart';
 import 'package:foto_in/feature/auth/presentation/auth_view.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
+import 'package:foto_in/feature/booking/presentation/provider/booking_provider.dart';
 import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
 import 'package:foto_in/feature/booking_detail/presentation/presentation/booking_detail_provider.dart';
+import 'package:foto_in/feature/fotografer/presentation/provider/fotografer_detail_provider.dart';
 import 'package:foto_in/feature/fotografer/presentation/view/fotografer_detail_view.dart';
 import 'package:foto_in/feature/galeri/galeri_details/full_screen_photo/presentation/view/full_screen_photo_view.dart';
 import 'package:foto_in/feature/galeri/galeri_details/presentation/view/galeri_details_view.dart';
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
+import 'package:foto_in/feature/home/presentation/provider/home_provider.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
 import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
 import 'package:foto_in/feature/onboarding/onboarding_page.dart';
@@ -29,7 +32,6 @@ import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dar
 import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
-import 'package:foto_in/feature/payment/presentation/widgets/payment_widgets.dart';
 import 'package:foto_in/feature/profile/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
@@ -52,18 +54,23 @@ class MyApp extends StatelessWidget {
       providers: [
         // Auth
         ChangeNotifierProvider(create: (context) => AuthProvider()),
-        // ChangeNotifierProvider(
-        //     create: (context) => RegisterProvider(
-        //           secureStorage: secureStorage,
-        //         )),
         ChangeNotifierProvider(create: (context) => LoginProvider()),
         ChangeNotifierProvider(create: (context) => BookingDetailProvider()),
         ChangeNotifierProvider(
             create: (context) => RegisterPhotographerProvider()),
         ChangeNotifierProvider(create: (context) => ProfileProvider()),
+
+        // Home
+        ChangeNotifierProvider(create: (context) => HomeProvider()),
+        // ChangeNotifierProvider(create: (context) => FotograferDetailProvider()),
+
+        // ChangeNotifierProvider(create: (context) => BookingProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: AppColor.primary,
+          ),
           scaffoldBackgroundColor: AppColor.backgroundPrimary,
           primarySwatch: AppColor.primary,
           appBarTheme: AppBarTheme(
@@ -90,11 +97,16 @@ class MyApp extends StatelessWidget {
           Beranda.routeName: (context) => const Beranda(),
 
           // Fotografer Detail
-          FotograferDetailView.routeName: (context) =>
-              const FotograferDetailView(),
+          FotograferDetailView.routeName: (context) => ChangeNotifierProvider(
+                create: (context) => FotograferDetailProvider(),
+                child: const FotograferDetailView(),
+              ),
 
           // Booking
-          BookingView.routeName: (context) => const BookingView(),
+          BookingView.routeName: (context) => ChangeNotifierProvider(
+                create: (context) => BookingProvider(),
+                child: const BookingView(),
+              ),
 
           // User Order
           OrderUserDetailView.routeName: (context) =>

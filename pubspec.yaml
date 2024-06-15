@@ -17,7 +17,6 @@ dependencies:
   fluentui_system_icons: ^1.1.239
   flutter:
     sdk: flutter
-  flutter_layout_grid: ^2.0.7
   flutter_rating_bar: ^4.0.1
   flutter_secure_storage: ^9.0.0
   flutter_svg: ^2.0.10+1

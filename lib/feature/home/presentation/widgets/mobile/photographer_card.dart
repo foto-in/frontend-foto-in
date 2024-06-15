@@ -1,18 +1,34 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/data/photographer/model/PortofolioDetail.dart';
 import 'package:foto_in/feature/fotografer/presentation/view/fotografer_detail_view.dart';
 
 class PhotographCard extends StatelessWidget {
-  const PhotographCard({super.key});
+  final String id;
+  final String namaFotografer;
+  final double rating;
+  final List<PortofolioDetail> portofolio;
+  final String? photoProfile;
+
+  const PhotographCard({
+    super.key,
+    required this.id,
+    required this.namaFotografer,
+    required this.rating,
+    required this.portofolio,
+    required this.photoProfile,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, FotograferDetailView.routeName);
+        Navigator.pushNamed(
+          context,
+          FotograferDetailView.routeName,
+          arguments: id,
+        );
       },
       child: Container(
         child: Column(
@@ -21,7 +37,8 @@ class PhotographCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
+                    foregroundImage: NetworkImage(photoProfile ?? ""),
                     radius: 30,
                   ),
                   const SizedBox(width: 12),
@@ -29,13 +46,13 @@ class PhotographCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Nama Fotografer",
+                        namaFotografer,
                         style: FotoInSubHeadingTypography.medium(
                             color: AppColor.textPrimary),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "Portofolio",
+                        "${portofolio.length} Portofolio",
                         style: FotoInLabelTypography.small(
                           color: AppColor.textTeriary,
                         ),
@@ -55,7 +72,7 @@ class PhotographCard extends StatelessWidget {
                         const Icon(Icons.star, color: Colors.yellow),
                         const SizedBox(width: 4),
                         Text(
-                          "4.5",
+                          rating.toString(),
                           style: FotoInSubHeadingTypography.small(
                               color: AppColor.textTeriary),
                         )

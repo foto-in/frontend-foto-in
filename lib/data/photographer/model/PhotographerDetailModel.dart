@@ -1,7 +1,7 @@
 import 'package:foto_in/data/photographer/model/PortofolioDetail.dart';
 import 'package:foto_in/data/users/model/ProfileDetail.dart';
 
-class PhotographerModel {
+class PhotographerDetailModel {
   final String id;
   final String userId;
   final String email;
@@ -17,7 +17,7 @@ class PhotographerModel {
   final List<PortofolioDetail> portofolios;
   final ProfileDetail user;
 
-  PhotographerModel({
+  PhotographerDetailModel({
     required this.id,
     required this.userId,
     required this.email,
@@ -34,8 +34,8 @@ class PhotographerModel {
     required this.user,
   });
 
-  factory PhotographerModel.fromJson(Map<String, dynamic> json) =>
-      PhotographerModel(
+  factory PhotographerDetailModel.fromJson(Map<String, dynamic> json) =>
+      PhotographerDetailModel(
         id: json["id"],
         userId: json["user_id"],
         email: json["email"],

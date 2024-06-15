@@ -22,13 +22,7 @@ class PortofolioMobileWidget extends StatelessWidget {
       body: SafeArea(
         child: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () {
-                Navigator.pushNamed(
-                    context, PortofolioDetailMobileView.routeName);
-              },
-              child: PortofolioCardSmall(),
-            );
+            return PortofolioCardSmall();
           },
         ),
       ),

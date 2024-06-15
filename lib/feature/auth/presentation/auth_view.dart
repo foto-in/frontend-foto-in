@@ -4,6 +4,7 @@ import 'package:foto_in/feature/auth/provider/auth_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/provider/register_provider.dart';
 import 'package:foto_in/feature/auth/register/presentation/view/register_view.dart';
 import 'package:foto_in/feature/navigation/presentation/view/mobile/navigation_bar.dart';
+import 'package:foto_in/feature/onboarding/onboarding_page.dart';
 import 'package:provider/provider.dart';
 
 class AuthView extends StatelessWidget {
@@ -20,7 +21,9 @@ class AuthView extends StatelessWidget {
       }
 
       if (!authProvider.isLogin) {
-        if (authProvider.authState == AuthState.login) {
+        if (authProvider.authState == AuthState.onboarding) {
+          return OnboardingPage();
+        } else if (authProvider.authState == AuthState.login) {
           return LoginView();
         } else {
           return ChangeNotifierProvider<RegisterProvider>(
