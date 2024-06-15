@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/text_field.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 
 class InformasiTambahanMobile extends StatefulWidget {
   const InformasiTambahanMobile({
@@ -16,13 +18,10 @@ class InformasiTambahanMobile extends StatefulWidget {
 }
 
 class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
-  final TextEditingController mulaiDari = TextEditingController();
-  final TextEditingController hingga = TextEditingController();
-
-  List<TextEditingController> _gearController = [TextEditingController()];
-
   @override
   Widget build(BuildContext context) {
+    List<TextEditingController> _gearController =
+        Provider.of<RegisterPhotographerProvider>(context).camera;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -50,7 +49,9 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
               children: [
                 Expanded(
                   child: TfAuth(
-                    controller: mulaiDari,
+                    controller:
+                        Provider.of<RegisterPhotographerProvider>(context)
+                            .startPrice,
                     hintText: "Mulai dari",
                     hintStyle: FotoInLabelTypography.small(
                       color: AppColor.textPrimary,
@@ -66,7 +67,11 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
                       }
 
                       // rentang bawah tidak boleh lebih dari rentang atas
-                      if (int.parse(value) > int.parse(hingga.text)) {
+                      if (int.parse(value) >
+                          int.parse(
+                              Provider.of<RegisterPhotographerProvider>(context)
+                                  .endPrice
+                                  .text)) {
                         return "Rentang bawah tidak boleh lebih dari rentang atas";
                       }
                       return null;
@@ -88,7 +93,9 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: TfAuth(
-                    controller: hingga,
+                    controller:
+                        Provider.of<RegisterPhotographerProvider>(context)
+                            .endPrice,
                     hintText: "Hingga",
                     hintStyle: FotoInLabelTypography.small(
                       color: AppColor.textPrimary,
@@ -104,7 +111,11 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
                       }
 
                       // rentang atas tidak boleh lebih dari rentang bawah
-                      if (int.parse(value) < int.parse(mulaiDari.text)) {
+                      if (int.parse(value) <
+                          int.parse(
+                              Provider.of<RegisterPhotographerProvider>(context)
+                                  .endPrice
+                                  .text)) {
                         return "Rentang atas tidak boleh lebih dari rentang bawah";
                       }
 
@@ -147,7 +158,7 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
                           hintStyle: FotoInLabelTypography.small(
                             color: AppColor.textPrimary,
                           ),
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Tipe kamera tidak boleh kosong";

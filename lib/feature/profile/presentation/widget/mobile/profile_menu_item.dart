@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 
 class ProfileMenuItem extends StatelessWidget {
@@ -41,13 +42,15 @@ class ProfileMenuItem extends StatelessWidget {
                   width: 16,
                 ),
                 Text(
-                  "Ubah Password",
+                  title,
                   style: FotoInHeadingTypography.xxSmall(),
                 ),
               ],
             ),
             Icon(
               trailingIcon,
+              size: 16,
+              color: AppColor.textSecondary,
             ),
           ],
         ),

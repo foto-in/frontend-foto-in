@@ -581,8 +581,15 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
                                                             .nextInt(500000) +
                                                         400000),
                                               );
-                                              const DialogItem(
-                                                path: "/pesanan",
+                                              DialogItem(
+                                                // path: "/pesanan",
+                                                onPressed: () {
+                                                  Navigator
+                                                      .pushNamedAndRemoveUntil(
+                                                          context,
+                                                          "/pesanan",
+                                                          (route) => false);
+                                                },
                                               );
                                             } catch (e) {
                                               ScaffoldMessenger.of(context)

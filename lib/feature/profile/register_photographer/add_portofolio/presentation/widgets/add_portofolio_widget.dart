@@ -2,10 +2,11 @@ import 'package:auto_height_grid_view/auto_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/widgets/add_photo.dart';
+import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/widgets/added_photo.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/text_field.dart';
-import 'package:iconsax/iconsax.dart';
 
 class AddPortofolioWidget extends StatelessWidget {
   // text field controller
@@ -117,85 +118,6 @@ class AddPortofolioWidget extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class AddedPhoto extends StatelessWidget {
-  const AddedPhoto({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 143,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: AppColor.backgroundSecondary,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Stack(
-        alignment: Alignment.topRight,
-        children: [
-          Image(
-            image: NetworkImage(
-              "https://images.unsplash.com/photo-1718049720096-7f1af82d69af",
-            ),
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            padding: EdgeInsets.all(6),
-            child: Icon(
-              Iconsax.trash,
-              color: AppColor.textPrimary,
-              size: 12,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(50),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class AddPhoto extends StatelessWidget {
-  const AddPhoto({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 143,
-      decoration: BoxDecoration(
-        color: AppColor.backgroundSecondary,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(
-            Iconsax.add,
-            color: AppColor.textSecondary,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Text(
-            "Tambah\nGambar",
-            style: FotoInLabelTypography.small(
-              color: AppColor.textSecondary,
             ),
           ),
         ],

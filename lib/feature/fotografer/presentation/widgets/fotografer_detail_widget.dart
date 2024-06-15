@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/booking_bottom_bar.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/fotografer_kamera.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/fotografer_tag.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/photographer_achievement.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/portofolio_card_small.dart';
+import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dart';
 
 class FotograferDetailWidget extends StatelessWidget {
   const FotograferDetailWidget({super.key});
@@ -34,9 +36,9 @@ class FotograferDetailWidget extends StatelessWidget {
                           color: AppColor.backgroundPrimary,
                         ),
                         // padding: EdgeInsets.all(4),
-                        margin: EdgeInsets.all(8),
+                        margin: const EdgeInsets.all(8),
                         child: IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_back_rounded,
                           ),
                           onPressed: () {
@@ -66,8 +68,8 @@ class FotograferDetailWidget extends StatelessWidget {
                 body: ListView(
                   children: [
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -80,7 +82,7 @@ class FotograferDetailWidget extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -129,8 +131,8 @@ class FotograferDetailWidget extends StatelessWidget {
 
                     // Portofolio
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -139,23 +141,29 @@ class FotograferDetailWidget extends StatelessWidget {
                             style: FotoInHeadingTypography.xxSmall(
                                 color: AppColor.textPrimary),
                           ),
-                          Text(
-                            "Lihat Semua",
-                            style: FotoInSubHeadingTypography.xSmall(
-                              color: AppColor.secondary,
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, PortofolioMobileView.routeName);
+                            },
+                            child: Text(
+                              "Lihat Semua",
+                              style: FotoInSubHeadingTypography.xSmall(
+                                color: AppColor.secondary,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    PortofolioCardSmall(),
-                    PortofolioCardSmall(),
-                    PortofolioCardSmall(),
+                    const PortofolioCardSmall(),
+                    const PortofolioCardSmall(),
+                    const PortofolioCardSmall(),
 
                     // Kamera
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -171,8 +179,8 @@ class FotograferDetailWidget extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Container(
                         clipBehavior: Clip.none,
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: IntrinsicHeight(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: const IntrinsicHeight(
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -196,14 +204,18 @@ class FotograferDetailWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     )
                   ],
                 ),
               ),
             ),
-            BookingBottomBar(),
+            BookingBottomBar(
+              onPressed: () {
+                Navigator.pushNamed(context, BookingView.routeName);
+              },
+            ),
           ],
         ),
       ),

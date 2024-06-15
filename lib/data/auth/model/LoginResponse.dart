@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:foto_in/data/auth/model/LoginDataModel.dart';
 
 class LoginResponse {

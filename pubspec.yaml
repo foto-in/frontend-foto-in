@@ -17,7 +17,6 @@ dependencies:
   fluentui_system_icons: ^1.1.239
   flutter:
     sdk: flutter
-  flutter_layout_grid: ^2.0.7
   flutter_rating_bar: ^4.0.1
   flutter_secure_storage: ^9.0.0
   flutter_svg: ^2.0.10+1
@@ -29,6 +28,7 @@ dependencies:
   provider: ^6.1.2
   responsive_builder: ^0.7.0
   syncfusion_flutter_datepicker: ^25.1.41
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -47,3 +47,4 @@ flutter:
     - assets/images/home/
     - assets/lottie/
     - assets/icons/
+    - assets/images/onboarding/

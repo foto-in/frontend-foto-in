@@ -11,6 +11,7 @@ class TfFotoin extends StatelessWidget {
       required this.keyboardType,
       this.readOnly = false,
       required this.maxLines,
+      this.prefixIcon,
       required this.validator});
 
   final TextEditingController controller;
@@ -19,6 +20,7 @@ class TfFotoin extends StatelessWidget {
   final int? maxLines;
   final bool readOnly;
   final String validator;
+  final Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class TfFotoin extends StatelessWidget {
       },
       cursorColor: AppColor.primary,
       decoration: InputDecoration(
+        prefixIcon: prefixIcon,
         hintText: hintText,
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
