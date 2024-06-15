@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:foto_in/core/connection/network_info.dart';
 import 'package:foto_in/core/errors/failure.dart';
 import 'package:foto_in/data/photographer/datasource/remote/photographer_data_source.dart';
-import 'package:foto_in/data/photographer/model/PhotographerListResponse.dart';
 import 'package:foto_in/data/photographer/model/PhotographerModel.dart';
 import 'package:foto_in/data/photographer/repository/photographer_repository.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';

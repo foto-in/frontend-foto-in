@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/home/presentation/provider/home_provider.dart';
@@ -40,7 +38,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context);
+    // final homeProvider = Provider.of<HomeProvider>(context);
     final photographerWedding =
         Provider.of<HomeProvider>(context).photographerListWedding;
     final photographerWisuda =
