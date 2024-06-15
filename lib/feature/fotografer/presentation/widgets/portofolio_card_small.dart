@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/preview_image.dart';
 
 class PortofolioCardSmall extends StatelessWidget {
@@ -27,7 +28,12 @@ class PortofolioCardSmall extends StatelessWidget {
         color: AppColor.backgroundPrimary,
         borderRadius: BorderRadius.circular(20),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              PortofolioDetailMobileView.routeName,
+            );
+          },
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -46,7 +52,7 @@ class PortofolioCardSmall extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                PreviewImage(count: 4, size: 104),
+                const PreviewImage(count: 4, size: 104),
               ],
             ),
           ),

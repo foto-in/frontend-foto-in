@@ -17,11 +17,11 @@ class FotograferTag extends StatelessWidget {
         color: AppColor.secondary,
         borderRadius: BorderRadius.circular(4),
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 8,
       ),
-      margin: EdgeInsets.only(right: 8),
+      margin: const EdgeInsets.only(right: 8),
       child: Text(
         text,
         style: FotoInSubHeadingTypography.xSmall(

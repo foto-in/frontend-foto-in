@@ -78,7 +78,7 @@ class _NavigationCustom extends State<NavigationCustom> {
               // print(state.isLogin());
 
               if (state.isLoginVar) {
-                return Text("Suda Login");
+                return const Text("Suda Login");
               }
               return ResizeWidgets(
                 width: 450,

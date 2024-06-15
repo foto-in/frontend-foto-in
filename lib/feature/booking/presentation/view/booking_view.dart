@@ -11,9 +11,9 @@ class BookingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-        return BookingWidgets();
+        return const BookingWidgets();
       } else {
-        return BookingWidgetMobile();
+        return const BookingWidgetMobile();
       }
     });
   }

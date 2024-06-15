@@ -1,5 +1,4 @@
 import 'package:auto_height_grid_view/auto_height_grid_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/widget/success_dialog.dart';
@@ -17,9 +16,9 @@ class UploadPreviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Upload Preview'),
+        title: const Text('Upload Preview'),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Container(
             color: AppColor.border,
             height: 1,
@@ -27,13 +26,13 @@ class UploadPreviewWidget extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
-          ProfileFormTitle(
+          const ProfileFormTitle(
             title: "Upload Preview",
             subtitle: "Berikan preview foto kepada klien Anda.",
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           // List gambar
           AutoHeightGridView(
             padding: const EdgeInsets.all(0),
@@ -43,7 +42,7 @@ class UploadPreviewWidget extends StatelessWidget {
             crossAxisSpacing: 15.5,
             shrinkWrap: true,
             builder: (context, index) {
-              return index == maxImage - 1 ? AddPhoto() : AddedPhoto();
+              return index == maxImage - 1 ? const AddPhoto() : const AddedPhoto();
             },
           ),
         ],

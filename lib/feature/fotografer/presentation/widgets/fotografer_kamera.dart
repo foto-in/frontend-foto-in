@@ -16,13 +16,13 @@ class FotograferKamera extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 122.5,
-      margin: EdgeInsets.symmetric(horizontal: 8),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColor.backgroundPrimary,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: Color(0xFFF5F5F5),
+          color: const Color(0xFFF5F5F5),
         ),
       ),
       child: Column(
@@ -32,7 +32,7 @@ class FotograferKamera extends StatelessWidget {
             height: 80,
             image: AssetImage(image),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Text(

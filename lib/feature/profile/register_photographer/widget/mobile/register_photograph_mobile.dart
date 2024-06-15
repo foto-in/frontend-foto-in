@@ -12,11 +12,11 @@ import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 List<Widget> widgets = [
-  StatusMobile(),
-  JenisPemotretanMobile(),
-  InformasiPribadiMobile(),
-  InformasiTambahanMobile(),
-  PortofolioPageMobile()
+  const StatusMobile(),
+  const JenisPemotretanMobile(),
+  const InformasiPribadiMobile(),
+  const InformasiTambahanMobile(),
+  const PortofolioPageMobile()
 ];
 
 class ProgressPage extends StatefulWidget {

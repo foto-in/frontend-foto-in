@@ -8,6 +8,6 @@ class FotograferDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FotograferDetailWidget();
+    return const FotograferDetailWidget();
   }
 }

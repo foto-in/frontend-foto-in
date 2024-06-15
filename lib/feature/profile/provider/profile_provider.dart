@@ -27,7 +27,7 @@ class ProfileProvider extends ChangeNotifier {
   Future<void> getProfile() async {
     try {
       final result = await profileRepository.getProfile();
-      await result.fold((l) {
+      result.fold((l) {
         failure = l;
         notifyListeners();
       }, (r) {
@@ -49,7 +49,7 @@ class ProfileProvider extends ChangeNotifier {
     try {
       final result =
           await profileRepository.updateProfile(profileRequest: profileRequest);
-      await result.fold((l) {
+      result.fold((l) {
         failure = l;
         notifyListeners();
       }, (r) {

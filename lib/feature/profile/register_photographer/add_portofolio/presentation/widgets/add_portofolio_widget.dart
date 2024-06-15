@@ -32,8 +32,8 @@ class AddPortofolioWidget extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: ProfileFormTitle(
               title: "Tambah Portofolio",
               subtitle: "Lengkapi form berikut dengan benar.",
@@ -100,8 +100,8 @@ class AddPortofolioWidget extends StatelessWidget {
                         shrinkWrap: true,
                         builder: (context, index) {
                           return index == maxImage - 1
-                              ? AddPhoto()
-                              : AddedPhoto();
+                              ? const AddPhoto()
+                              : const AddedPhoto();
                         },
                       ),
 

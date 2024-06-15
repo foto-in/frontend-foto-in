@@ -1,9 +1,7 @@
 import 'dart:math';
 
 import 'package:ficonsax/ficonsax.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -40,6 +38,7 @@ class _BookingDetailWidgetState extends State<BookingDetailWidget> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  @override
   void initState() {
     super.initState();
     _selectedController.text = _selectedDate;

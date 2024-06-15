@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/data/photographer/model/PhotographerDetailModel.dart';
 import 'package:foto_in/feature/booking/presentation/provider/booking_provider.dart';
 import 'package:foto_in/feature/fotografer/presentation/widgets/booking_bottom_bar.dart';
 import 'package:foto_in/utils/button.dart';
@@ -24,10 +25,12 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
     final BookingProvider bookingProvider =
         Provider.of<BookingProvider>(context, listen: false);
+    // bookingProvider.setPhotographerDetailModel(photographerDetailModel);
     bookingProvider.selectedController.text = _selectedDate;
     initializeDateFormatting('id_ID', null);
   }
@@ -462,9 +465,16 @@ class _BookingWidgetMobileState extends State<BookingWidgetMobile> {
               ),
             )),
             BookingBottomBar(
+              price: (ModalRoute.of(context)!.settings.arguments
+                      as PhotographerDetailModel)
+                  .endPrice,
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  await bookingProvider.booking();
+                  final PhotographerDetailModel photographerDetailModel =
+                      ModalRoute.of(context)!.settings.arguments
+                          as PhotographerDetailModel;
+                  await bookingProvider.booking(photographerDetailModel.id,
+                      photographerDetailModel.endPrice);
                   Navigator.pop(context);
                 }
               },

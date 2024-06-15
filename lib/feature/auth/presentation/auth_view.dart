@@ -17,18 +17,18 @@ class AuthView extends StatelessWidget {
         builder: (context, AuthProvider authProvider, child) {
       print(authProvider.isLogin);
       if (authProvider.isLogin) {
-        return NavigationBarMobile();
+        return const NavigationBarMobile();
       }
 
       if (!authProvider.isLogin) {
         if (authProvider.authState == AuthState.onboarding) {
-          return OnboardingPage();
+          return const OnboardingPage();
         } else if (authProvider.authState == AuthState.login) {
-          return LoginView();
+          return const LoginView();
         } else {
           return ChangeNotifierProvider<RegisterProvider>(
             create: (context) => RegisterProvider(),
-            child: RegisterView(),
+            child: const RegisterView(),
           );
         }
       }

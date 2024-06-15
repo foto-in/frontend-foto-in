@@ -58,7 +58,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                   collapsedHeight: 200,
                   flexibleSpace: Stack(
                     children: [
-                      AnimationSwitcherWidgets(),
+                      const AnimationSwitcherWidgets(),
                       Positioned(
                         bottom: 10,
                         left: 10,
@@ -104,15 +104,15 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                 ),
                 SizedBox(
                   child: _isLoading
-                      ? Padding(
-                          padding: const EdgeInsets.all(24.0),
+                      ? const Padding(
+                          padding: EdgeInsets.all(24.0),
                           child:
-                              const Center(child: CircularProgressIndicator()),
+                              Center(child: CircularProgressIndicator()),
                         )
                       : photographerWedding.isEmpty
-                          ? Padding(
-                              padding: const EdgeInsets.all(24.0),
-                              child: const Center(
+                          ? const Padding(
+                              padding: EdgeInsets.all(24.0),
+                              child: Center(
                                   child:
                                       Text("No wedding photographers found.")),
                             )
@@ -125,6 +125,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 8),
                                   child: PhotographCard(
+                                    id: photographerWedding[index].id,
                                     photoProfile:
                                         photographerWedding[index].profileImage,
                                     namaFotografer:
@@ -137,7 +138,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                               },
                             ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Padding(
@@ -196,15 +197,15 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                 ),
                 SizedBox(
                   child: _isLoading
-                      ? Padding(
-                          padding: const EdgeInsets.all(24.0),
+                      ? const Padding(
+                          padding: EdgeInsets.all(24.0),
                           child:
-                              const Center(child: CircularProgressIndicator()),
+                              Center(child: CircularProgressIndicator()),
                         )
                       : photographerWisuda.isEmpty
-                          ? Padding(
-                              padding: const EdgeInsets.all(24.0),
-                              child: const Center(
+                          ? const Padding(
+                              padding: EdgeInsets.all(24.0),
+                              child: Center(
                                   child: Text(
                                       "No gradution photographers found.")),
                             )
@@ -217,6 +218,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 8),
                                   child: PhotographCard(
+                                    id: photographerWisuda[index].id,
                                     photoProfile:
                                         photographerWisuda[index].profileImage,
                                     namaFotografer:
@@ -229,7 +231,7 @@ class _MobileHomeWidgetsState extends State<MobileHomeWidgets> {
                               },
                             ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Padding(

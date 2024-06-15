@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -26,7 +25,7 @@ class GaleriItem extends StatelessWidget {
               color: AppColor.backgroundSecondary,
               borderRadius: BorderRadius.circular(4),
             ),
-            child: Image(
+            child: const Image(
               image: NetworkImage(
                 "https://images.unsplash.com/photo-1718049720096-7f1af82d69af",
               ),
@@ -40,13 +39,13 @@ class GaleriItem extends StatelessWidget {
             "Cahaya Abafi Fotografi",
             style: FotoInSubHeadingTypography.small(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Row(
             children: [
-              Icon(Icons.photo, size: 16, color: AppColor.textSecondary),
-              SizedBox(
+              const Icon(Icons.photo, size: 16, color: AppColor.textSecondary),
+              const SizedBox(
                 width: 4,
               ),
               Text(
@@ -55,15 +54,15 @@ class GaleriItem extends StatelessWidget {
                   color: AppColor.textSecondary,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
-              Icon(
+              const Icon(
                 Icons.access_time_filled,
                 size: 16,
                 color: AppColor.textSecondary,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 4,
               ),
               Text(

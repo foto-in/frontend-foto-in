@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/service_order/presentation/widgets/tolak_order_form_page.dart';
@@ -107,17 +105,17 @@ class ServiceOrderMenuItem extends StatelessWidget {
                               surfaceTintColor: Colors.transparent,
                               child: Container(
                                 clipBehavior: Clip.antiAlias,
-                                child: Material(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(40),
-                                    child: TolakOrderFormPage(),
-                                  ),
-                                  color: Colors.white,
-                                ),
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                     maxWidth: 490, maxHeight: 640),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: const Material(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(40),
+                                    child: TolakOrderFormPage(),
+                                  ),
                                 ),
                               ),
                             );

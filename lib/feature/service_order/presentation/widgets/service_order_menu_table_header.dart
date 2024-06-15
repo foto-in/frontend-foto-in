@@ -15,7 +15,7 @@ class ServiceOrderMenuTableHeader extends StatelessWidget {
         vertical: 16,
       ),
       margin: const EdgeInsets.only(top: 32, bottom: 20),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           bottom: BorderSide(color: Color(0xffEEEEEE)),
           top: BorderSide(color: Color(0xffEEEEEE)),

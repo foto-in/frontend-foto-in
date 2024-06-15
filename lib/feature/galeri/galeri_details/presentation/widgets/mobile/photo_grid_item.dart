@@ -15,7 +15,7 @@ class PhotoGridItem extends StatelessWidget {
       child: Container(
         width: double.infinity,
         color: Colors.blue,
-        child: Image(
+        child: const Image(
           image: NetworkImage(
             "https://images.unsplash.com/photo-1718049720096-7f1af82d69af",
           ),

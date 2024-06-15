@@ -7,6 +7,6 @@ class FullScreenPhotoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FullScreenPhotoWidget();
+    return const FullScreenPhotoWidget();
   }
 }

@@ -6,6 +6,6 @@ class BookingDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BookingDetailWidget();
+    return const BookingDetailWidget();
   }
 }

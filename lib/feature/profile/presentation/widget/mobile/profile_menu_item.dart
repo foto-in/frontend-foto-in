@@ -38,7 +38,7 @@ class ProfileMenuItem extends StatelessWidget {
                 Icon(
                   leadingIcon,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 16,
                 ),
                 Text(

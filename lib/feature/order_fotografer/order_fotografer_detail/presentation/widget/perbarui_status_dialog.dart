@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
@@ -28,7 +27,7 @@ class _PerbaruiStatusDialogState extends State<PerbaruiStatusDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding: EdgeInsets.all(16),
+      insetPadding: const EdgeInsets.all(16),
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
       child: Container(
@@ -46,13 +45,13 @@ class _PerbaruiStatusDialogState extends State<PerbaruiStatusDialog> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Iconsax.arrow_left,
                 size: 24,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                   top: 16, left: 16, right: 16, bottom: 16),
               child: ProfileFormTitle(
                 title: "Perbarui Status",
@@ -94,7 +93,7 @@ class _PerbaruiStatusDialogState extends State<PerbaruiStatusDialog> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              margin: EdgeInsets.all(12),
+              margin: const EdgeInsets.all(12),
             )
           ],
         ),

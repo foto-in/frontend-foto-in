@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -21,7 +20,7 @@ class SuccessDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding: EdgeInsets.all(16),
+      insetPadding: const EdgeInsets.all(16),
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
       child: Container(
@@ -58,7 +57,7 @@ class SuccessDialog extends StatelessWidget {
                 style: FotoInParagraph.small(color: AppColor.textPrimary),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             BtnPrimary(
