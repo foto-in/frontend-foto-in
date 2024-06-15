@@ -41,7 +41,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   style: FotoInSubHeadingTypography.medium(
                       color: AppColor.textSecondary),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -67,7 +67,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 40,
           ),
           Column(
@@ -78,12 +78,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 style: FotoInSubHeadingTypography.medium(
                     color: AppColor.textSecondary),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Container(
                 width: 381,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
@@ -107,13 +107,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
-                    Divider(
+                    const Divider(
                       color: AppColor.textSecondary,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Row(
@@ -134,7 +134,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -182,7 +182,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   child: Text(
                     "Bayar",
                     style: FotoInSubHeadingTypography.medium(
-                      color: Color(0xffffffff),
+                      color: const Color(0xffffffff),
                     ),
                   ),
                 ),
@@ -202,7 +202,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 style: FotoInSubHeadingTypography.medium(
                     color: AppColor.textSecondary),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -227,7 +227,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             width: 40,
           ),
           Column(
@@ -238,7 +238,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 style: FotoInSubHeadingTypography.medium(
                     color: AppColor.textSecondary),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               ResponsiveBuilder(builder: (context, sizingInformation) {
@@ -247,7 +247,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           DeviceScreenType.desktop
                       ? 381
                       : double.infinity,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
@@ -271,13 +271,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
-                      Divider(
+                      const Divider(
                         color: AppColor.textSecondary,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Row(
@@ -299,7 +299,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   ),
                 );
               }),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ResponsiveBuilder(builder: (context, sizingInformation) {
@@ -357,7 +357,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     child: Text(
                       "Bayar",
                       style: FotoInSubHeadingTypography.medium(
-                        color: Color(0xffffffff),
+                        color: const Color(0xffffffff),
                       ),
                     ),
                   ),
@@ -404,7 +404,7 @@ class DialogItem extends StatelessWidget {
           textAlign: TextAlign.center,
           style: FotoInParagraph.small(color: AppColor.textPrimary),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         BtnPrimary(

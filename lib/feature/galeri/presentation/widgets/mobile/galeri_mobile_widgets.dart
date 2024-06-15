@@ -24,7 +24,7 @@ class GaleriMobileWidget extends StatelessWidget {
                 crossAxisSpacing: 8,
                 shrinkWrap: true,
                 builder: (context, index) {
-                  return GaleriItem();
+                  return const GaleriItem();
                 },
               ),
             ),

@@ -22,7 +22,7 @@ class PreviewImage extends StatelessWidget {
           children: List.generate(
             count,
             (index) {
-              return ImageContainer(
+              return const ImageContainer(
                 size: 104,
               );
             },
@@ -36,7 +36,7 @@ class PreviewImage extends StatelessWidget {
           (index) {
             return Padding(
               padding: EdgeInsets.only(left: index * gap),
-              child: ImageContainer(
+              child: const ImageContainer(
                 size: 104,
               ),
             );

@@ -14,8 +14,8 @@ class InformasiPribadiMobile extends StatefulWidget {
 }
 
 class _InformasiPribadiMobileState extends State<InformasiPribadiMobile> {
-  ScrollController _controller = ScrollController();
-  FocusNode _focusNode = FocusNode();
+  final ScrollController _controller = ScrollController();
+  final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {

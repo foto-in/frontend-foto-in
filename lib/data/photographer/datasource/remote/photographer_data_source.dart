@@ -36,7 +36,7 @@ class PhotographerDataSourceImpl implements PhotographerDataSource {
   Future<PortofolioListResponse> getAllPortofolio(
       {required String photographerId}) async {
     final response =
-        await dio.get(base_url + portofolio_path + "/$photographerId");
+        await dio.get("$base_url$portofolio_path/$photographerId");
 
     print(response);
     print(response.statusCode);
@@ -52,7 +52,7 @@ class PhotographerDataSourceImpl implements PhotographerDataSource {
   Future<PortofolioDetailResponse> getDetailPortofolio(
       {required String photographerId, required String portofolioId}) async {
     final response = await dio.get(
-        base_url + portofolio_path + "/$photographerId" + "/$portofolioId");
+        "$base_url$portofolio_path/$photographerId/$portofolioId");
 
     print(response);
     print(response.statusCode);
@@ -160,7 +160,7 @@ class PhotographerDataSourceImpl implements PhotographerDataSource {
 
     try {
       final response = await dio.get(
-        base_url + get_photographer_by_id_path + "/$photographerId",
+        "$base_url$get_photographer_by_id_path/$photographerId",
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
 

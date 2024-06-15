@@ -7,6 +7,6 @@ class OrderFotofgraferDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OrderFotograferDetailWidget();
+    return const OrderFotograferDetailWidget();
   }
 }

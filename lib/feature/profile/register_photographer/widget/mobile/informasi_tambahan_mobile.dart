@@ -20,7 +20,7 @@ class InformasiTambahanMobile extends StatefulWidget {
 class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
   @override
   Widget build(BuildContext context) {
-    List<TextEditingController> _gearController =
+    List<TextEditingController> gearController =
         Provider.of<RegisterPhotographerProvider>(context).camera;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +145,7 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
 
             Column(
               // create a list of textfield with bbutton to add more textfield if the index is the last index
-              children: _gearController.map((e) {
+              children: gearController.map((e) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: Row(
@@ -171,12 +171,12 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
                       const SizedBox(width: 8),
                       // if the index is the last index, add button to add more textfield
                       // else add remove button to remove the textfield
-                      if (_gearController.indexOf(e) ==
-                          _gearController.length - 1)
+                      if (gearController.indexOf(e) ==
+                          gearController.length - 1)
                         IconButton(
                           onPressed: () {
                             setState(() {
-                              _gearController.add(TextEditingController());
+                              gearController.add(TextEditingController());
                             });
                           },
                           icon: const Icon(
@@ -184,12 +184,12 @@ class _InformasiTambahanMobileState extends State<InformasiTambahanMobile> {
                             color: AppColor.textPrimary,
                           ),
                         ),
-                      if (_gearController.indexOf(e) !=
-                          _gearController.length - 1)
+                      if (gearController.indexOf(e) !=
+                          gearController.length - 1)
                         IconButton(
                           onPressed: () {
                             setState(() {
-                              _gearController.remove(e);
+                              gearController.remove(e);
                             });
                           },
                           icon: const Icon(

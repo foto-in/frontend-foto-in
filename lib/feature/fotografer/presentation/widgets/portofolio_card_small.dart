@@ -52,7 +52,7 @@ class PortofolioCardSmall extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                PreviewImage(count: 4, size: 104),
+                const PreviewImage(count: 4, size: 104),
               ],
             ),
           ),

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
@@ -29,10 +28,10 @@ class OrderItem extends StatelessWidget {
           color: AppColor.backgroundPrimary,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: Color(0xFFF5F5F5),
+            color: const Color(0xFFF5F5F5),
           ),
         ),
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -40,10 +39,10 @@ class OrderItem extends StatelessWidget {
               "Cahaya Abafi Fotografi",
               style: FotoInSubHeadingTypography.large(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: OrderInfo(
@@ -59,10 +58,10 @@ class OrderItem extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Row(
+            const Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(

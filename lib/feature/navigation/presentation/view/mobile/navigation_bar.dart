@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foto_in/feature/galeri/presentation/view/galeri_view.dart';
 import 'package:foto_in/feature/home/presentation/view/beranda.dart';
@@ -21,7 +19,7 @@ class _NavigationBarMobileState extends State<NavigationBarMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: NavigationBar(
-          backgroundColor: Color(0xffffffff),
+          backgroundColor: const Color(0xffffffff),
           indicatorColor: Colors.transparent,
           elevation: 0,
           onDestinationSelected: (int index) {

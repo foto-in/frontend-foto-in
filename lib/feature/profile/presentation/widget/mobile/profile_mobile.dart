@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
@@ -52,7 +51,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
             ),
             Expanded(
               child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   const SizedBox(
                     height: 4,
@@ -70,7 +69,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                         ),
                       ],
                     ),
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -82,7 +81,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                               backgroundColor: Colors.primaries[
                                   Random().nextInt(Colors.primaries.length)],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 16,
                             ),
                             Consumer<ProfileProvider>(
@@ -107,7 +106,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                             }),
                           ],
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward_ios,
                         ),
                       ],
@@ -121,7 +120,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Row(
@@ -158,7 +157,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                               );
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           FotoInButton(
@@ -170,12 +169,12 @@ class _ProfileMobileState extends State<ProfileMobile> {
                             width: double.infinity,
                             backgroundColor: AppColor.backgroundPrimary,
                             textColor: AppColor.textPrimary,
-                            border: BorderSide(
+                            border: const BorderSide(
                               color: AppColor.textPrimary,
                               width: 2,
                             ),
-                            leading: Padding(
-                              padding: const EdgeInsets.only(right: 16),
+                            leading: const Padding(
+                              padding: EdgeInsets.only(right: 16),
                               child: Icon(Iconsax.add,
                                   color: AppColor.textPrimary),
                             ),
@@ -184,7 +183,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                       ),
                     );
                   }),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -220,17 +219,17 @@ class _ProfileMobileState extends State<ProfileMobile> {
                             ),
                           );
                         }),
-                        ProfileMenuItem(
+                        const ProfileMenuItem(
                           leadingIcon: Iconsax.notification5,
                           title: "Notifikasi",
                           trailingIcon: Icons.arrow_forward_ios,
                         ),
-                        ProfileMenuItem(
+                        const ProfileMenuItem(
                           leadingIcon: Iconsax.global5,
                           title: "Bahasa",
                           trailingIcon: Icons.arrow_forward_ios,
                         ),
-                        ProfileMenuItem(
+                        const ProfileMenuItem(
                           leadingIcon: Iconsax.message_question5,
                           title: "Bantuan",
                           trailingIcon: Icons.arrow_forward_ios,
@@ -238,7 +237,7 @@ class _ProfileMobileState extends State<ProfileMobile> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Consumer<ProfileProvider>(

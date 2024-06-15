@@ -18,10 +18,10 @@ class OrderFotograferDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Detail Pesanan"),
+        title: const Text("Detail Pesanan"),
         // bottom line
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(
             color: AppColor.border,
             height: 1,
@@ -29,15 +29,15 @@ class OrderFotograferDetailWidget extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
         children: [
-          OrderDetail(),
-          SizedBox(height: 20),
-          OrderInfo(
+          const OrderDetail(),
+          const SizedBox(height: 20),
+          const OrderInfo(
             title: "Status Pesanan",
             value: "Menunggu Konfirmasi",
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -47,16 +47,16 @@ class OrderFotograferDetailWidget extends StatelessWidget {
                   color: AppColor.textSecondary,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Container(
                 decoration: BoxDecoration(
                   color: AppColor.backgroundPrimary,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: Color(0xFFF5F5F5),
+                    color: const Color(0xFFF5F5F5),
                   ),
                 ),
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
                     DetailBayarItem(
@@ -66,7 +66,7 @@ class OrderFotograferDetailWidget extends StatelessWidget {
                         color: AppColor.textSecondary,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     DetailBayarItem(
@@ -76,7 +76,7 @@ class OrderFotograferDetailWidget extends StatelessWidget {
                         color: AppColor.textSecondary,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     // devider
@@ -84,7 +84,7 @@ class OrderFotograferDetailWidget extends StatelessWidget {
                       height: 1,
                       color: AppColor.border,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     DetailBayarItem(
@@ -97,7 +97,7 @@ class OrderFotograferDetailWidget extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           FotoInButton(
@@ -120,7 +120,7 @@ class OrderFotograferDetailWidget extends StatelessWidget {
               );
             },
             backgroundColor: AppColor.green600,
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
           ),
           FotoInButton(
             text: "Tolak",
@@ -130,12 +130,12 @@ class OrderFotograferDetailWidget extends StatelessWidget {
                 barrierDismissible: false,
                 context: context,
                 builder: (context) {
-                  return TolakStatusDialog();
+                  return const TolakStatusDialog();
                 },
               );
             },
             backgroundColor: AppColor.red600,
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
           ),
           FotoInButton(
             text: "Perbarui Status",
@@ -145,25 +145,25 @@ class OrderFotograferDetailWidget extends StatelessWidget {
                 barrierDismissible: false,
                 context: context,
                 builder: (context) {
-                  return PerbaruiStatusDialog();
+                  return const PerbaruiStatusDialog();
                 },
               );
             },
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
           ),
           FotoInButton(
             text: "Upload Preview",
             onPressed: () {
               Navigator.pushNamed(context, UploadPreviewView.routeName);
             },
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
           ),
           FotoInButton(
             text: "Upload Hasil",
             onPressed: () {
               Navigator.pushNamed(context, UploadHasilView.routeName);
             },
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
           ),
         ],
       ),

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
@@ -180,7 +178,7 @@ class _BookingWidgetsState extends State<BookingWidgets> {
                                     fit: BoxFit.cover,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(24),
+                                    padding: const EdgeInsets.all(24),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -192,14 +190,14 @@ class _BookingWidgetsState extends State<BookingWidgets> {
                                             color: AppColor.textPrimary,
                                           ),
                                         ),
-                                        SizedBox(height: 4),
+                                        const SizedBox(height: 4),
                                         Text(
                                           "Semarang, Jawa Tengah",
                                           style: FotoInParagraph.small(
                                             color: AppColor.textSecondary,
                                           ),
                                         ),
-                                        SizedBox(height: 24),
+                                        const SizedBox(height: 24),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -216,7 +214,7 @@ class _BookingWidgetsState extends State<BookingWidgets> {
                                                               color: AppColor
                                                                   .textPrimary),
                                                 ),
-                                                SizedBox(height: 4),
+                                                const SizedBox(height: 4),
                                                 Text(
                                                   "Wisuda",
                                                   style:
@@ -235,7 +233,7 @@ class _BookingWidgetsState extends State<BookingWidgets> {
                                                       AppColor.yellow.shade600,
                                                   size: 16,
                                                 ),
-                                                SizedBox(width: 4),
+                                                const SizedBox(width: 4),
                                                 Text(
                                                   "4.8 (50 Project)",
                                                   style: FotoInHeadingTypography

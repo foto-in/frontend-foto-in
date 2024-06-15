@@ -19,7 +19,7 @@ class AddedPhoto extends StatelessWidget {
       child: Stack(
         alignment: Alignment.topRight,
         children: [
-          Image(
+          const Image(
             image: NetworkImage(
               "https://images.unsplash.com/photo-1718049720096-7f1af82d69af",
             ),
@@ -27,16 +27,16 @@ class AddedPhoto extends StatelessWidget {
             width: double.infinity,
           ),
           Container(
-            margin: EdgeInsets.all(8),
-            padding: EdgeInsets.all(6),
-            child: Icon(
-              Iconsax.trash,
-              color: AppColor.textPrimary,
-              size: 12,
-            ),
+            margin: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
+            ),
+            child: const Icon(
+              Iconsax.trash,
+              color: AppColor.textPrimary,
+              size: 12,
             ),
           ),
         ],

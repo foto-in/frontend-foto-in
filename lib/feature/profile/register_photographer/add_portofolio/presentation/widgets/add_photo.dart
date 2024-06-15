@@ -20,11 +20,11 @@ class AddPhoto extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Iconsax.add,
             color: AppColor.textSecondary,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Text(

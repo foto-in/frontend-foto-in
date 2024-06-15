@@ -1,8 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/booking/presentation/view/booking_view.dart';
@@ -209,7 +207,7 @@ class _FotograferDetailWidgetState extends State<FotograferDetailWidget> {
                                         .portofolios
                                         .length,
                                     itemBuilder: (context, index) {
-                                      return PortofolioCardSmall(
+                                      return const PortofolioCardSmall(
                                         marginSide: 16,
                                       );
                                     },

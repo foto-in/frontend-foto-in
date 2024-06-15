@@ -49,7 +49,7 @@ class PaymentWidgetWeb extends StatelessWidget {
             const SizedBox(
               height: 48,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 80),
               child: PaymentWidget(),
             ),

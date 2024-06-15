@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/navigation/presentation/view/navigation.dart';
@@ -55,7 +53,7 @@ class _ServiceOrderWebState extends State<ServiceOrderWeb> {
                 ),
                 const SizedBox(height: 24),
                 menu(),
-                ServiceOrderMenuTableHeader(),
+                const ServiceOrderMenuTableHeader(),
                 Expanded(
                   child: ListView.builder(
                     shrinkWrap: true,
