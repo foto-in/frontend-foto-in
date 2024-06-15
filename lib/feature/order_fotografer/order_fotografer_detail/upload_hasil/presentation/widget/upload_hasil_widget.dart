@@ -2,8 +2,6 @@ import 'package:auto_height_grid_view/auto_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/feature/order_fotografer/order_fotografer_detail/upload_preview/presentation/widget/success_dialog.dart';
-import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/widgets/add_photo.dart';
-import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/widgets/added_photo.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
 
