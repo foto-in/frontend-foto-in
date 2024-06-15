@@ -281,9 +281,20 @@ class _FotograferDetailWidgetState extends State<FotograferDetailWidget> {
                     }),
               ),
             ),
-            BookingBottomBar(
-              onPressed: () {
-                Navigator.pushNamed(context, BookingView.routeName);
+            Consumer<FotograferDetailProvider>(
+              builder: (context, fotograferDetailProvider, child) {
+                return BookingBottomBar(
+                  price: fotograferDetailProvider
+                      .photographerDetailModel!.endPrice,
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      BookingView.routeName,
+                      arguments:
+                          fotograferDetailProvider.photographerDetailModel!,
+                    );
+                  },
+                );
               },
             ),
           ],
