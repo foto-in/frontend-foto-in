@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/auth/provider/auth_provider.dart';
@@ -10,7 +11,7 @@ import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_v
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
 import 'package:foto_in/feature/profile/presentation/widget/portofolio_card.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
-import 'package:foto_in/feature/profile/provider/profile_provider.dart';
+import 'package:foto_in/feature/profile/presentation/provider/profile_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/feature/profile/presentation/widget/mobile/profile_menu_item.dart';
@@ -149,17 +150,31 @@ class _ProfileMobileState extends State<ProfileMobile> {
                           const SizedBox(
                             height: 16,
                           ),
-                          PortofolioCard(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                PortofolioDetailMobileView.routeName,
-                              );
-                            },
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          profileProvider.photographerDetailModel != null &&
+                                  profileProvider.photographerDetailModel!
+                                      .portofolios.isNotEmpty
+                              ? Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: PortofolioCard(
+                                    id: profileProvider.photographerDetailModel!
+                                        .portofolios[0].id,
+                                    title: profileProvider
+                                        .photographerDetailModel!
+                                        .portofolios[0]
+                                        .title,
+                                    description: profileProvider
+                                        .photographerDetailModel!
+                                        .portofolios[0]
+                                        .description,
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        PortofolioDetailMobileView.routeName,
+                                      );
+                                    },
+                                  ),
+                                )
+                              : const SizedBox(),
                           FotoInButton(
                             text: "Tambah Portofolio",
                             onPressed: () {

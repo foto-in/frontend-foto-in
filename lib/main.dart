@@ -33,7 +33,8 @@ import 'package:foto_in/feature/portofolio/presentation/view/portofolio_view.dar
 import 'package:foto_in/feature/portofolio_detail/presentation/view/portofolio_view.dart';
 import 'package:foto_in/feature/profile/edit_portofolio/view/edit_portofolio_view.dart';
 import 'package:foto_in/feature/profile/portofolio_anda/view/portofolio_photographer_view.dart';
-import 'package:foto_in/feature/profile/provider/profile_provider.dart';
+import 'package:foto_in/feature/profile/presentation/provider/profile_provider.dart';
+import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/provider/add_portofolio_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/view/add_portofolio_view.dart';
 import 'package:foto_in/feature/profile/register_photographer/provider/register_photographer_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/view/register_photographer_view.dart';
@@ -133,7 +134,10 @@ class MyApp extends StatelessWidget {
           ProfileView.routeName: (context) => const ProfileView(),
           RegisterPhotographer.routeName: (context) =>
               const RegisterPhotographer(),
-          AddPortofolioView.routeName: (context) => const AddPortofolioView(),
+          AddPortofolioView.routeName: (context) => ChangeNotifierProvider(
+                create: (context) => AddPortofolioProvider(),
+                child: const AddPortofolioView(),
+              ),
 
           // Galeri
           GaleriView.routeName: (context) => const GaleriView(),

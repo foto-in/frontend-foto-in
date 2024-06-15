@@ -2,11 +2,13 @@ import 'package:auto_height_grid_view/auto_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
+import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/provider/add_portofolio_provider.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/widgets/add_photo.dart';
 import 'package:foto_in/feature/profile/register_photographer/add_portofolio/presentation/widgets/added_photo.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
 import 'package:foto_in/utils/text_field.dart';
+import 'package:provider/provider.dart';
 
 class AddPortofolioWidget extends StatelessWidget {
   // text field controller
@@ -24,6 +26,8 @@ class AddPortofolioWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AddPortofolioProvider addPortofolioProvider =
+        Provider.of<AddPortofolioProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.backgroundPrimary,
       appBar: AppBar(
@@ -93,15 +97,19 @@ class AddPortofolioWidget extends StatelessWidget {
                       // List gambar
                       AutoHeightGridView(
                         padding: const EdgeInsets.all(0),
-                        itemCount: maxImage,
+                        itemCount: addPortofolioProvider.images.length + 1,
                         crossAxisCount: 3,
                         mainAxisSpacing: 16,
                         crossAxisSpacing: 15.5,
                         shrinkWrap: true,
                         builder: (context, index) {
-                          return index == maxImage - 1
-                              ? const AddPhoto()
-                              : const AddedPhoto();
+                          if (index == addPortofolioProvider.images.length) {
+                            return const AddPhoto();
+                          }
+                          return AddedPhoto(index: index);
+                          // return index == maxImage - 1
+                          //     ? const AddPhoto()
+                          //     : const AddedPhoto();
                         },
                       ),
 

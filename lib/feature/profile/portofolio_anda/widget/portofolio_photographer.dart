@@ -39,6 +39,10 @@ class _PhotographerPortofolioWidgetState
             return Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
               child: PortofolioCard(
+                id: 'xxx',
+                title: 'Pernikahan Romantis di Pantai',
+                description:
+                    'Pernikahan pasangan Budi dan Ani yang diadakan di tepi pantai dengan tema romantis dan alami. Foto-foto ini menampilkan momen-momen istimewa sepanjang acara pernikahan mereka, mulai dari persiapan pagi hingga pesta malam hari.',
                 onTap: () {
                   Navigator.pushNamed(context, EditPortofolioView.routeName);
                 },

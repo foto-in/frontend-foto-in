@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
-import 'package:foto_in/core/utils/dotted_string_number.dart';
+import 'package:foto_in/utils/dotted_string_number.dart';
 import 'package:foto_in/utils/button.dart';
 
 class BookingBottomBar extends StatelessWidget {

@@ -51,7 +51,7 @@ class OrderItem extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Row(
+            Row(
               children: [
                 Expanded(
                   child: OrderInfo(
@@ -70,7 +70,7 @@ class OrderItem extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
