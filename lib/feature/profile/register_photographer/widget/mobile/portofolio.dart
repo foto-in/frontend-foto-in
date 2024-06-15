@@ -31,12 +31,12 @@ class PortofolioPageMobile extends StatelessWidget {
           width: double.infinity,
           backgroundColor: AppColor.backgroundPrimary,
           textColor: AppColor.textPrimary,
-          border: BorderSide(
+          border: const BorderSide(
             color: AppColor.textPrimary,
             width: 2,
           ),
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 16),
+          leading: const Padding(
+            padding: EdgeInsets.only(right: 16),
             child: Icon(Iconsax.add, color: AppColor.textPrimary),
           ),
         ),

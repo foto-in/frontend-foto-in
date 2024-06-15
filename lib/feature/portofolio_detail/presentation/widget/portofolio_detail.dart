@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/core/styles/typography.dart';
 import 'package:foto_in/feature/order_user/order_user_detail/preview/presentation/widget/preview_image.dart';
@@ -12,7 +11,7 @@ class PortofolioDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Portofolio Detail'),
+        title: const Text('Portofolio Detail'),
         centerTitle: true,
         titleTextStyle: FotoInHeadingTypography.xSmall(
           color: AppColor.textPrimary,

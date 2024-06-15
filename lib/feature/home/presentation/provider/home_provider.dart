@@ -22,7 +22,7 @@ class HomeProvider extends ChangeNotifier {
   Future<void> getAllPhotographer() async {
     try {
       final result = await photographerRepository.getAllPhotographer();
-      await result.fold((l) {
+      result.fold((l) {
         failure = l;
         notifyListeners();
       }, (r) {

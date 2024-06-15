@@ -31,7 +31,7 @@ class PortofolioCard extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                PreviewImage(count: 4, size: 104),
+                const PreviewImage(count: 4, size: 104),
                 const SizedBox(height: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

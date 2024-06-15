@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/feature/profile/register_photographer/widget/profile_form_title.dart';
 import 'package:foto_in/utils/button.dart';
@@ -39,16 +37,16 @@ class _TolakOrderFormPageState extends State<TolakOrderFormPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
+        const Icon(
           Iconsax.arrow_left,
           weight: 5,
         ),
-        SizedBox(height: 20),
-        ProfileFormTitle(
+        const SizedBox(height: 20),
+        const ProfileFormTitle(
           title: "Tolak Pesanan",
           subtitle: "Berikan alasan mengapa Anda menolak pesanan klien.",
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Expanded(
           child: ListView.builder(
             shrinkWrap: true,
@@ -68,7 +66,7 @@ class _TolakOrderFormPageState extends State<TolakOrderFormPage> {
             },
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         SizedBox(
           width: double.infinity,
           child: FotoInButton(

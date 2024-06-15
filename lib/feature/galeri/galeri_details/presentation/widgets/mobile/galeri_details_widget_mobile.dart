@@ -19,7 +19,7 @@ class GaleriDetailsMobileWidget extends StatelessWidget {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: Container(
-            color: Color(0xFFF5F5F5),
+            color: const Color(0xFFF5F5F5),
             height: 1,
           ),
         ),
@@ -32,7 +32,7 @@ class GaleriDetailsMobileWidget extends StatelessWidget {
         ),
         children: List.generate(
           6,
-          (index) => PhotoGridItem(),
+          (index) => const PhotoGridItem(),
         ),
       ),
     );

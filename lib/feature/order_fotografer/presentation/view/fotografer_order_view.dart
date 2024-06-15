@@ -7,6 +7,6 @@ class FotograferOrderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FotograferOrderWidget();
+    return const FotograferOrderWidget();
   }
 }

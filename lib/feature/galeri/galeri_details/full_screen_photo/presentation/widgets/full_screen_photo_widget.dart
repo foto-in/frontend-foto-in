@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:foto_in/core/styles/colors.dart';
 import 'package:foto_in/utils/button.dart';
 
@@ -43,7 +42,7 @@ class _FullScreenPhotoWidgetState extends State<FullScreenPhotoWidget> {
             Expanded(
               child: PageView(
                 controller: _pageController,
-                children: images.map((e) => ImageFullScreen()).toList(),
+                children: images.map((e) => const ImageFullScreen()).toList(),
               ),
             ),
             FotoInButton(
@@ -66,7 +65,7 @@ class ImageFullScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Image(
         image: NetworkImage(
           "https://images.unsplash.com/photo-1718049720096-7f1af82d69af",

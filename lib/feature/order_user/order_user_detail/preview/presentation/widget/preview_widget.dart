@@ -15,11 +15,11 @@ class PreviewWidget extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            PreviewImage(),
-            PreviewImage(),
-            PreviewImage(),
-            PreviewImage(),
-            PreviewImage(),
+            const PreviewImage(),
+            const PreviewImage(),
+            const PreviewImage(),
+            const PreviewImage(),
+            const PreviewImage(),
             SizedBox(height: MediaQuery.of(context).padding.bottom),
           ],
         ),

@@ -23,7 +23,7 @@ class OrderInfo extends StatelessWidget {
             color: AppColor.textSecondary,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           value,
           style: FotoInSubHeadingTypography.medium(),

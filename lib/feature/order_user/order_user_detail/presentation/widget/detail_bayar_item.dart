@@ -5,7 +5,7 @@ class DetailBayarItem extends StatelessWidget {
   final String value;
   final TextStyle style;
 
-  DetailBayarItem({
+  const DetailBayarItem({
     super.key,
     required this.title,
     required this.value,

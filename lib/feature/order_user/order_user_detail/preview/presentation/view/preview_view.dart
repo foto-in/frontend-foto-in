@@ -8,6 +8,6 @@ class PreviewView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PreviewWidget();
+    return const PreviewWidget();
   }
 }

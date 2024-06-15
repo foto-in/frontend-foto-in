@@ -17,7 +17,7 @@ class BenefitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 64, vertical: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
       clipBehavior: Clip.antiAlias,
       width: 620,
       decoration: BoxDecoration(

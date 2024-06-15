@@ -18,7 +18,7 @@ class _InformasiTambahanState extends State<InformasiTambahan> {
   final TextEditingController mulaiDari = TextEditingController();
   final TextEditingController hingga = TextEditingController();
 
-  List<TextEditingController> _gearController = [TextEditingController()];
+  final List<TextEditingController> _gearController = [TextEditingController()];
 
   @override
   Widget build(BuildContext context) {

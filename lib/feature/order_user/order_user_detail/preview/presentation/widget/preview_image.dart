@@ -16,7 +16,7 @@ class PreviewImage extends StatelessWidget {
       ),
       height: 230,
       clipBehavior: Clip.antiAlias,
-      child: Image(
+      child: const Image(
         image: NetworkImage(
           'https://images.unsplash.com/photo-1718049720096-7f1af82d69af',
         ),

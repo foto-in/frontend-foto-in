@@ -42,7 +42,7 @@ class RegisterPhotographerProvider extends ChangeNotifier {
   Future<void> getProfile() async {
     try {
       final result = await profileRepository.getProfile();
-      await result.fold((l) {
+      result.fold((l) {
         failure = l;
         notifyListeners();
       }, (r) {

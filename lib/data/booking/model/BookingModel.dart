@@ -13,7 +13,7 @@ class BookingModel {
   final int durasi;
   final String konsep;
   final int totalHarga;
-  final OrderStatus status;
+  final String status;
   final int totalDp;
   final bool statusPaid;
   final String waktuMulai;
@@ -46,7 +46,7 @@ class BookingModel {
         durasi: json["durasi"],
         konsep: json["konsep"],
         totalHarga: json["total_harga"],
-        status: json["status"].toString().parseBookingStatusFromString(),
+        status: json["status"],
         totalDp: json["total_dp"],
         statusPaid: json["status_paid"],
         waktuMulai: json["waktu_mulai"],
