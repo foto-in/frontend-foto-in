@@ -2,6 +2,10 @@
 
 FotoIn adalah sebuah aplikasi yang tersedia pada web dan juga mobile yang menyediakan layanan booking fotografer secara praktis dan efisien. Dengan fitur pencarian yang canggih, pengguna dapat dengan mudah menemukan fotografer yang sesuai dengan kebutuhan mereka berdasarkan lokasi, jenis acara, gaya fotografi, dan budget.  
 
+## Preview
+
+![image](https://github.com/user-attachments/assets/ea15437e-d1cd-40b3-a184-abe7f7361a85)
+
 
 ## Gambaran Umum
 
